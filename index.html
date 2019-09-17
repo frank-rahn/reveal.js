@@ -1,23 +1,49 @@
 <!doctype html>
-<html>
+<html lang="de">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-		<title>reveal.js</title>
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<meta name="author" content="Frank W. Rahn">
+		<!-- var=Beschreibung content=Attr-content -->
+		<meta name="description" content="{Beschreibung}">
+
+		<!-- var=Präsentation content=Tag-text -->
+		<title>{Präsentation} | Frank W. Rahn</title>
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+		<link rel="stylesheet" href="dist/theme/frank-rahn.css" id="theme">
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
 	</head>
-	<body>
+	<body vocab="https://schema.org/" typeof="PresentationDigitalDocument">
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section id="start">
+					<!-- var=Präsentation content=Tag-text -->
+					<h1 property="name">{Präsentation}</h1>
+					<!-- var=Beschreibung content=Tag-text -->
+					<h2 property="description">{Beschreibung}</h2>
+					<p property="author creator" typeof="Person">
+						<small>Erstellt von <a href="https://www.frank-rahn.de" title="Frank W. Rahn" property="url"><span property="name">Frank Rahn</span></a></small>
+					</p>
+				</section>
+			</div>
+		</div>
+
+		<div style="display:none;">
+			<div id="headers">
+				<div id="header" style="line-height: 96px;" vocab="https://schema.org/" typeof="WPHeader">HEADER</div>
+				<div id="footer" style="line-height: 96px; font-size: 24px;" vocab="https://schema.org/" typeof="WPFooter">
+					<span style="padding: 0 10px;" property="copyrightHolder" typeof="Organization">Copyright © <a href="https://www.frank-rahn.de/" title="Home" property="url"><span property="name">Frank W. Rahn</span></a></span>
+					<a style="padding: 0 10px;" title="Die notwendigen gesetzlichen Angaben dieser Webseite von Frank Rahn" href="https://www.frank-rahn.de/imprint/">Impressum</a>
+					<a style="padding: 0 10px;" title="Die Datenschutzerklärung von Frank Rahn" href="https://www.frank-rahn.de/data-privacy-statement/">Datenschutzerklärung</a>
+				</div>
 			</div>
 		</div>
 
@@ -25,15 +51,22 @@
 		<script src="plugin/notes/notes.js"></script>
 		<script src="plugin/markdown/markdown.js"></script>
 		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/zoom/zoom.js"></script>
 		<script>
 			// More info about initialization & config:
 			// - https://revealjs.com/initialization/
 			// - https://revealjs.com/config/
 			Reveal.initialize({
-				hash: true,
+				controls: true,       // Display presentation control arrows
+				progress: true,       // Display a presentation progress bar
+				slideNumber: true,    // Display the page number of the current slide
+				history: true,        // Push each slide change to the browser history. Implies `hash: true`
+				center: true,         // Vertical centering of slides
+				transition: 'slide',  // none/fade/slide/convex/concave/zoom
+				hash: true,           // Add the current slide number to the URL hash so that reloading the page/copying the URL will return you to the same slide
 
 				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom ]
 			});
 		</script>
 	</body>
