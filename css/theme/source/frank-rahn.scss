@@ -1,0 +1,89 @@
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+// Include theme-specific fonts
+@import url(../../lib/font/source-sans-pro/source-sans-pro.css);
+
+// Override theme settings (see ../template/settings.scss)
+$backgroundColor: #fffdf7;
+$backgroundFooterColor: #222222;
+$backgroundHeaderColor: #593662;
+
+$mainColor: #301313;
+$headingColor: #301313;
+$footerColor: #919191;
+$headerColor: #ac9bb1;
+
+$mainFontSize: 42px;
+$mainFont: 'Source Sans Pro', Helvetica, sans-serif;
+$headingFont: 'Source Sans Pro', Helvetica, sans-serif;
+$headingTextShadow: none;
+$headingLetterSpacing: normal;
+$headingTextTransform: uppercase;
+$headingFontWeight: 600;
+$linkColor: #9d4040;
+$linkColorHover: #da2a2a;
+$selectionBackgroundColor: #9d4040;
+
+$heading1Size: 2.5em;
+$heading2Size: 1.6em;
+$heading3Size: 1.3em;
+$heading4Size: 1.0em;
+
+section.has-light-background {
+	&, h1, h2, h3, h4, h5, h6 {
+		color: #222;
+	}
+}
+
+.reveal kbd {
+	background-color: #444;
+	border-top: 3px solid #aaa;
+	border-left: 3px solid #999;
+	border-right: 3px solid #333;
+	border-bottom: 4px solid #222;
+	border-radius: 4px;
+	color: whitesmoke;
+	display: inline-block;
+	font-size: .8em;
+	line-height: 100%;
+	margin: 0 .1em;
+	padding: .2em 0.5em;
+}
+
+.reveal .slide-number {
+	background-color: $backgroundFooterColor;
+	color: $footerColor;
+}
+
+#header {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color: $backgroundHeaderColor;
+	background-image: -moz-linear-gradient(top, #4c1c58 0%, $backgroundHeaderColor 100%);
+	background-image: -ms-linear-gradient(top, #4c1c58 0%, $backgroundHeaderColor 100%);
+	background-image: -o-linear-gradient(top, #4c1c58 0%, $backgroundHeaderColor 100%);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #4c1c58), color-stop(1, $backgroundHeaderColor));
+	background-image: -webkit-linear-gradient(top, #4c1c58 0%, $backgroundHeaderColor 100%);
+	background-image: linear-gradient(top, #4c1c58 0%, $backgroundHeaderColor 100%);
+	color: $headerColor;
+	padding: 12px;
+}
+#footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	background-color: $backgroundFooterColor;
+	color: $footerColor;
+	padding: 12px;
+}
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+// npm run build -- css-themes
