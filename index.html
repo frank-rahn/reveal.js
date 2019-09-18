@@ -16,7 +16,7 @@
 
 		<link rel="stylesheet" href="css/reset.css">
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/frank-rahn.css">
+		<link rel="stylesheet" href="css/theme/frank-rahn.css" id="theme">
 		<link rel="icon" href="images/favicon.ico" type="image/x-icon">
 
 		<!-- Theme used for syntax highlighting of code -->
@@ -30,6 +30,9 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
 	</head>
 	<body vocab="https://schema.org/" typeof="PresentationDigitalDocument">
 		<div class="reveal">
@@ -38,7 +41,7 @@
 					<!-- var=Präsentation content=Tag-text -->
 					<h1 property="name">{Präsentation}</h1>
 					<!-- var=Beschreibung content=Tag-text -->
-					<h2 property="description">{Beschreibung}</h2>
+					<h3 property="description">{Beschreibung}</h3>
 					<p property="author creator" typeof="Person">
 						<small>Erstellt von <a href="https://www.frank-rahn.de" title="Frank W. Rahn" property="url"><span property="name">Frank Rahn</span></a></small>
 					</p>
