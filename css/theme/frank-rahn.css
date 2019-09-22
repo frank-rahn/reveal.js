@@ -18,7 +18,7 @@ section.has-light-background, section.has-light-background h1, section.has-light
 
 .reveal .slide-number {
   background-color: #222222;
-  color: #919191; }
+  color: #eeeeee; }
 
 #header {
   position: absolute;
@@ -41,8 +41,17 @@ section.has-light-background, section.has-light-background h1, section.has-light
   left: 0;
   width: 100%;
   background-color: #222222;
-  color: #919191;
+  color: #eeeeee;
   padding: 12px; }
+
+#footer > a,
+#footer > span > a {
+  color: #eeeeee; }
+
+#footer > a:hover,
+#footer > span > a:hover,
+#footer > .sep {
+  color: #999999; }
 
 /*********************************************
  * GLOBAL STYLES

@@ -13,7 +13,8 @@ $backgroundHeaderColor: #593662;
 
 $mainColor: #301313;
 $headingColor: #301313;
-$footerColor: #919191;
+$footerColor: #eeeeee;
+$footerColorHover: #999999;
 $headerColor: #ac9bb1;
 
 $mainFontSize: 42px;
@@ -81,6 +82,15 @@ section.has-light-background {
 	background-color: $backgroundFooterColor;
 	color: $footerColor;
 	padding: 12px;
+}
+#footer > a,
+#footer > span > a {
+	color: $footerColor;
+}
+#footer > a:hover,
+#footer > span > a:hover,
+#footer > .sep {
+	color: $footerColorHover;
 }
 
 // Theme template ------------------------------
