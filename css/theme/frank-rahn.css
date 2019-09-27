@@ -20,6 +20,9 @@ section.has-light-background, section.has-light-background h1, section.has-light
   background-color: #222222;
   color: #eeeeee; }
 
+#headers {
+  display: none; }
+
 #header {
   position: absolute;
   top: 0;
@@ -33,7 +36,22 @@ section.has-light-background, section.has-light-background h1, section.has-light
   background-image: -webkit-linear-gradient(top, #4c1c58 0%, #593662 100%);
   background-image: linear-gradient(top, #4c1c58 0%, #593662 100%);
   color: #ac9bb1;
-  padding: 12px; }
+  padding: 0 12px;
+  font-size: 0.35em; }
+
+#header > a,
+#header > span > a {
+  color: #ac9bb1; }
+
+#header > a:hover,
+#header > span > a:hover,
+#header > .sep {
+  color: #ffffff; }
+
+#header > img {
+  padding: 0 10px 0 0;
+  max-height: 88px;
+  border: 0; }
 
 #footer {
   position: absolute;
@@ -42,7 +60,9 @@ section.has-light-background, section.has-light-background h1, section.has-light
   width: 100%;
   background-color: #222222;
   color: #eeeeee;
-  padding: 12px; }
+  padding: 0 12px;
+  line-height: 96px;
+  font-size: 0.35em; }
 
 #footer > a,
 #footer > span > a {
@@ -52,6 +72,10 @@ section.has-light-background, section.has-light-background h1, section.has-light
 #footer > span > a:hover,
 #footer > .sep {
   color: #999999; }
+
+#footer > span,
+#footer > a {
+  padding: 0 10px; }
 
 /*********************************************
  * GLOBAL STYLES
