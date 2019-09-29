@@ -1,0 +1,114 @@
+/*
+
+Darcula color scheme from the JetBrains family of IDEs
+
+*/
+
+
+.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    background: #2b2b2b;
+}
+
+.hljs {
+    color: #bababa;
+}
+
+.hljs-strong,
+.hljs-emphasis {
+    color: #a8a8a2;
+}
+
+.hljs-bullet,
+.hljs-quote,
+.hljs-link,
+.hljs-number,
+.hljs-regexp,
+.hljs-literal {
+    color: #6896ba;
+}
+
+.hljs-code,
+.hljs-selector-class {
+    color: #a6e22e;
+}
+
+.hljs-emphasis {
+    font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-section,
+.hljs-attribute,
+.hljs-name,
+.hljs-variable {
+    color: #cb7832;
+}
+
+.hljs-params {
+    color: #b9b9b9;
+}
+
+.hljs-string {
+    color: #6a8759;
+}
+
+.hljs-subst,
+.hljs-type,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-symbol,
+.hljs-selector-id,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-addition {
+    color: #e0c46c;
+}
+
+.hljs-comment,
+.hljs-deletion {
+    color: #7f7f7f;
+}
+
+.hljs-meta {
+    color: #bbb529;
+}
+
+.hljs-function .hljs-title {
+    color: #ffc66d;
+}
+
+.hljs-doctag {
+    font-style: italic;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.yaml .hljs-attr {
+    color: #cc7832;
+}
+.yaml .hljs-string,
+.yaml .hljs-number {
+    color: #bababa;
+}
+
+.json .hljs-attr {
+    color: #9876aa;
+}
+
+.xml .hljs-string {
+    color: #a5c261;
+}
+
+.javascript .hljs-meta {
+    color: #6a8759;
+}
+.javascript .hljs-built_in {
+    color: #9876aa;
+    font-style: italic;
+}
