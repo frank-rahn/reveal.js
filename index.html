@@ -202,7 +202,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt
 					$('.slide-background').append(headers);
 				});
 			} else {
-				if ( !window.location.search.match(/without-headers/gi) ) {
+				if ( !window.location.search.match(/without-headers/gi) && !window.location.search.match(/receiver/gi)) {
 					$('div.reveal').append(headers);
 				}
 			}
