@@ -195,14 +195,14 @@ Variablen: Präsentation, Beschreibung, Abstrakt
 				]
 			});
 
-			if ( !window.location.search.match( /without-headers/gi ) ) {
-				let headers = $('#headers').html();
+			let headers = $('#headers').html();
 
-				if (window.location.search.match(/print-pdf/gi)) {
-					Reveal.addEventListener('ready', function () {
-						$('.slide-background').append(headers);
-					});
-				} else {
+			if (window.location.search.match(/print-pdf/gi)) {
+				Reveal.addEventListener('ready', function () {
+					$('.slide-background').append(headers);
+				});
+			} else {
+				if ( !window.location.search.match( /without-headers/gi ) ) {
 					$('div.reveal').append(headers);
 				}
 			}
