@@ -64,6 +64,7 @@ section.has-light-background {
 }
 #header {
 	position: absolute;
+	display: block;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -94,6 +95,7 @@ section.has-light-background {
 }
 #footer {
 	position: absolute;
+	display: block;
 	bottom: 0;
 	left: 0;
 	width: 100%;
