@@ -17,13 +17,13 @@ Variablen: Präsentation, Beschreibung, Abstrakt
 		<!-- var=Präsentation content=Tag-text -->
 		<title>{Präsentation} | Frank W. Rahn</title>
 
-		<link rel="stylesheet" href="css/reset.css">
-		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/frank-rahn.css" id="theme">
+		<link rel="stylesheet" href="/css/reset.css">
+		<link rel="stylesheet" href="/css/reveal.min.css">
+		<link rel="stylesheet" href="/css/theme/frank-rahn.css" id="theme">
 		<link rel="icon" href="images/favicon.ico" type="image/x-icon">
 
 		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/darcula.css">
+		<link rel="stylesheet" href="/lib/css/darcula.css">
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -34,7 +34,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
 		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
+		<script src="/lib/js/html5shiv.js"></script>
 		<![endif]-->
 	</head>
 	<body vocab="https://schema.org/" typeof="PresentationDigitalDocument">
@@ -88,7 +88,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt
                     </section>
 					<section id="contact-me">
 						<h3>Kontakt</h3>
-						<div><img src="" data-src="images/rahn-sb.jpg" height="80" width="80" style="border: 0;" alt="Frank Rahn"/></div>
+						<div><img src="" data-src="/images/rahn-sb.jpg" height="80" width="80" style="border: 0;" alt="Frank Rahn"/></div>
 						<div style="display: inline-table; text-align: left; border-collapse:collapse; font-size: 0.6em;">
 							<div style="display: table-row;">
 								<div style="display: table-cell; padding: 5px;">Homepage</div>
@@ -163,7 +163,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt
 
 		<div id="headers">
 			<header id="header" role="banner" vocab="https://schema.org/" typeof="WPHeader">
-				<img src="images/logo.png" alt="Frank W. Rahn"><a href="https://www.frank-rahn.de/" title="Home">https://www.frank-rahn.de/</a>
+				<img src="/images/logo.png" alt="Frank W. Rahn"><a href="https://www.frank-rahn.de/" title="Home">https://www.frank-rahn.de/</a>
 			</header>
 			<footer id="footer" vocab="https://schema.org/" typeof="WPFooter">
 				<span style="padding: 0 20px 0 0;" property="copyrightHolder" typeof="Organization">Copyright © <a href="https://www.frank-rahn.de/" title="Home" rel="bookmark" property="url"><span property="name">Frank W. Rahn</span></a></span>
@@ -175,8 +175,8 @@ Variablen: Präsentation, Beschreibung, Abstrakt
 			</footer>
 		</div>
 
-		<script src="js/reveal.min.js"></script>
-		<script src="js/jquery-3.4.1.min.js"></script>
+		<script src="/js/reveal.min.js"></script>
+		<script src="/js/jquery-3.4.1.min.js"></script>
 
 		<script>
 			// More info about config & dependencies:
@@ -191,12 +191,12 @@ Variablen: Präsentation, Beschreibung, Abstrakt
 				transition: 'convex', // none/fade/slide/convex/concave/zoom
 				hash: true,           // Add the current slide number to the URL hash so that reloading the page/copying the URL will return you to the same slide
 				dependencies: [
-					//{ src: 'plugin/markdown/marked.js' },						// Interpret Markdown in <section> elements
-					//{ src: 'plugin/markdown/markdown.js' },
-                    //{ src: 'plugin/highlight/highlight.js', async: true },	// Syntax highlight for <code> elements
-					{ src: 'plugin/notes/notes.js', async: true },				// Speaker notes
-					//{ src: 'plugin/math/math.js', async: true },				// MathJax
-					{ src: 'plugin/zoom-js/zoom.js', async: true }				// Zoom in and out with Ctrl+click
+					//{ src: '/plugin/markdown/marked.js' },					// Interpret Markdown in <section> elements
+					//{ src: '/plugin/markdown/markdown.js' },
+                    //{ src: '/plugin/highlight/highlight.js', async: true },	// Syntax highlight for <code> elements
+					{ src: '/plugin/notes/notes.js', async: true },				// Speaker notes
+					//{ src: '/plugin/math/math.js', async: true },				// MathJax
+					{ src: '/plugin/zoom-js/zoom.js', async: true }				// Zoom in and out with Ctrl+click
 				]
 			});
 
