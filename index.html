@@ -12,10 +12,10 @@ Variablen: Präsentation, Beschreibung, Abstrakt
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 		<meta name="author" content="Frank W. Rahn">
 		<!-- var=Beschreibung content=Attr-content -->
-		<meta name="description" content="{Beschreibung}">
+		<meta name="description" content="Base 64, Hashcode, Schlüssel, Signieren, X.509 Zertifikate, TLS, mTLS, …">
 
 		<!-- var=Präsentation content=Tag-text -->
-		<title>{Präsentation} | Frank W. Rahn</title>
+		<title>Verschlüsseln und so &hellip; | Frank W. Rahn</title>
 
 		<link rel="stylesheet" href="/css/reset.css">
 		<link rel="stylesheet" href="/css/reveal.min.css">
@@ -43,21 +43,21 @@ Variablen: Präsentation, Beschreibung, Abstrakt
 				<section>
 					<section id="start-slide">
 						<!-- var=Präsentation content=Tag-text -->
-						<h1 property="name">{Präsentation}</h1>
+						<h1 property="name">Verschlüsseln und so &hellip;</h1>
 						<!-- var=Beschreibung content=Tag-text -->
-						<h3 property="description">{Beschreibung}</h3>
+						<h3 property="description">Base 64, Hashcode, Schlüssel, Signieren, X.509 Zertifikate, TLS, mTLS, &hellip;</h3>
 						<p property="author creator" typeof="Person">
 							<small>Erstellt von <a href="https://www.frank-rahn.de" title="Frank W. Rahn" property="url"><span property="name">Frank Rahn</span></a></small>
 						</p>
-                        <aside class="notes">
-                            Details: Abstrakt und Hinweise der Bedienung/Navigation in der Präsentation
-                        </aside>
+						<aside class="notes">
+							Details: Abstrakt und Hinweise der Bedienung/Navigation in der Präsentation
+						</aside>
 					</section>
-                    <section>
-                        <h3>Abstrakt</h3>
-                        <!-- var=Abstrakt content=Tag-text -->
-                        <p>{Abstrakt}</p>
-                    </section>
+					<section>
+						<h3>Abstrakt</h3>
+						<!-- var=Abstrakt content=Tag-text -->
+						<p>{Abstrakt}</p>
+					</section>
 					<section>
 						<h3>Tastenkombinationen</h3>
 						<ul>
@@ -69,23 +69,23 @@ Variablen: Präsentation, Beschreibung, Abstrakt
 							<li><kbd>S</kbd> wird die Speakers-Ansicht gestartet</li>
 						</ul>
 					</section>
-                    <section>
-                        <h3>Navigation</h3>
-                        <ul>
-                            <li><kbd>&rightarrow;</kbd> oder <kbd>L</kbd> springt zum nächsten Kapitel</li>
-                            <li><kbd>&leftarrow;</kbd> oder <kbd>H</kbd> springt zum vorherigen Kapitel</li>
-                            <li><kbd>&downarrow;</kbd> oder <kbd>J</kbd> springt eine Folie nach unten</li>
-                            <li><kbd>&uparrow;</kbd> oder <kbd>K</kbd> springt eine Folie nach oben</li>
-                        </ul>
-                    </section>
+					<section>
+						<h3>Navigation</h3>
+						<ul>
+							<li><kbd>&rightarrow;</kbd> oder <kbd>L</kbd> springt zum nächsten Kapitel</li>
+							<li><kbd>&leftarrow;</kbd> oder <kbd>H</kbd> springt zum vorherigen Kapitel</li>
+							<li><kbd>&downarrow;</kbd> oder <kbd>J</kbd> springt eine Folie nach unten</li>
+							<li><kbd>&uparrow;</kbd> oder <kbd>K</kbd> springt eine Folie nach oben</li>
+						</ul>
+					</section>
 				</section>
-                <section>
-                    <section id="about-me">
-                        <h2>Über mich</h2>
-                        <aside class="notes">
-                            Details: Kontaktinformationen, Person, Einsatzmöglichkeiten
-                        </aside>
-                    </section>
+				<section>
+					<section id="about-me">
+						<h2>Über mich</h2>
+						<aside class="notes">
+							Details: Kontaktinformationen, Person, Einsatzmöglichkeiten
+						</aside>
+					</section>
 					<section id="contact-me">
 						<h3>Kontakt</h3>
 						<div><img src="" data-src="/images/rahn-sb.jpg" height="80" width="80" style="border: 0;" alt="Frank Rahn"/></div>
@@ -134,6 +134,93 @@ Variablen: Präsentation, Beschreibung, Abstrakt
 							<li>Entwicklung von großen und komplexen Systemen</li>
 							<li>Performance-Analysen mit entsprechender Optimierung</li>
 						</ul>
+					</section>
+				</section>
+				<section>
+					<section id="base64-kodierung">
+						<h2>Base64 Kodierung</h2>
+						<p>Base64 ist ein Verfahren zur Kodierung von 8-Bit Binärdaten</p>
+						<aside class="notes">
+							Details: Zeichensatz
+						</aside>
+					</section>
+					<section id="zeichensatz">
+						<h3>Zeichensatz</h3>
+						<ul>
+							<li>Der Zeichensatz besteht aus 64 Zeichen</li>
+							<li>Jedes Zeichen wird mit 6-Bit kodiert</li>
+							<li>Zusätzliches Zeichen ist das <kbd>=</kbd> für das Ende</li>
+						</ul>
+						<table style="margin-top: 15px">
+							<tr>
+								<td><kbd>A</kbd></td>
+								<td>&rArr;</td>
+								<td>000000</td>
+								<td>&hellip;</td>
+								<td><kbd>Z</kbd></td>
+								<td>&rArr;</td>
+								<td>011001</td>
+							</tr>
+							<tr>
+								<td><kbd>a</kbd></td>
+								<td>&rArr;</td>
+								<td>011010</td>
+								<td>&hellip;</td>
+								<td><kbd>z</kbd></td>
+								<td>&rArr;</td>
+								<td>110011</td>
+							</tr>
+							<tr>
+								<td><kbd>0</kbd></td>
+								<td>&rArr;</td>
+								<td>110100</td>
+								<td>&hellip;</td>
+								<td><kbd>9</kbd></td>
+								<td>&rArr;</td>
+								<td>111101</td>
+							</tr>
+							<tr>
+								<td><kbd>+</kbd></td>
+								<td>&rArr;</td>
+								<td>111110</td>
+								<td>&nbsp;</td>
+								<td><kbd>/</kbd></td>
+								<td>&rArr;</td>
+								<td>111111</td>
+							</tr>
+						</table>
+					</section>
+					<section id="kodierung1">
+						<h3>Kodierung</h3>
+						<ul>
+							<li>Jeweils 24-Bit (3 Bytes) werden in 6-Bit große Blöcke aufgeteilt</li>
+							<li>Jeder dieser 6-Bit wird ein Zeichen aus dem Zeichensatz zugeordnet</li>
+						</ul>
+						<img style="border: 0" alt="Die Base64 Kodierung" src="" data-src="Kodierung-24-bits.svg" />
+					</section>
+					<section id="kodierung2">
+						<h3>Kodierung</h3>
+						<ul>
+							<li>Padding: Falls die letzten 3-Bytes nicht vollständig sind werden sie mit Nullbytes (0x00) aufgefüllt</li>
+							<li>Die 6-Bit Blöcke, die vollständig aufgefüllt wurden, werden mit <kbd>=</kbd> kodiert</li>
+							<li>Eine kodierte Zeile wird typischerweise nach 76 Zeichen umgebrochen</li>
+						</ul>
+						<img style="border: 0" alt="Das Padding bei der Base64 Kodierung" src="" data-src="Kodierung-Padding.svg" />
+					</section>
+					<section id="base64-beispiel">
+						<h3>Base64 Beispiel</h3>
+						<h4>Klartext</h4>
+						<pre>
+							<code class="hljs nohighlight" data-trim="">
+								Frank Rahn, Neusser Str. 594, 50737 Köln.
+							</code>
+						</pre>
+						<h4>Base64</h4>
+						<pre>
+							<code class="hljs nohighlight" data-trim="">
+								RnJhbmsgUmFobiwgTmV1c3NlciBTdHIuIDU5NCwgNTA3MzcgS8O2bG4uCg==
+							</code>
+						</pre>
 					</section>
 				</section>
 				<section>
