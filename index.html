@@ -137,14 +137,14 @@ Variablen: Präsentation, Beschreibung, Abstrakt
 					</section>
 				</section>
 				<section>
-					<section id="base64-kodierung">
+					<section id="base64-encoding">
 						<h2>Base64 Kodierung</h2>
 						<p>Base64 ist ein Verfahren zur Kodierung von 8-Bit Binärdaten</p>
 						<aside class="notes">
-							Details: Zeichensatz
+							Details: Zeichensatz und Kodierung
 						</aside>
 					</section>
-					<section id="zeichensatz">
+					<section id="character-set">
 						<h3>Zeichensatz</h3>
 						<ul>
 							<li>Der Zeichensatz besteht aus 64 Zeichen</li>
@@ -190,7 +190,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt
 							</tr>
 						</table>
 					</section>
-					<section id="kodierung1">
+					<section id="encoding-1">
 						<h3>Kodierung</h3>
 						<ul>
 							<li>Jeweils 24-Bit (3 Bytes) werden in 6-Bit große Blöcke aufgeteilt</li>
@@ -198,7 +198,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt
 						</ul>
 						<img style="border: 0" alt="Die Base64 Kodierung" src="" data-src="Kodierung-24-bits.svg" />
 					</section>
-					<section id="kodierung2">
+					<section id="encoding-2">
 						<h3>Kodierung</h3>
 						<ul>
 							<li>Padding: Falls die letzten 3-Bytes nicht vollständig sind werden sie mit Nullbytes (0x00) aufgefüllt</li>
@@ -207,7 +207,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt
 						</ul>
 						<img style="border: 0" alt="Das Padding bei der Base64 Kodierung" src="" data-src="Kodierung-Padding.svg" />
 					</section>
-					<section id="base64-beispiel">
+					<section id="base64-example">
 						<h3>Base64 Beispiel</h3>
 						<h4>Klartext</h4>
 						<pre>
@@ -222,6 +222,101 @@ Variablen: Präsentation, Beschreibung, Abstrakt
 							</code>
 						</pre>
 					</section>
+				</section>
+				<section>
+					<section id="hash">
+						<h2>Hashfunktion und Hashcode</h2>
+						<aside class="notes">
+							Details: Hashcode, Hashfunktion
+						</aside>
+					</section>
+					<section id="hash-function">
+						<h3>Hashfunktionen</h3>
+						<ul>
+							<li>Eine Hashfunktion bildet eine große Eingabemenge auf eine keine Zielmenge ab</li>
+							<li>Die Hashfunktionen sind gerichtet und nicht umkehrbar (nicht injektiv)</li>
+							<li>Einfache Funktionen sind Prüfziffern, Quersummen, Prüfsummen, …</li>
+							<li>Höherwertige Funktionen sind kryptografische Hashfunktionen zur Integritätsprüfung</li>
+						</ul>
+						<img style="border: 0" alt="Hashfunktion" src="" data-src="Hashfunktion.svg" />
+					</section>
+					<section id="hashcode">
+						<h3>Hashcode SHA256</h3>
+						<p>&hellip;</p>
+					</section>
+				</section>
+				<section>
+					<section id="encryption">
+						<h2>Verschlüsselung</h2>
+					</section>
+					<section id="synchronous-encryption">
+						<h3>Synchrone Verschlüsselung</h3>
+						<img style="border: 0" alt="Symmetrisches Verschlüsselungsverfahren" src="" data-src="Symmetrisches%20Verschlüsselungsverfahren.png" />
+					</section>
+					<section id="asynchronous-encryption">
+						<h3>Asynchrone Verschlüsselung</h3>
+						<img style="border: 0" alt="asymmetrisches Verschlüsselungsverfahren" src="" data-src="Asymmetrisches%20Verschlüsselungsverfahren.png" />
+					</section>
+					<section id="encryption-in-comparison-1">
+						<h3>Synchrone und Asynchrone Verschlüsselung im Vergleich</h3>
+						<table>
+							<tr>
+								<th>Schlüssel</th>
+								<td>Symmetrisch</td>
+								<td>Asymmetrisch</td>
+							</tr>
+							<tr>
+								<th>Kryptoverfahren</th>
+								<td>AES-256</td>
+								<td>RSA</td>
+							</tr>
+							<tr>
+								<th>Anzahl Schlüssel</th>
+								<td>1 (Key)</td>
+								<td>2 (Key Pair)</td>
+							</tr>
+							<tr>
+								<th>Schlüssellänge in Bits</th>
+								<td><u><em>256</em></u></td>
+								<td><u><em>2048</em></u>, 3072, 4096</td>
+							</tr>
+							<tr>
+								<th>Geschwindigkeit</th>
+								<td>schnell</td>
+								<td>langsam</td>
+							</tr>
+						</table>
+					</section>
+					<section id="encryption-in-comparison-2">
+						<h3>Synchrone und Asynchrone Verschlüsselung im Vergleich</h3>
+						<ul>
+							<li>Geschwindigkeitsunterschied der beiden Verfahren *100 bis *1.000</li>
+							<li>Der <strong>geheime Schlüssel</strong> (Synchron) muss auf beiden Seiten bekannt und geschützt werden</li>
+							<li>Der <strong>private Schlüssel</strong> (Asynchron) muss geschützt werden</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section id="sign">
+						<h2>Signieren</h2>
+					</section>
+					<section id="SHA256withRSA">
+						<h3>Signieren mit SHA256withRSA</h3>
+					</section>
+				</section>
+				<section>
+					<h2>&hellip;</h2>
+					<ul>
+						<li>PKCS #1</li>
+						<li>
+							ASN.1 (Abstract Syntax Notation One)
+							<ul>
+								<li><a class="external" rel="external noopener noreferrer" href="https://lapo.it/asn1js/" target="_blank">JavaScript Decoder</a></li>
+								<li>Hierarchische strukturierte Datentypen</li>
+							</ul>
+						</li>
+						<li>X.5xx</li>
+					</ul>
 				</section>
 				<section>
 					<section id="last-slide">
