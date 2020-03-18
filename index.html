@@ -305,20 +305,6 @@ Variablen: Präsentation, Beschreibung, Abstrakt
 					</section>
 				</section>
 				<section>
-					<h2>&hellip;</h2>
-					<ul>
-						<li>PKCS #1</li>
-						<li>
-							ASN.1 (Abstract Syntax Notation One)
-							<ul>
-								<li><a class="external" rel="external noopener noreferrer" href="https://lapo.it/asn1js/" target="_blank">JavaScript Decoder</a></li>
-								<li>Hierarchische strukturierte Datentypen</li>
-							</ul>
-						</li>
-						<li>X.5xx</li>
-					</ul>
-				</section>
-				<section>
 					<section id="last-slide">
 						<h2>Vielen Dank für Ihre Aufmerksamkeit!</h2>
 						<aside class="notes">
@@ -338,6 +324,20 @@ Variablen: Präsentation, Beschreibung, Abstrakt
 						<aside class="notes">
 							Details: Zusätzliche Folien
 						</aside>
+					</section>
+					<section>
+						<h3>Offene Punkte</h3>
+						<ul>
+							<li>PKCS #1</li>
+							<li>
+								ASN.1 (Abstract Syntax Notation One)
+								<ul>
+									<li><a class="external" rel="external noopener noreferrer" href="https://lapo.it/asn1js/" target="_blank">JavaScript Decoder</a></li>
+									<li>Hierarchische strukturierte Datentypen</li>
+								</ul>
+							</li>
+							<li>X.5xx</li>
+						</ul>
 					</section>
 				</section>
 			</div>
@@ -373,9 +373,9 @@ Variablen: Präsentation, Beschreibung, Abstrakt
 				transition: 'convex', // none/fade/slide/convex/concave/zoom
 				hash: true,           // Add the current slide number to the URL hash so that reloading the page/copying the URL will return you to the same slide
 				dependencies: [
-					//{ src: '/plugin/markdown/marked.js' },					// Interpret Markdown in <section> elements
+					//{ src: '/plugin/markdown/marked.js' },				// Interpret Markdown in <section> elements
 					//{ src: '/plugin/markdown/markdown.js' },
-					//{ src: '/plugin/highlight/highlight.js', async: true },	// Syntax highlight for <code> elements
+					{ src: '/plugin/highlight/highlight.js', async: true },			// Syntax highlight for <code> elements
 					{ src: '/plugin/notes/notes.js', async: true },				// Speaker notes
 					//{ src: '/plugin/math/math.js', async: true },				// MathJax
 					{ src: '/plugin/zoom-js/zoom.js', async: true }				// Zoom in and out with Ctrl+click
