@@ -245,16 +245,16 @@ RnJhbmsgUmFobiwgTmV1c3NlciBTdHIuIDU5NCwgNTA3MzcgS8O2bG4uCg==
 					<section id="encryption">
 						<h2>Verschlüsselung</h2>
 					</section>
-					<section id="synchronous-encryption">
-						<h3>Synchrone Verschlüsselung</h3>
-						<img style="border: 0" alt="Symmetrisches Verschlüsselungsverfahren" src="" data-src="Symmetrisches%20Verschlüsselungsverfahren.png" />
+					<section id="symmetric-key-encryption">
+						<h3>Symmetrische Verschlüsselung</h3>
+						<img style="border: 0" alt="Symmetrische Verschlüsselung" src="" data-src="symmetrische-verschluesselung.png" />
 					</section>
-					<section id="asynchronous-encryption">
-						<h3>Asynchrone Verschlüsselung</h3>
-						<img style="border: 0" alt="asymmetrisches Verschlüsselungsverfahren" src="" data-src="Asymmetrisches%20Verschlüsselungsverfahren.png" />
+					<section id="asymmetric-key-encryption">
+						<h3>Asymmetrische Verschlüsselung</h3>
+						<img style="border: 0" alt="asymmetrisches Verschlüsselung" src="" data-src="asymmetrische-verschluesselung.png" />
 					</section>
 					<section id="encryption-in-comparison-1">
-						<h3>Synchrone und Asynchrone Verschlüsselung im Vergleich</h3>
+						<h3>Vergleich der Verschlüsselungen</h3>
 						<table>
 							<tr>
 								<th>Schlüssel</th>
@@ -263,7 +263,7 @@ RnJhbmsgUmFobiwgTmV1c3NlciBTdHIuIDU5NCwgNTA3MzcgS8O2bG4uCg==
 							</tr>
 							<tr>
 								<th>Kryptoverfahren</th>
-								<td>AES-256</td>
+								<td>AES</td>
 								<td>RSA</td>
 							</tr>
 							<tr>
@@ -273,8 +273,8 @@ RnJhbmsgUmFobiwgTmV1c3NlciBTdHIuIDU5NCwgNTA3MzcgS8O2bG4uCg==
 							</tr>
 							<tr>
 								<th>Schlüssellänge in Bits</th>
-								<td><u><em>256</em></u></td>
-								<td><u><em>2048</em></u>, 3072, 4096</td>
+								<td><s>128</s>, <s>192</s>, <u><em>256</em></u></td>
+								<td><s>1024</s>, <s>1976</s>, <u><em>2048</em></u>, 3072, 4096</td>
 							</tr>
 							<tr>
 								<th>Geschwindigkeit</th>
@@ -284,17 +284,21 @@ RnJhbmsgUmFobiwgTmV1c3NlciBTdHIuIDU5NCwgNTA3MzcgS8O2bG4uCg==
 						</table>
 					</section>
 					<section id="encryption-in-comparison-2">
-						<h3>Synchrone und Asynchrone Verschlüsselung im Vergleich</h3>
+						<h3>Vergleich der Verschlüsselungen</h3>
 						<ul>
 							<li>Geschwindigkeitsunterschied der beiden Verfahren *100 bis *1.000</li>
-							<li>Der <strong>geheime Schlüssel</strong> (Synchron) muss auf beiden Seiten bekannt und geschützt werden</li>
-							<li>Der <strong>private Schlüssel</strong> (Asynchron) muss geschützt werden</li>
+							<li>Der <strong>geheime Schlüssel</strong> (Symmetrisch) muss auf beiden Seiten bekannt und geschützt werden</li>
+							<li>Der <strong>private Schlüssel</strong> (Asymmetrisch) muss geschützt werden</li>
 						</ul>
 					</section>
 				</section>
 				<section>
 					<section id="sign">
 						<h2>Signieren</h2>
+					</section>
+					<section id="sign-with-asymmetric-key">
+						<h3>Signieren mit asymmetrische Schüssel</h3>
+						<img style="border: 0" alt="Signieren" src="" data-src="signatur.png" />
 					</section>
 					<section id="SHA256withRSA">
 						<h3>Signieren mit SHA256withRSA</h3>
