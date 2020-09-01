@@ -42,7 +42,8 @@ section.has-light-background, section.has-light-background h1, section.has-light
 
 #header > a {
   z-index: 12;
-  position: relative; }
+  position: relative;
+  background-color: #593662; }
 
 #header > a,
 #header > a:visited {
@@ -66,7 +67,8 @@ section.has-light-background, section.has-light-background h1, section.has-light
 #footer > a,
 #footer > span > a {
   z-index: 12;
-  position: relative; }
+  position: relative;
+  background-color: #222222; }
 
 #footer > a,
 #footer > a:visited,

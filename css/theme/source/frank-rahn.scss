@@ -84,6 +84,7 @@ section.has-light-background {
 #header > a {
 	z-index: 12;
 	position: relative;
+	background-color: $backgroundHeaderColor;
 }
 #header > a,
 #header > a:visited {
@@ -109,6 +110,7 @@ section.has-light-background {
 #footer > span > a {
 	z-index: 12;
 	position: relative;
+	background-color: $backgroundFooterColor;
 }
 #footer > a,
 #footer > a:visited,
