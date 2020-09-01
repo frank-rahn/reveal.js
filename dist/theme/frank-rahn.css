@@ -40,7 +40,7 @@ section.has-light-background, section.has-light-background h1, section.has-light
   border: 0;
   padding: 0 30px 0 0; }
 
-#header > a {
+#header > .header {
   z-index: 12;
   position: relative;
   background-color: #593662; }
@@ -64,8 +64,7 @@ section.has-light-background, section.has-light-background h1, section.has-light
   font-family: "Source Sans Pro", Helvetica, sans-serif;
   font-size: 0.9em; }
 
-#footer > a,
-#footer > span > a {
+#footer > .footer {
   z-index: 12;
   position: relative;
   background-color: #222222; }

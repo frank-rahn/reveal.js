@@ -81,7 +81,7 @@ section.has-light-background {
 	border: 0;
 	padding: 0 30px 0 0;
 }
-#header > a {
+#header > .header {
 	z-index: 12;
 	position: relative;
 	background-color: $backgroundHeaderColor;
@@ -106,8 +106,7 @@ section.has-light-background {
 	font-family: $mainFont;
 	font-size: 0.9em;
 }
-#footer > a,
-#footer > span > a {
+#footer > .footer {
 	z-index: 12;
 	position: relative;
 	background-color: $backgroundFooterColor;
