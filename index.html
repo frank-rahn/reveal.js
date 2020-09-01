@@ -210,10 +210,10 @@ public class Lambda {
     strings.forEach(System.out::println);
   }
 }</code></pre>
-        </section>
-        <section id="java-8-defaults" data-auto-animate>
-          <h3 data-id="code-title">Default und statische Methoden in Interfaces</h3>
-          <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="7,9-10,12,14">package java8;
+					</section>
+					<section id="java-8-defaults">
+						<h3 data-id="code-title">Default und statische Methoden in Interfaces</h3>
+						<pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="7,9-10,12,14">package java8;
 
 public interface DefaultStaticMethod {
 
@@ -229,10 +229,10 @@ public interface DefaultStaticMethod {
   }
 }
 </code></pre>
-        </section>
-        <section id="java-8-static" data-auto-animate>
-          <h3 data-id="code-title">Default und statische Methoden in Interfaces</h3>
-          <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="6,8-9">package java8;
+					</section>
+					<section id="java-8-static">
+						<h3 data-id="code-title">Default und statische Methoden in Interfaces</h3>
+						<pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="6,8-9">package java8;
 
 public class DefaultStaticMethodImpl implements DefaultStaticMethod {
 
@@ -242,10 +242,10 @@ public class DefaultStaticMethodImpl implements DefaultStaticMethod {
     DefaultStaticMethod.staticMethod();
   }
 }</code></pre>
-        </section>
-        <section id="java-8-stream" data-auto-animate>
-          <h3 data-id="code-title">Stream API</h3>
-          <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="10-15">package java8;
+					</section>
+					<section id="java-8-stream">
+						<h3 data-id="code-title">Stream API</h3>
+						<pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="10-15">package java8;
 
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
@@ -263,10 +263,10 @@ public class Streams {
   }
 }
 </code></pre>
-        </section>
-        <section id="java-8-bulk" data-auto-animate>
-          <h3 data-id="code-title">Bulk Operations auf Collections</h3>
-          <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="9-14">package java8;
+					</section>
+					<section id="java-8-bulk">
+						<h3 data-id="code-title">Bulk Operations auf Collections</h3>
+						<pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="9-14">package java8;
 
 import java.util.List;
 
@@ -283,10 +283,10 @@ public class BulkOperation {
   }
 }
 </code></pre>
-        </section>
-        <section id="java-8-datetime" data-auto-animate>
-          <h3 data-id="code-title">Date-Time API</h3>
-          <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="9-10,12-13,15">package java8;
+					</section>
+					<section id="java-8-datetime">
+						<h3 data-id="code-title">Date-Time API</h3>
+						<pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="9-10,12-13,15">package java8;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -613,66 +613,69 @@ jshell> Optional.empty().orElseThrow()
 jshell> Optional.of(true).orElseThrow()
 $2 ==> true
 </code></pre>
-        </section>
-      </section>
-      <section>
-        <section id="java-11">
-          <h2>Java 11</h2>
-          <aside class="notes">
-            Details: Changelog von Java 11
-          </aside>
-        </section>
-        <section id="java-11-info">
-          <h3>Informationen</h3>
-          <p>Release im September 2018</p>
-          <p>Ist eine LTS-Version</p>
-          <p>Support Ende im September 2022</p>
-          <p><a href="http://openjdk.java.net/projects/jdk/11" target="_blank" rel="external">http://openjdk.java.net/projects/jdk/11</a></p>
-        </section>
-        <section id="java-11-changes">
-          <h3>Die wichtigsten Änderungen</h3>
-          <ul>
-            <li>Entfernen von JAX-WS, SAAJ, JAXB, JAF, JTA, CORBA und der Common Annotations</li>
-            <li>API Erweiterungen</li>
-            <li>HTTP Client</li>
-            <li>Local-Variable Syntax für Lambda Parameters</li>
-            <li>Shebang Dateien</li>
-            <li>Sourcecode Dateien ausführen</li>
-            <li>...</li>
-          </ul>
-        </section>
-        <section id="java-11-remove-1">
-          <h3>Entfernen von Java EE Modulen</h3>
-          <h4>JAX-WS <small style="vertical-align: baseline;">(javax.xml.ws)</small></h4>
-          <p>jakarta.xml.ws : jakarta.xml.ws-api : 2.3.3<br>com.sun.xml.ws : jaxws-rt : 2.3.3</p>
-          <h4>SAAJ <small style="vertical-align: baseline;">(com.sun.xml.messaging.saaj)</small></h4>
-          <p>com.sun.xml.messaging.saaj : saaj-impl : 1.5.2</p>
-          <h4>JAXB <small style="vertical-align: baseline;">(javax.xml.bind)</small></h4>
-          <p>jakarta.xml.bind : jakarta.xml.bind-api : 2.3.3<br>org.glassfish.jaxb : jaxb-runtime : 2.3.3</p>
-        </section>
-        <section id="java-11-remove-2">
-          <h3>Entfernen von Java EE Modulen</h3>
-          <h4>JAF <small style="vertical-align: baseline;">(javax.activation)</small></h4>
-          <p>jakarta.activation : jakarta.activation-api : 1.2.2</p>
-          <h4>JTA <small style="vertical-align: baseline;">(javax.transaction)</small></h4>
-          <p>jakarta.transaction : jakarta.transaction-api : 1.3.3</p>
-          <h4>JPA <small style="vertical-align: baseline;">(javax.persistence)</small></h4>
-          <p>jakarta.persistence : jakarta.persistence-api : 2.2.3</p>
-        </section>
-        <section id="java-11-remove-3">
-          <h3>Entfernen von Java EE Modulen</h3>
-          <h4>Validation <small style="vertical-align: baseline;">(javax.validation)</small></h4>
-          <p>jakarta.validation : jakarta.validation-api : 2.0.2</p>
-          <h4>Common Annotations <small style="vertical-align: baseline;">(javax.annotation)</small></h4>
-          <p>jakarta.annotation:jakarta.annotation-api:1.3.5</p>
-          <h4>Expression Language <small style="vertical-align: baseline;">(javax.el)</small></h4>
-          <p>org.glassfish : jakarta.el : 3.0.3</p>
-          <h4>CORBA (<small style="vertical-align: baseline;">javax.rmi.CORBA</small>)</h4>
-          <p>Z. B. <a href="https://javaee.github.io/glassfish/" target="_blank" rel="external">GlassFisch</a></p>
-        </section>
-        <section id="java-11-apistring" data-auto-animate>
-          <h3 data-id="code-title">API Erweiterungen (String)</h3>
-          <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="5-6,8-9,11-12|14-15,17-18,20-21|23-24,26-29,31-32">$ jshell
+					</section>
+				</section>
+				<section>
+					<section id="java-11">
+						<h2>Java 11</h2>
+						<aside class="notes">
+							Details: Changelog von Java 11
+						</aside>
+					</section>
+					<section id="java-11-info">
+						<h3>Informationen</h3>
+						<p>Release im September 2018</p>
+						<p>Ist eine LTS-Version</p>
+						<p>Support Ende im September 2022</p>
+						<p><a href="http://openjdk.java.net/projects/jdk/11" target="_blank" rel="external">http://openjdk.java.net/projects/jdk/11</a></p>
+					</section>
+					<section id="java-11-changes">
+						<h3>Die wichtigsten Änderungen</h3>
+						<ul>
+							<li>Entfernen von JAX-WS, SAAJ, JAXB, JAF, JTA, CORBA und der Common Annotations</li>
+							<li>API Erweiterungen</li>
+							<li>HTTP Client</li>
+							<li>Local-Variable Syntax für Lambda Parameters</li>
+							<li>Shebang Dateien</li>
+							<li>Sourcecode Dateien ausführen</li>
+							<li>...</li>
+						</ul>
+					</section>
+					<section id="java-11-remove-1">
+						<h3>Entfernen von Java EE Modulen</h3>
+						<h4>JAX-WS <small style="vertical-align: baseline;">(javax.xml.ws)</small></h4>
+						<p>jakarta.xml.ws : jakarta.xml.ws-api : 2.3.3<br>com.sun.xml.ws : jaxws-rt : 2.3.3</p>
+						<h4>SAAJ <small style="vertical-align: baseline;">(com.sun.xml.messaging.saaj)</small></h4>
+						<p>com.sun.xml.messaging.saaj : saaj-impl : 1.5.2</p>
+						<h4>JAXB <small style="vertical-align: baseline;">(javax.xml.bind)</small></h4>
+						<p>jakarta.xml.bind : jakarta.xml.bind-api : 2.3.3<br>org.glassfish.jaxb : jaxb-runtime : 2.3.3</p>
+					</section>
+					<section id="java-11-remove-2">
+						<h3>Entfernen von Java EE Modulen</h3>
+						<h4>JAF <small style="vertical-align: baseline;">(javax.activation)</small></h4>
+						<p>jakarta.activation : jakarta.activation-api : 1.2.2</p>
+						<h4>JTA <small style="vertical-align: baseline;">(javax.transaction)</small></h4>
+						<p>jakarta.transaction : jakarta.transaction-api : 1.3.3</p>
+						<h4>JPA <small style="vertical-align: baseline;">(javax.persistence)</small></h4>
+						<p>jakarta.persistence : jakarta.persistence-api : 2.2.3</p>
+					</section>
+					<section id="java-11-remove-3">
+						<h3>Entfernen von Java EE Modulen</h3>
+						<h4>Validation <small style="vertical-align: baseline;">(javax.validation)</small></h4>
+						<p>jakarta.validation : jakarta.validation-api : 2.0.2</p>
+						<h4>Common Annotations <small style="vertical-align: baseline;">(javax.annotation)</small></h4>
+						<p>jakarta.annotation : jakarta.annotation-api : 1.3.5</p>
+						<h4>Expression Language <small style="vertical-align: baseline;">(javax.el)</small></h4>
+						<p>org.glassfish : jakarta.el : 3.0.3</p>
+					</section>
+					<section id="java-11-remove-4">
+						<h3>Entfernen von Java EE Modulen</h3>
+						<h4>CORBA (<small style="vertical-align: baseline;">javax.rmi.CORBA</small>)</h4>
+						<p>Z. B. <a href="https://eclipse-ee4j.github.io/glassfish/" target="_blank" rel="external">Eclipse GlassFisch</a> oder <a href="https://www.wildfly.org/" target="_blank" rel="external">WildFly</a></p>
+					</section>
+					<section id="java-11-apistring">
+						<h3 data-id="code-title">API Erweiterungen (String)</h3>
+						<pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="5-6,8-9,11-12|14-15,17-18,20-21|23-24,26-29,31-32">$ jshell
 |  Welcome to JShell -- Version 11.0.8
 |  For an introduction type: /help intro
 
@@ -704,10 +707,10 @@ ccc
 
 jshell> "-".repeat(20)
 $8 ==> "--------------------"</code></pre>
-        </section>
-        <section id="java-11-apichar" data-auto-animate>
-          <h3 data-id="code-title">API Erweiterungen (Character)</h3>
-          <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="5-6,8">$ jshell
+					</section>
+					<section id="java-11-apichar">
+						<h3 data-id="code-title">API Erweiterungen (Character)</h3>
+						<pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="5-6,8">$ jshell
 |  Welcome to JShell -- Version 11.0.8
 |  For an introduction type: /help intro
 
@@ -716,10 +719,10 @@ $1 ==> "d"
 
 jshell> Character.toString(45)
 $2 ==> "-"</code></pre>
-        </section>
-        <section id="java-11-files" data-auto-animate>
-          <h3 data-id="code-title">API Erweiterungen (Files)</h3>
-          <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="14-15,17">package java11;
+					</section>
+					<section id="java-11-files">
+						<h3 data-id="code-title">API Erweiterungen (Files)</h3>
+						<pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="14-15,17">package java11;
 
 import java.io.IOException;
 import java.net.URI;
@@ -738,10 +741,10 @@ public class WriteString {
     return Files.readString(filePath);
   }
 }</code></pre>
-        </section>
-        <section id="java-11-httpclient" data-auto-animate>
-          <h3 data-id="code-title">HTTP Client</h3>
-          <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="13-20">package java11;
+					</section>
+					<section id="java-11-httpclient">
+						<h3 data-id="code-title">HTTP Client</h3>
+						<pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="13-20">package java11;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -763,10 +766,10 @@ public class HTTPClient {
       .thenApply(HttpResponse::body);
   }
 }</code></pre>
-        </section>
-        <section id="java-11-localvariable" data-auto-animate>
-          <h3 data-id="code-title">Local-Variable Syntax</h3>
-          <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="8">package java11;
+					</section>
+					<section id="java-11-localvariable">
+						<h3 data-id="code-title">Local-Variable Syntax</h3>
+						<pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="8">package java11;
 
 import java.util.function.BiConsumer;
 
@@ -777,11 +780,11 @@ public class LocalVariable {
   }
 
 }</code></pre>
-        </section>
-        <section id="java-11-shebang" data-auto-animate>
-          <h3 data-id="code-title">Shebang Dateien</h3>
-          <p>Inhalt der Datei hw:</p>
-          <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>#!/usr/bin/java --source 11
+					</section>
+					<section id="java-11-shebang">
+						<h3 data-id="code-title">Shebang Dateien</h3>
+						<p>Inhalt der Datei hw:</p>
+						<pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>#!/usr/bin/java --source 11
 
 public class HelloWorld {
   public static void main (String... args) {
@@ -793,10 +796,10 @@ public class HelloWorld {
           <pre data-id="code-animation">$ ./hw
 Hello World
 $ </pre>
-        </section>
-        <section id="java-11-runsource" data-auto-animate>
-          <h3 data-id="code-title">Sourcecode Dateien ausführen</h3>
-          <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>public class HelloWorld {
+					</section>
+					<section id="java-11-runsource">
+						<h3 data-id="code-title">Sourcecode Dateien ausführen</h3>
+						<pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>public class HelloWorld {
   public static void main(String[] args) {
     System.out.println("Hello World");
   }
@@ -805,75 +808,75 @@ $ </pre>
           <pre data-id="code-animation">$ java HelloWorld.java
 Hello World
 $ </pre>
-        </section>
-      </section>
-      <section>
-        <section id="java-12">
-          <h2>Java 12</h2>
-          <aside class="notes">
-            Details: Changelog von Java 12
-          </aside>
-        </section>
-        <section id="java-12-info">
-          <h3>Informationen</h3>
-          <p>Release im März 2019</p>
-          <p>Support Ende im September 2019</p>
-          <p><a href="http://openjdk.java.net/projects/jdk/12" target="_blank" rel="external">http://openjdk.java.net/projects/jdk/12</a></p>
-        </section>
-        <section id="java-12-changes">
-          <h3>Die wichtigsten Änderungen</h3>
-          <ul>
-            <li>Unicode 11 (Japanese New Era)</li>
-            <li>...</li>
-          </ul>
-        </section>
-      </section>
-      <section>
-        <section id="java-13">
-          <h2>Java 13</h2>
-          <aside class="notes">
-            Details: Changelog von Java 13
-          </aside>
-        </section>
-        <section id="java-13-info">
-          <h3>Informationen</h3>
-          <p>Release im September 2019</p>
-          <p>Support Ende im März 2020</p>
-          <p><a href="http://openjdk.java.net/projects/jdk/13" target="_blank" rel="external">http://openjdk.java.net/projects/jdk/13</a></p>
-        </section>
-        <section id="java-13-changes">
-          <h3>Die wichtigsten Änderungen</h3>
-          <ul>
-            <li>Application Class Data Sharing</li>
-            <li>Unicode 12.1</li>
-            <li>...</li>
-          </ul>
-        </section>
-      </section>
-      <section>
-        <section id="java-14">
-          <h2>Java 14</h2>
-          <aside class="notes">
-            Details: Changelog von Java 14
-          </aside>
-        </section>
-        <section id="java-14-info">
-          <h3>Informationen</h3>
-          <p>Release im März 2020</p>
-          <p>Support Ende im September 2020</p>
-          <p><a href="http://openjdk.java.net/projects/jdk/14" target="_blank" rel="external">http://openjdk.java.net/projects/jdk/14</a></p>
-        </section>
-        <section id="java-14-changes">
-          <h3>Die wichtigsten Änderungen</h3>
-          <ul>
-            <li>Mehr Informationen bei NullPointerException</li>
-            <li>Switch Expressions</li>
-            <li>...</li>
-          </ul>
-        </section>
-        <section id="java-14-switch" data-auto-animate>
-          <h3 data-id="code-title">Switch Expressions</h3>
-          <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="8-15">package java14;
+					</section>
+				</section>
+				<section>
+					<section id="java-12">
+						<h2>Java 12</h2>
+						<aside class="notes">
+							Details: Changelog von Java 12
+						</aside>
+					</section>
+					<section id="java-12-info">
+						<h3>Informationen</h3>
+						<p>Release im März 2019</p>
+						<p>Support Ende im September 2019</p>
+						<p><a href="http://openjdk.java.net/projects/jdk/12" target="_blank" rel="external">http://openjdk.java.net/projects/jdk/12</a></p>
+					</section>
+					<section id="java-12-changes">
+						<h3>Die wichtigsten Änderungen</h3>
+						<ul>
+							<li>Unicode 11 (Japanese New Era)</li>
+							<li>...</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section id="java-13">
+						<h2>Java 13</h2>
+						<aside class="notes">
+							Details: Changelog von Java 13
+						</aside>
+					</section>
+					<section id="java-13-info">
+						<h3>Informationen</h3>
+						<p>Release im September 2019</p>
+						<p>Support Ende im März 2020</p>
+						<p><a href="http://openjdk.java.net/projects/jdk/13" target="_blank" rel="external">http://openjdk.java.net/projects/jdk/13</a></p>
+					</section>
+					<section id="java-13-changes">
+						<h3>Die wichtigsten Änderungen</h3>
+						<ul>
+							<li>Application Class Data Sharing</li>
+							<li>Unicode 12.1</li>
+							<li>...</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section id="java-14">
+						<h2>Java 14</h2>
+						<aside class="notes">
+							Details: Changelog von Java 14
+						</aside>
+					</section>
+					<section id="java-14-info">
+						<h3>Informationen</h3>
+						<p>Release im März 2020</p>
+						<p>Support Ende im September 2020</p>
+						<p><a href="http://openjdk.java.net/projects/jdk/14" target="_blank" rel="external">http://openjdk.java.net/projects/jdk/14</a></p>
+					</section>
+					<section id="java-14-changes">
+						<h3>Die wichtigsten Änderungen</h3>
+						<ul>
+							<li>Mehr Informationen bei NullPointerException</li>
+							<li>Switch Expressions</li>
+							<li>...</li>
+						</ul>
+					</section>
+					<section id="java-14-switch">
+						<h3 data-id="code-title">Switch Expressions</h3>
+						<pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="8-15">package java14;
 
 import java.time.DayOfWeek;
 
@@ -918,7 +921,7 @@ public class SwitchExpressions {
             <li>...</li>
           </ul>
         </section>
-        <section id="java-15-textblocks" data-auto-animate>
+        <section id="java-15-textblocks">
           <h3 data-id="code-title">Text Blocks</h3>
           <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="5-11|13-17">package java15;
 
