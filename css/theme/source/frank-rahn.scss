@@ -40,6 +40,15 @@ section.has-light-background {
 	}
 }
 
+.reveal .controls {
+	z-index: 12;
+}
+
+.reveal .slide-number {
+	background-color: $backgroundFooterColor;
+	color: $footerColor;
+}
+
 .reveal kbd {
 	background-color: #444;
 	border-top: 3px solid #aaa;
@@ -53,11 +62,6 @@ section.has-light-background {
 	line-height: 100%;
 	margin: 0 .1em;
 	padding: .2em 0.5em;
-}
-
-.reveal .slide-number {
-	background-color: $backgroundFooterColor;
-	color: $footerColor;
 }
 
 #header {
@@ -76,6 +80,10 @@ section.has-light-background {
 	max-height: 50px;
 	border: 0;
 	padding: 0 30px 0 0;
+}
+#header > a {
+	z-index: 12;
+	position: relative;
 }
 #header > a,
 #header > a:visited {
@@ -98,6 +106,11 @@ section.has-light-background {
 	font-size: 0.9em;
 }
 #footer > a,
+#footer > span > a {
+	z-index: 12;
+	position: relative;
+}
+#footer > a,
 #footer > a:visited,
 #footer > span > a,
 #footer > span > a:visited {
@@ -108,8 +121,8 @@ section.has-light-background {
 #footer > .sep {
 	color: $footerColorHover;
 }
-#footer > span,
-#footer > a {
+#footer > a,
+#footer > span {
 	padding: 0 10px;
 }
 

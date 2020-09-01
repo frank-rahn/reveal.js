@@ -2,6 +2,13 @@
 section.has-light-background, section.has-light-background h1, section.has-light-background h2, section.has-light-background h3, section.has-light-background h4, section.has-light-background h5, section.has-light-background h6 {
   color: #222; }
 
+.reveal .controls {
+  z-index: 12; }
+
+.reveal .slide-number {
+  background-color: #222222;
+  color: #ffffff; }
+
 .reveal kbd {
   background-color: #444;
   border-top: 3px solid #aaa;
@@ -15,10 +22,6 @@ section.has-light-background, section.has-light-background h1, section.has-light
   line-height: 100%;
   margin: 0 .1em;
   padding: .2em 0.5em; }
-
-.reveal .slide-number {
-  background-color: #222222;
-  color: #ffffff; }
 
 #header {
   position: absolute;
@@ -36,6 +39,10 @@ section.has-light-background, section.has-light-background h1, section.has-light
   max-height: 50px;
   border: 0;
   padding: 0 30px 0 0; }
+
+#header > a {
+  z-index: 12;
+  position: relative; }
 
 #header > a,
 #header > a:visited {
@@ -57,6 +64,11 @@ section.has-light-background, section.has-light-background h1, section.has-light
   font-size: 0.9em; }
 
 #footer > a,
+#footer > span > a {
+  z-index: 12;
+  position: relative; }
+
+#footer > a,
 #footer > a:visited,
 #footer > span > a,
 #footer > span > a:visited {
@@ -67,8 +79,8 @@ section.has-light-background, section.has-light-background h1, section.has-light
 #footer > .sep {
   color: #aaaaaa; }
 
-#footer > span,
-#footer > a {
+#footer > a,
+#footer > span {
   padding: 0 10px; }
 
 /*********************************************
