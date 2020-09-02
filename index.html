@@ -15,8 +15,8 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
   <!-- var=Beschreibung content=Attr-content -->
   <meta name="description" content="{Beschreibung}">
 
-  <!-- var=Präsentation content=Tag-text -->
-  <title>{Präsentation} | Frank W. Rahn</title>
+		<!-- var=Präsentation content=Tag-text -->
+		<title>Kotlin | Frank W. Rahn</title>
 
   <!-- var=Präsentation content=Tag-text -->
   <meta property="og:title" content="{Präsentation}">
@@ -159,6 +159,53 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             <li>Entwicklung von großen und komplexen Systemen</li>
             <li>Performance-Analysen mit entsprechender Optimierung</li>
           </ul>
+        </section>
+      </section>
+      <section>
+        <section id="intro">
+          <h2>Einführung</h2>
+        </section>
+        <section id="intro-java">
+          <h3>Ein minimales Java-Programm</h3>
+          <pre><code data-trim data-line-numbers>
+							package de.rahn.java.helloworld;
+
+							public class Application {
+							  public static void main(String[] args) {
+							    System.out.println("Hello World!");
+							  }
+							}
+						</code></pre>
+        </section>
+        <section id="intro-kotlin" data-auto-animate>
+          <h3 data-id="intro-title">Kotlin!</h3>
+          <pre data-id="intro-kotlin"><code data-trim data-line-numbers>
+							fun main(args: Array&lt;String&gt;) {
+							  println("Hello World!");
+							}
+						</code></pre>
+        </section>
+        <section id="intro-kotlin-small" data-auto-animate>
+          <h3 data-id="intro-title">Small</h3>
+          <pre data-id="intro-kotlin"><code data-trim data-line-numbers>
+							fun main(args: Array&lt;String&gt;) {
+							  println("Hello World!")
+							}
+						</code></pre>
+        </section>
+        <section id="intro-kotlin-smaller" data-auto-animate>
+          <h3 data-id="intro-title">Smaller</h3>
+          <pre data-id="intro-kotlin"><code data-trim data-line-numbers>
+							fun main() {
+							  println("Hello World!")
+							}
+						</code></pre>
+        </section>
+        <section id="intro-kotlin-smallest" data-auto-animate>
+          <h3 data-id="intro-title">Smallest</h3>
+          <pre data-id="intro-kotlin"><code data-trim data-line-numbers>
+							fun main() = println("Hello World!")
+						</code></pre>
         </section>
       </section>
       <section data-pos="last-slide">
