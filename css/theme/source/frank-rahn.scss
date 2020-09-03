@@ -44,6 +44,10 @@ section.has-light-background {
 	z-index: 12;
 }
 
+.hidden {
+	display: none;
+}
+
 .reveal .slide-number {
 	background-color: $backgroundFooterColor;
 	color: $footerColor;
