@@ -13,7 +13,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
   <meta name="author" content="Frank W. Rahn">
   <meta name="robots" content="index, follow">
   <!-- var=Beschreibung content=Attr-content -->
-  <meta name="description" content="{Beschreibung}">
+  <meta name="description" content="Einführung in Kotlin für Java-Entwickler">
 
   <!-- var=Präsentation content=Tag-text -->
   <title>Kotlin | Frank W. Rahn</title>
@@ -59,7 +59,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
           <!-- var=Präsentation content=Tag-text -->
           <h1 property="name">Kotlin</h1>
           <!-- var=Beschreibung content=Tag-text -->
-          <h3 property="description">{Beschreibung}</h3>
+          <h3 property="description">Einführung in Kotlin für Java-Entwickler</h3>
           <p property="author creator" typeof="Person">
             <small>Erstellt von <a href="https://www.frank-rahn.de" title="Frank W. Rahn" property="url"><span property="name">Frank Rahn</span></a></small>
           </p>
@@ -162,6 +162,12 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
         </section>
       </section>
       <section>
+        <h2>Voraussetzungen</h2>
+        <p>Gute Programmierkenntnisse in Java 7</p>
+        <p>Da beide Programmiersprachen auf der JVM aufbauen, werden nur die Unterschiede dargestellt</p>
+        <p>Präsentation: <a href="../changelog-java-version" target="_blank" title="Sprung zur Präsentation">Changelog Java Versionen</a></p>
+      </section>
+      <section>
         <section id="intro">
           <h2>Einführung</h2>
         </section>
@@ -185,7 +191,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             }
           </code></pre>
         </section>
-        <section id="intro-kotlin-small" data-auto-animate>
+        <section data-auto-animate>
           <h3 data-id="intro-title">Kürzer</h3>
           <pre data-id="intro-kotlin"><code data-trim data-line-numbers>
             fun main(args: Array&lt;String&gt;) {
@@ -193,7 +199,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             }
           </code></pre>
         </section>
-        <section id="intro-kotlin-smaller" data-auto-animate>
+        <section data-auto-animate>
           <h3 data-id="intro-title">Einfacher</h3>
           <pre data-id="intro-kotlin"><code data-trim data-line-numbers>
             fun main() {
@@ -201,11 +207,128 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             }
           </code></pre>
         </section>
-        <section id="intro-kotlin-smallest" data-auto-animate>
+        <section data-auto-animate>
           <h3 data-id="intro-title">Minimalistisch</h3>
           <pre data-id="intro-kotlin"><code data-trim data-line-numbers>
             fun main() = println("Hello World!")
           </code></pre>
+          <aside class="notes">
+            <p>Angemessenheit: Die Wahl der Komprimierung sollte dem Problem bzw. Aufgabe angemessen sein.</p>
+          </aside>
+        </section>
+        <section id="intro-basics">
+          <h3>Grundlegendes zu Kotlin</h3>
+          <ul>
+            <li>Drastische Reduktion von <strong>Boilerplate Code</strong></li>
+            <li>Erzwungene <strong>Null-Sicherheit</strong> (Nullability)</li>
+            <li>Freundlich zu Entwicklungswerkzeugen</li>
+            <li>Hervorragende <strong>Interoperabilität</strong> mit Java
+              <ul><li>Kotlin kann in existierenden Projekte<br>schrittweise eingeführt werden</li></ul>
+            </li>
+            <li><strong>DSL</strong>s mit Kotlin</li>
+          </ul>
+          <aside class="notes">
+              <div>Beispiel von <strong>Microsoft</strong> und SQL-Gremium erzählen</div>
+          </aside>
+        </section>
+        <section id="intro-multiplatform">
+          <h3>Multiplatform</h3>
+          <ul>
+            <li><strong>Kotlin/JVM</strong> für Java und Android</li>
+            <li><strong>Kotlin/JS</strong> für Javascript (Transpiler)</li>
+            <li><strong>Kotlin/Native</strong> mit LLVM nativen Code erstellen
+              <ul>
+                <li>Android, iOS, watchOS, tvOS</li>
+                <li>Linux, macOS, Windows</li>
+                <li>WebAssembly</li>
+                <li>arm32, arm64, x86, x86_64, MIPS, wasm32</li>
+              </ul>
+            </li>
+            <li>Kotlin für <strong>Data Science</strong></li>
+          </ul>
+          <aside class="notes">
+            <div><strong>Android</strong> hängt noch an einer älteren Java-Version fest</div>
+            <div><strong>Data Science</strong>: Jupyter Notebook, Apache Zeppelin</div>
+          </aside>
+        </section>
+        <section id="intro-history">
+          <h3>Entwicklungsgeschichte</h3>
+          <p>Kommt noch ...</p>
+        </section>
+      </section>
+      <section>
+        <section id="base-elementes">
+          <h2>Basiselemente</h2>
+          <h3>Grundlagen von Kotlin</h3>
+          <ul>
+            <li>Variablen und Funktionen</li>
+            <li>Klassen, Objekte und Interfaces und Properties?
+              <ul>
+                <li>Attribute, Getter und Setter</li>
+                <li>Lateinit</li>
+                <li>Aliasnamen für Typen</li>
+                <li>Varianten für innere Klassen</li>
+                <li>Delegation</li>
+                <li>Umgang mit lazy</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <ul>
+            <li>Enums und when</li>
+            <li>Basistypen oder einfache Typen</li>
+            <li>Strings und reguläre Ausdrücke</li>
+            <li>Nullbare Typen und angepasste Syntax</li>
+            <li>Collections und Arrays</li>
+            <li>Iterationen</li>
+            <li>Exceptionhandling</li>
+          </ul>
+        </section>
+      </section>
+      <section>
+        <section>
+          <h2>Fortgeschrittene Konzepte</h2>
+          <ul>
+            <li>Erweiterungsfunktionen (Extensions?)</li>
+            <li>Funktionen als Member erster Ordnung</li>
+            <li>Funktionen höherer Ordnung</li>
+            <li>Verschachtelte Funktionen?</li>
+            <li>Überladen von Operatoren</li>
+            <li>Testbarkeit?</li>
+            <li>Kotlin Lambdas (auch mit Receiver)</li>
+          </ul>
+        </section>
+        <section>
+          <ul>
+            <li>Generics in Kotlin
+              <ul>
+                <li>Unterschiedliche Fälle von Varianz</li>
+                <li>Projektionen</li>
+                <li>Reified Generics</li>
+              </ul>
+            </li>
+            <li>Annotationen</li>
+            <li>Reflection</li>
+          </ul>
+        </section>
+      </section>
+      <section>
+        <section>
+          <h2>Weitere Konzepte</h2>
+          <ul>
+            <li>Top-Level-Funktionen</li>
+            <li>Funktionstypen
+              <ul>
+                <li>Anonyme Funktionen / Coroutines</li>
+                <li>Infixnotation</li>
+                <li>Einsatzmöglichkeit Inline</li>
+                <li>Return Varianten</li>
+              </ul>
+            </li>
+            <li>DSLs mit Kotlin</li>
+            <li>Interoperabilität mit Java</li>
+          </ul>
         </section>
       </section>
       <section data-pos="last-slide">
