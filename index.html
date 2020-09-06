@@ -195,7 +195,9 @@ Variablen: Präsentation, Beschreibung, Abstrakt
           plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom ]
       });
 
-      if (window.location.search.match(/without-headers/gi) || window.location.search.match(/receiver/gi)) {
+      if (window.location.search.match(/without-headers/gi)
+          || window.location.search.match(/receiver/gi)
+          || window.location.search.match(/print-pdf/gi)) {
           const header = document.querySelector('#header');
           if (header) {
               header.classList.add('hidden');
