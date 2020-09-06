@@ -163,17 +163,21 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
       </section>
       <section>
         <h2>Voraussetzungen</h2>
-        <p>Gute Programmierkenntnisse in Java 7</p>
-        <p>Da beide Programmiersprachen auf der JVM aufbauen, werden nur die Unterschiede dargestellt</p>
-        <p>Präsentation: <a href="../changelog-java-version" target="_blank" title="Sprung zur Präsentation">Changelog Java Versionen</a></p>
+        <p>Gute Programmierkenntnisse in Java 7!</p>
+        <p>Da beide Programmiersprachen auf der JVM aufbauen, werden nur die Unterschiede dargestellt.</p>
+        <p>In der Präsentation <a href="../changelog-java-versions" target="_blank" title="Sprung zur Präsentation">Changelog Java Versions</a>
+          habe ich alle Änderungen aus Sicht eines Entwicklers aufgeführt.</p>
       </section>
       <section>
         <section id="intro">
           <h2>Einführung</h2>
+          <aside class="notes">
+            Details: Beispiel Java<->Kotlin, Grundlegendes, Multiplatform, Entwicklungsgeschichte
+          </aside>
         </section>
         <section id="intro-java">
           <h3>Ein minimales Java-Programm</h3>
-          <pre><code data-trim data-line-numbers>
+          <pre><code class="hljs" data-trim data-line-numbers>
             package de.rahn.java.helloworld;
 
             public class Application {
@@ -185,7 +189,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
         </section>
         <section id="intro-kotlin" data-auto-animate>
           <h3 data-id="intro-title">Kotlin!</h3>
-          <pre data-id="intro-kotlin"><code data-trim data-line-numbers>
+          <pre data-id="intro-kotlin"><code class="hljs" data-trim data-line-numbers>
             fun main(args: Array&lt;String&gt;): Unit {
               println("Hello World!");
             }
@@ -193,7 +197,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
         </section>
         <section data-auto-animate>
           <h3 data-id="intro-title">Kürzer</h3>
-          <pre data-id="intro-kotlin"><code data-trim data-line-numbers>
+          <pre data-id="intro-kotlin"><code class="hljs" data-trim data-line-numbers>
             fun main(args: Array&lt;String&gt;) {
               println("Hello World!")
             }
@@ -201,7 +205,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
         </section>
         <section data-auto-animate>
           <h3 data-id="intro-title">Einfacher</h3>
-          <pre data-id="intro-kotlin"><code data-trim data-line-numbers>
+          <pre data-id="intro-kotlin"><code class="hljs" data-trim data-line-numbers>
             fun main() {
               println("Hello World!")
             }
@@ -209,7 +213,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
         </section>
         <section data-auto-animate>
           <h3 data-id="intro-title">Minimalistisch</h3>
-          <pre data-id="intro-kotlin"><code data-trim data-line-numbers>
+          <pre data-id="intro-kotlin"><code class="hljs" data-trim data-line-numbers>
             fun main() = println("Hello World!")
           </code></pre>
           <aside class="notes">
@@ -228,7 +232,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             <li><strong>DSL</strong>s mit Kotlin</li>
           </ul>
           <aside class="notes">
-              <div>Beispiel von <strong>Microsoft</strong> und SQL-Gremium erzählen</div>
+              <div>Beispiel von <strong>Microsoft</strong> und dem SQL-Gremium (ISO/IEC) erzählen</div>
           </aside>
         </section>
         <section id="intro-multiplatform">
@@ -247,7 +251,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             <li>Kotlin für <strong>Data Science</strong></li>
           </ul>
           <aside class="notes">
-            <div><strong>Android</strong> hängt noch an einer älteren Java-Version fest</div>
+            <div><strong>Kotlin/Android</strong> hängt noch an einer älteren Java Version fest</div>
             <div><strong>Data Science</strong>: Jupyter Notebook, Apache Zeppelin</div>
           </aside>
         </section>
