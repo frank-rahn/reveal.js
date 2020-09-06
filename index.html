@@ -16,7 +16,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
   <meta name="description" content="Eine Auflistung der Änderungen in Java aus Sicht eines Entwickler">
 
   <!-- var=Präsentation content=Tag-text -->
-  <title>Changelog Java Version | Frank W. Rahn</title>
+  <title>Changelog Java Versions | Frank W. Rahn</title>
 
   <!-- var=Präsentation content=Tag-text -->
   <meta property="og:title" content="{Präsentation}">
@@ -57,7 +57,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
       <section data-pos="start-0">
         <section id="start-slide">
           <!-- var=Präsentation content=Tag-text -->
-          <h1 property="name">Changelog Java Version</h1>
+          <h1 property="name">Changelog Java Versions</h1>
           <!-- var=Beschreibung content=Tag-text -->
           <h2 property="description">Eine Auflistung der Änderungen in Java aus Sicht eines Entwickler</h2>
           <p property="author creator" typeof="Person">
@@ -70,11 +70,9 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
         <section id="abstract">
           <h3>Abstrakt</h3>
           <!-- var=Abstrakt content=Tag-text -->
-          <p>
-            Die Programmiersprache Java entwickelt sich von Version zu Version weiter. In dieser Präsentation
-            werden die <strong><em>wichtigsten Änderungen</em></strong> aus Sicht eine Entwicklers dargestellt.
-          </p>
-          <p>Es werden Programmierkenntnisse der Java Version 7 vorausgesetzt.</p>
+          <p>Die Programmiersprache Java entwickelt sich von Version zu Version weiter. In dieser Präsentation werden
+            die <strong><em>wichtigsten Änderungen</em></strong> aus Sicht eine Entwicklers dargestellt.</p>
+          <p>Es werden Programmierkenntnisse ab der Java Version 7 vorausgesetzt.</p>
         </section>
         <section id="shortcuts">
           <h3>Tastenkombinationen</h3>
@@ -168,7 +166,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
         <section id="java-8">
           <h2>Java 8</h2>
           <aside class="notes">
-            Details: Changelog von Java 8
+            Details: Changelog von Java 8, Lambda, Defaults, Static, Stream API, Collections, Date-Time API
           </aside>
         </section>
         <section id="java-8-info">
@@ -317,7 +315,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
         <section id="java-9">
           <h2>Java 9</h2>
           <aside class="notes">
-            Details: Changelog von Java 9
+            Details: Changelog von Java 9, Module, JShell, Collections, Optional, Privates, Process API, Flow API, Stream API
           </aside>
         </section>
         <section id="java-9-info">
@@ -331,7 +329,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
           <ul>
             <li>PKCS12</li>
             <li>Modulsystem</li>
-            <li>JShel</li>
+            <li>JShell</li>
             <li>Convenience Factory Methods for Collections</li>
             <li>Erweiterung Optional</li>
             <li>Private Methoden in Interfaces</li>
@@ -356,8 +354,8 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             }
           </code></pre>
         </section>
-        <section id="java-9-jshel">
-          <h3>JShel</h3>
+        <section id="java-9-jshell">
+          <h3>JShell</h3>
           <pre><code class="hljs" data-trim data-line-numbers="1,5,8|11,14">
             $ jshell
             |  Welcome to JShell -- Version 11.0.8
@@ -588,7 +586,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
         <section id="java-10">
           <h2>Java 10</h2>
           <aside class="notes">
-            Details: Changelog von Java 10
+            Details: Changelog von Java 10, Local-Variable, Optional
           </aside>
         </section>
         <section id="java-10-info">
@@ -646,7 +644,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
         <section id="java-11">
           <h2>Java 11</h2>
           <aside class="notes">
-            Details: Changelog von Java 11
+            Details: Changelog von Java 11, Entfernen JEE, API Erweiterung, HTTP Client, Local-Variable, Shebang
           </aside>
         </section>
         <section id="java-11-info">
@@ -668,7 +666,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             <li>...</li>
           </ul>
         </section>
-        <section id="java-11-remove-1">
+        <section id="java-11-remove">
           <h3>Entfernen von Java EE Modulen</h3>
           <h4>JAX-WS <small style="vertical-align: baseline;">(javax.xml.ws)</small></h4>
           <p>jakarta.xml.ws : jakarta.xml.ws-api : 2.3.3<br>com.sun.xml.ws : jaxws-rt : 2.3.3</p>
@@ -677,7 +675,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
           <h4>JAXB <small style="vertical-align: baseline;">(javax.xml.bind)</small></h4>
           <p>jakarta.xml.bind : jakarta.xml.bind-api : 2.3.3<br>org.glassfish.jaxb : jaxb-runtime : 2.3.3</p>
         </section>
-        <section id="java-11-remove-2">
+        <section>
           <h3>Entfernen von Java EE Modulen</h3>
           <h4>JAF <small style="vertical-align: baseline;">(javax.activation)</small></h4>
           <p>jakarta.activation : jakarta.activation-api : 1.2.2</p>
@@ -686,7 +684,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
           <h4>JPA <small style="vertical-align: baseline;">(javax.persistence)</small></h4>
           <p>jakarta.persistence : jakarta.persistence-api : 2.2.3</p>
         </section>
-        <section id="java-11-remove-3">
+        <section>
           <h3>Entfernen von Java EE Modulen</h3>
           <h4>Validation <small style="vertical-align: baseline;">(javax.validation)</small></h4>
           <p>jakarta.validation : jakarta.validation-api : 2.0.2</p>
@@ -695,12 +693,12 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
           <h4>Expression Language <small style="vertical-align: baseline;">(javax.el)</small></h4>
           <p>org.glassfish : jakarta.el : 3.0.3</p>
         </section>
-        <section id="java-11-remove-4">
+        <section>
           <h3>Entfernen von Java EE Modulen</h3>
           <h4>CORBA (<small style="vertical-align: baseline;">javax.rmi.CORBA</small>)</h4>
           <p>Z. B. <a href="https://eclipse-ee4j.github.io/glassfish/" target="_blank" rel="external">Eclipse GlassFisch</a> oder <a href="https://www.wildfly.org/" target="_blank" rel="external">WildFly</a></p>
         </section>
-        <section id="java-11-apistring">
+        <section id="java-11-api">
           <h3>API Erweiterungen (String)</h3>
           <pre><code class="hljs" data-trim data-line-numbers="5-6,8-9,11-12|14-15,17-18,20-21|23-24,26-29,31-32">
             $ jshell
@@ -737,7 +735,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             $8 ==> "--------------------"
           </code></pre>
         </section>
-        <section id="java-11-apichar">
+        <section>
           <h3>API Erweiterungen (Character)</h3>
           <pre><code class="hljs" data-trim data-line-numbers="5-6,8">
             $ jshell
@@ -751,7 +749,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             $2 ==> "-"
           </code></pre>
         </section>
-        <section id="java-11-files">
+        <section>
           <h3>API Erweiterungen (Files)</h3>
           <pre><code class="hljs" data-trim data-line-numbers="14-15,17">
             package java11;
@@ -897,7 +895,7 @@ $</pre>
         <section id="java-14">
           <h2>Java 14</h2>
           <aside class="notes">
-            Details: Changelog von Java 14
+            Details: Changelog von Java 14, Switch
           </aside>
         </section>
         <section id="java-14-info">
@@ -945,7 +943,7 @@ $</pre>
         <section id="java-15">
           <h2>Java 15</h2>
           <aside class="notes">
-            Details: Changelog von Java 15
+            Details: Changelog von Java 15, Text Blöcke
           </aside>
         </section>
         <section id="java-15-info">
