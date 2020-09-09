@@ -161,24 +161,27 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
           </ul>
         </section>
       </section>
-      <section>
+      <section data-pos="required-3">
         <h2>Voraussetzungen</h2>
         <p>Gute Programmierkenntnisse in Java 7!</p>
         <p>Da beide Programmiersprachen auf der JVM aufbauen, werden nur die Unterschiede dargestellt.</p>
         <p>In der Präsentation <a href="../changelog-java-versions" target="_blank" title="Sprung zur Präsentation">Changelog Java Versions</a>
           habe ich alle Änderungen aus Sicht eines Entwicklers aufgeführt.</p>
       </section>
-      <section>
+      <section data-pos="intro-4">
         <section id="intro">
           <h2>Einführung in Kotlin</h2>
           <aside class="notes">
             Details: Beispiel Java<->Kotlin, Grundlegendes, Multiplatform, Entwicklungsgeschichte
           </aside>
         </section>
-        <section id="intro-java">
+        <section id="intro-java-kotlin">
           <h3>Ein minimales Java-Programm</h3>
+        </section>
+        <section>
+          <h4>Java</h4>
           <pre><code class="hljs" data-trim data-line-numbers>
-            package de.rahn.java.helloworld;
+            package de.rahn.kotlin.java;
 
             public class Application {
               public static void main(String[] args) {
@@ -187,8 +190,9 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             }
           </code></pre>
         </section>
-        <section id="intro-kotlin" data-auto-animate>
-          <h3 data-id="intro-title">Kotlin!</h3>
+        <section data-auto-animate>
+          <h4 data-id="intro-title">Kotlin!</h4>
+          <div data-id="intro-file"><small style="vertical-align: bottom">Datei: Intro.kt</small></div>
           <pre data-id="intro-kotlin"><code class="hljs" data-trim data-line-numbers>
             fun main(args: Array&lt;String&gt;): Unit {
               println("Hello World!");
@@ -196,7 +200,17 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
           </code></pre>
         </section>
         <section data-auto-animate>
-          <h3 data-id="intro-title">Kürzer</h3>
+          <h4 data-id="intro-title">Kürzer</h4>
+          <div data-id="intro-file"><small style="vertical-align: bottom">Datei: Intro.kt</small></div>
+          <pre data-id="intro-kotlin"><code class="hljs" data-trim data-line-numbers>
+            fun main(args: Array&lt;String&gt;) {
+              println("Hello World!");
+            }
+          </code></pre>
+        </section>
+        <section data-auto-animate>
+          <h4 data-id="intro-title">Weg damit</h4>
+          <div data-id="intro-file"><small style="vertical-align: bottom">Datei: Intro.kt</small></div>
           <pre data-id="intro-kotlin"><code class="hljs" data-trim data-line-numbers>
             fun main(args: Array&lt;String&gt;) {
               println("Hello World!")
@@ -204,7 +218,8 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
           </code></pre>
         </section>
         <section data-auto-animate>
-          <h3 data-id="intro-title">Einfacher</h3>
+          <h4 data-id="intro-title">Einfacher</h4>
+          <div data-id="intro-file"><small style="vertical-align: bottom">Datei: Intro.kt</small></div>
           <pre data-id="intro-kotlin"><code class="hljs" data-trim data-line-numbers>
             fun main() {
               println("Hello World!")
@@ -212,7 +227,8 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
           </code></pre>
         </section>
         <section data-auto-animate>
-          <h3 data-id="intro-title">Minimalistisch</h3>
+          <h4 data-id="intro-title">Minimalistisch</h4>
+          <div data-id="intro-file"><small style="vertical-align: bottom">Datei: Intro.kt</small></div>
           <pre data-id="intro-kotlin"><code class="hljs" data-trim data-line-numbers>
             fun main() = println("Hello World!")
           </code></pre>
@@ -222,6 +238,8 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
         </section>
         <section id="intro-basics">
           <h3>Grundlegendes zu Kotlin</h3>
+        </section>
+        <section>
           <ul>
             <li>Drastische Reduktion von <strong>Boilerplate Code</strong>
               <ul>
@@ -237,7 +255,6 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
           </aside>
         </section>
         <section>
-          <h3>Grundlegendes zu Kotlin</h3>
           <ul>
             <li>Hervorragende <strong>Interoperabilität</strong> mit Java
               <ul><li>Kotlin kann in existierenden Projekte<br>schrittweise eingeführt werden</li></ul>
@@ -251,7 +268,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             </li>
             <li><strong>DSL</strong>s mit Kotlin
               <ul><li>Beispiele: <a href="https://blog.gradle.org/kotlin-meets-gradle" target="_blank" rel="external">Gradle</a>,
-                <a href="https://spring.io/blog/2017/01/04/introducing-kotlin-support-in-spring-framework-5-0" target="_blank" rel="external">Spring Framework</a></li></ul>
+                <a href="https://spring.io/blog/2017/01/04/introducing-kotlin-support-in-spring-framework-5-0" target="_blank" rel="external">Spring Framework</a>, ...</li></ul>
             </li>
           </ul>
           <aside class="notes">
@@ -264,14 +281,16 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
         </section>
         <section id="intro-multiplatform">
           <h3>Multiplatform</h3>
+        </section>
+        <section>
           <ul>
             <li><strong>Kotlin/JVM</strong> für Java und Android</li>
-            <li><strong>Kotlin/JS</strong> nach Javascript transpilt</li>
-            <li><strong>Kotlin/Native</strong> mit LLVM nativen Code (Maschinecode) erstellen
+            <li><strong>Kotlin/JS</strong> ein Javascript transpiler</li>
+            <li><strong>Kotlin/Native</strong> mit <a href="https://de.wikipedia.org/wiki/LLVM" rel="external">LLVM</a> Maschinensprache<br>erstellen
               <ul>
                 <li>Android, iOS, watchOS, tvOS</li>
                 <li>Linux, macOS, Windows</li>
-                <li>WebAssembly</li>
+                <li><a href="https://webassembly.org/" rel="external">WebAssembly</a></li>
                 <li>arm32, arm64, x86, x86_64, MIPS, wasm32</li>
               </ul>
             </li>
@@ -284,6 +303,8 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
         </section>
         <section id="intro-history">
           <h3>Entwicklungsgeschichte</h3>
+        </section>
+        <section>
           <p>Kommt noch ...</p>
           <ul>
             <li>Erscheinungsjahr 2011</li>
@@ -293,16 +314,19 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
           </ul>
         </section>
       </section>
-      <section>
+      <section data-pos="basics-5">
         <section id="basics">
           <h2>Grundlagen von Kotlin</h2>
           <aside class="notes">
             Details: Package/Import, Variablen, Konstanten, Strings, kotlinc-jvm, Standardtypen, Null/Call Safety
           </aside>
         </section>
-        <section id="basics-package" data-auto-animate>
-          <h3 data-id="title">Package</h3>
-          <div><small style="vertical-align: bottom">Datei: Variables.kt</small></div>
+        <section id="basics-package">
+          <h3>Package / Import</h3>
+        </section>
+        <section data-auto-animate>
+          <h4 data-id="title">Package</h4>
+          <div data-id="file"><small style="vertical-align: bottom">Datei: Variables.kt</small></div>
           <pre data-id="code"><code class="hljs" data-trim data-line-numbers="1">
             package de.rahn.kotlin.lang
 
@@ -315,9 +339,9 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             Normale Verwendung, wie in Java
           </aside>
         </section>
-        <section id="basics-import" data-auto-animate>
-          <h3 data-id="title">Import</h3>
-          <div><small style="vertical-align: bottom">Datei: Variables.kt</small></div>
+        <section data-auto-animate>
+          <h4 data-id="title">Import</h4>
+          <div data-id="file"><small style="vertical-align: bottom">Datei: Variables.kt</small></div>
           <pre data-id="code"><code class="hljs" data-trim data-line-numbers="3-4|7">
             package de.rahn.kotlin.lang
 
@@ -338,9 +362,12 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             </ul>
           </aside>
         </section>
-        <section id="basics-variable" data-auto-animate>
-          <h3 data-id="title">Read-only Variable</h3>
-          <div><small style="vertical-align: bottom">Datei: Variables.kt</small></div>
+        <section id="basics-variable">
+          <h3>Variablen und Konstanten</h3>
+        </section>
+        <section data-auto-animate>
+          <h4 data-id="title">Read-only Variable</h4>
+          <div data-id="file"><small style="vertical-align: bottom">Datei: Variables.kt</small></div>
           <pre data-id="code"><code class="hljs" data-trim data-line-numbers="7|8|7-9">
             package de.rahn.kotlin.lang
 
@@ -365,9 +392,9 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             </ol>
           </aside>
         </section>
-        <section id="basics-const" data-auto-animate>
-          <h3 data-id="title">Konstante (Compile-Time Constants)</h3>
-          <div><small style="vertical-align: bottom">Datei: Variables.kt</small></div>
+        <section data-auto-animate>
+          <h4 data-id="title">Konstante (Compile-Time Constants)</h4>
+          <div data-id="file"><small style="vertical-align: bottom">Datei: Variables.kt</small></div>
           <pre data-id="code"><code class="hljs" data-trim data-line-numbers="6,13">
             package de.rahn.kotlin.lang
 
@@ -387,9 +414,11 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             fun main() = variables()
           </code></pre>
         </section>
-        <section id="basics-string" data-auto-animate>
-          <h3 data-id="title">String</h3>
-          <div><small style="vertical-align: bottom">Datei: Variables.kt</small></div>
+        <section id="basics-strings">
+          <h3>Strings, Kotlin Shell</h3>
+        </section>
+        <section data-auto-animate>
+          <div data-id="file"><small style="vertical-align: bottom">Datei: Variables.kt</small></div>
           <pre data-id="code"><code class="hljs" data-trim data-line-numbers="15|16">
             package de.rahn.kotlin.lang
 
@@ -421,8 +450,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
           </aside>
         </section>
         <section data-auto-animate>
-          <h3 data-id="title">String</h3>
-          <div><small style="vertical-align: bottom">Datei: Variables.kt</small></div>
+          <div data-id="file"><small style="vertical-align: bottom">Datei: Variables.kt</small></div>
           <pre data-id="code"><code class="hljs" data-trim data-line-numbers="18">
             package de.rahn.kotlin.lang
 
@@ -448,10 +476,9 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             fun main() = variables()
           </code></pre>
         </section>
-        <section id="basics-strings-kotlinc">
-          <h3>Strings</h3>
-          <p>kotlinc-jvm ist die Shell für Kotlin</p>
-          <pre><code class="hljs" data-trim data-line-numbers="1|4|5,6|7,8|9,10|11,12|13,14|15,16|17,18|19,20|21,22|23,24|25,26|27,28|29,30|31">
+        <section>
+          <h4>kotlinc-jvm ist die Shell für Kotlin</h4>
+          <pre><code class="hljs" data-trim data-line-numbers="1|4|4-6|7,8|9,10|11,12|13,14|15,16|17,18|19,20|21,22|23,24|25,26|27,28|29,30|31">
             $ kotlinc-jvm
             Welcome to Kotlin version 1.4.0 (JRE 11.0.8+10)
             Type :help for help, :quit for quit
@@ -486,8 +513,58 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             $
           </code></pre>
         </section>
+        <section data-auto-animate>
+          <h4 data-id="title">Raw-String</h4>
+          <div data-id="file"><small style="vertical-align: bottom">Datei: Strings.kt</small></div>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="">
+            package de.rahn.kotlin.lang
+
+            fun strings() {
+              val text = """
+                  Lorem ipsum dolor sit amet,
+                  consetetur sadipscing elitr,
+                  sed diam nonumy eirmod tempor
+                """
+              println(text)
+            }
+
+            fun main() = strings()
+          </code></pre>
+          <div data-id="text">Ich hab die Blanks durch . ersetzt</div>
+          <pre data-id="output">
+
+......Lorem ipsum dolor sit amet,
+......consetetur sadipscing elitr,
+......sed diam nonumy eirmod tempor
+....
+</pre>
+        </section>
+        <section data-auto-animate>
+          <h4 data-id="title">Raw-String</h4>
+          <div data-id="file"><small style="vertical-align: bottom">Datei: Strings.kt</small></div>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="">
+            package de.rahn.kotlin.lang
+
+            fun strings() {
+              val text = """
+                  Lorem ipsum dolor sit amet,
+                  consetetur sadipscing elitr,
+                  sed diam nonumy eirmod tempor
+                """.trimIndent()
+              println(text)
+            }
+
+            fun main() = strings()
+          </code></pre>
+          <div data-id="text">Ich hab die Blanks durch . ersetzt</div>
+          <pre data-id="output">..Lorem ipsum dolor sit amet,
+..consetetur sadipscing elitr,
+..sed diam nonumy eirmod tempor</pre>
+        </section>
         <section id="basics-numbers">
           <h3>Nummern</h3>
+        </section>
+        <section>
           <table>
             <thead>
               <tr>
@@ -532,7 +609,6 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
           </code></pre>
         </section>
         <section>
-          <h3>Nummern</h3>
           <table>
             <thead>
             <tr>
@@ -562,6 +638,8 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
         </section>
         <section id="basics-null-safety">
           <h3>Null Safety / Call Safety</h3>
+        </section>
+        <section>
           <div><small style="vertical-align: bottom">Datei: NullSafety.kt</small></div>
           <pre><code class="hljs" data-trim data-line-numbers="3|4-5|7-9|11">
             package de.rahn.kotlin.lang
@@ -581,31 +659,33 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             //fun main() = nullSafety(null)
           </code></pre>
           <div class="r-stack">
-          <pre class="fragment"><code data-trim>
-            4
-            4
-            4
-            4
-          </code></pre>
-          <pre class="fragment" style="overflow-y: auto"><code data-trim>
-            null
-            x
-            Exception in thread "main" java.lang.NullPointerException
-            	at de.rahn.kotlin.lang.NullSafetyKt.nullSafety(NullSafety.kt:11)
-          </code></pre>
+            <pre class="fragment"><code data-trim>
+              4
+              4
+              4
+              4
+            </code></pre>
+            <pre class="fragment" style="overflow-y: auto"><code data-trim>
+              null
+              x
+              Exception in thread "main" java.lang.NullPointerException
+                at de.rahn.kotlin.lang.NullSafetyKt.nullSafety(NullSafety.kt:11)
+            </code></pre>
           </div>
         </section>
       </section>
-      <section>
+      <section data-pos="control-flow-6">
         <section id="control-flow">
-          <h2>Bedingte Anweisung und Schleife</h2>
+          <h2>Bedingte Anweisung und Schleifen</h2>
           <aside class="notes">
             Details: if, if-else, when, <del>switch</del>, for, while, do-while
           </aside>
         </section>
-        <section id="control-flow-if" data-auto-animate>
+        <section id="control-flow-if">
           <h3>if Anweisung</h3>
-          <div><small style="vertical-align: bottom">Datei: ControlFlow.kt</small></div>
+        </section>
+        <section data-auto-animate>
+          <div data-id="file"><small style="vertical-align: bottom">Datei: ControlFlowIf.kt</small></div>
           <pre data-id="code"><code class="hljs" data-trim data-line-numbers="5-9|14">
             package de.rahn.kotlin.lang
 
@@ -630,8 +710,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
           </aside>
         </section>
         <section data-auto-animate>
-          <h3>if Anweisung</h3>
-          <div><small style="vertical-align: bottom">Datei: ControlFlow.kt</small></div>
+          <div data-id="file"><small style="vertical-align: bottom">Datei: ControlFlowIf.kt</small></div>
           <pre data-id="code"><code class="hljs" data-trim data-line-numbers="4-8">
             package de.rahn.kotlin.lang
 
@@ -652,8 +731,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
           </code></pre>
         </section>
         <section data-auto-animate>
-          <h3>if Anweisung</h3>
-          <div><small style="vertical-align: bottom">Datei: ControlFlow.kt</small></div>
+          <div data-id="file"><small style="vertical-align: bottom">Datei: ControlFlowIf.kt</small></div>
           <pre data-id="code"><code class="hljs" data-trim data-line-numbers="4-8">
             package de.rahn.kotlin.lang
 
@@ -673,8 +751,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
           </code></pre>
         </section>
         <section data-auto-animate>
-          <h3>if Anweisung</h3>
-          <div><small style="vertical-align: bottom">Datei: ControlFlow.kt</small></div>
+          <div data-id="file"><small style="vertical-align: bottom">Datei: ControlFlowIf.kt</small></div>
           <pre data-id="code"><code class="hljs" data-trim data-line-numbers="3-7">
             package de.rahn.kotlin.lang
 
@@ -692,8 +769,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
           </code></pre>
         </section>
         <section data-auto-animate>
-          <h3>if Anweisung</h3>
-          <div><small style="vertical-align: bottom">Datei: ControlFlow.kt</small></div>
+          <div data-id="file"><small style="vertical-align: bottom">Datei: ControlFlowIf.kt</small></div>
           <pre data-id="code"><code class="hljs" data-trim data-line-numbers="3-7">
             package de.rahn.kotlin.lang
 
@@ -716,28 +792,1447 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
         <section id="control-flow-when">
           <h3>when Anweisung</h3>
         </section>
+        <section>
+          <div data-id="file"><small style="vertical-align: bottom">Datei: ControlFlowWhen.kt</small></div>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="7-11|13-20|22-27|28-34|36-38">
+            package de.rahn.kotlin.lang
+
+            enum class Status {
+              OK, ERROR
+            }
+
+            fun controlFlowWhen(y: Any) {
+              val b = when (y) {
+                is String -> true
+                else -> false
+              }
+
+              val x = 42
+              when (x) {
+                1 -> println("x ist 1")
+                2 -> println("x ist 2")
+                3, 4 -> println("x ist zwischen 3 und 4")
+                in 5..10 -> println("x ist zwischen 5 und 10")
+                else -> println("x ist irgend etwas anderes")
+              }
+
+              val status = Status.OK
+              when (status) {
+                Status.OK -> println("Super")
+                Status.ERROR -> println("Nicht gut")
+                else -> return
+              }
+
+              when {
+                x < 42 -> println("-1")
+                x == 0 -> println("0")
+                x > 42 -> println("1")
+                else -> throw IllegalArgumentException("Mist")
+              }
+
+              when (val z = max(4, 5)) {
+                in 5..100 -> println(z - 5)
+              }
+            }
+
+            fun main() = controlFlowWhen("")
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Die Kotlin Klasse Any entspricht der Klasse Object von Java.</li>
+              <li>Statt max() sollte natürlich eine Member-Funktion verwendet werden</li>
+            </ul>
+          </aside>
+        </section>
         <section id="control-flow-for">
-          <h3>for Schleife</h3>
+          <h3>for Schleifen</h3>
+        </section>
+        <section>
+          <div data-id="file"><small style="vertical-align: bottom">Datei: ControlFlowFor.kt</small></div>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="4-7|8-10|11-14|15-17|18-20|21-25|26-29|30-35">
+            $ kotlinc-jvm
+            Welcome to Kotlin version 1.4.0 (JRE 11.0.8+10)
+            Type :help for help, :quit for quit
+            >>> for (i in 1..3) println(i)
+            1
+            2
+            3
+            >>> for (i in 1..3 step 2) println(i)
+            1
+            3
+            >>> for (i in 3 downTo 1) println(i)
+            3
+            2
+            1
+            >>> for (i in 3 downTo 1 step 2) println(i)
+            3
+            1
+            >>> for (i in 1 until 3) println(i)
+            1
+            2
+            >>> val string = "ABC"
+            >>> for (c in string) println(c)
+            A
+            B
+            C
+            >>> for (i in string.indices) println(string[i])
+            A
+            B
+            C
+            >>> for ((index, value) in string.withIndex()) {
+            ...   println("Buchstabe $index ist $value")
+            ... }
+            Buchstabe 0 ist A
+            Buchstabe 1 ist B
+            Buchstabe 2 ist C
+            >>>
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>(Int)Range in verschieden Richtungen und Schritten</li>
+              <li>Letztes Element dabei oder nicht</li>
+              <li>In Zeile 21 wird eine Zeichenkette wie ein Array benutzt</li>
+            </ul>
+          </aside>
         </section>
         <section id="control-flow-while">
-          <h3>while Schleife</h3>
+          <h3>while Schleifen</h3>
         </section>
-        <section id="control-flow-do-while">
-          <h3>do-while Schleife</h3>
+        <section>
+          <div data-id="file"><small style="vertical-align: bottom">Datei: ControlFlowWhile.kt</small></div>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="7-10|14-17|15,17">
+            package de.rahn.kotlin.lang
+
+            fun controlFlowWhile() {
+              var x = 3
+              println("Start $x")
+
+              while (x > 0) {
+                x--
+                println(x)
+              }
+
+              println("Mitte $x")
+
+              do {
+                val y = ++x
+                println(x)
+              } while (y < 3)
+
+              println("Ende $x")
+            }
+
+            fun main() = controlFlowWhile()
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Man beachte die Definition in Zeile 15 und Verwendung in 17</li>
+            </ul>
+          </aside>
+        </section>
+      </section>
+      <section data-pos="functions-7">
+        <section id="functions">
+          <h2>Funktionen</h2>
+          <aside class="notes">
+            Details: Grundlagen Funktionen, Default &amp; benannte Argumente, Variable Argumente, Funktionen erster Ordnung
+            (Unit-returning, Single-expression, Explicit-return, Tail-recursion, Generics), Lambdas, Funktionen höhere
+            Ordnung, Scoping (Lokale Funktionen, Member Funktion, Infix, Extension), Inline Function
+          </aside>
+        </section>
+        <section id="functions-basics">
+          <h3>Grundlagen Funktionen</h3>
+        </section>
+        <section>
+          <h4>Top-level functions</h4>
+          <div><small style="vertical-align: bottom">Datei: Functions.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="3-11|3,14">
+            package de.rahn.kotlin.lang
+
+            fun power(base: Double, exp: Int,): Double {
+              var result = 1.0
+
+              for (i in 1..exp) {
+                result *= base
+              }
+
+              return result
+            }
+
+            fun functions() {
+              println(power(2.0, 8,))
+            }
+
+            fun main() = functions()
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li><strong>Trailing-commas</strong> sind kein Problem</li>
+            </ul>
+          </aside>
+        </section>
+        <section id="functions-default-named-args">
+          <h3>Default und benannte Argumente</h3>
+        </section>
+        <section>
+          <div><small style="vertical-align: bottom">Datei: FunctionsDefaultNamedArgs.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="12,22|12,23,24">
+            package de.rahn.kotlin.lang
+
+            fun sum(sum: Int, i: Int, reihe: Int): Int {
+              val vielfaches = i % reihe == 0
+              if (vielfaches) {
+                print("$i, ")
+                return sum + i
+              }
+              return sum
+            }
+
+            fun x(reihe: Int, until: Int = 100): Int {
+              var sum = 0
+              for (i in 0..until) {
+                sum = sum(sum, i, reihe)
+              }
+              println("Sum: $sum")
+              return sum
+            }
+
+            fun functionsDefaultNamedArgs() {
+              x(7)
+              x(reihe = 7)
+              x(3, until = 60)
+            }
+
+            fun main() = functionsDefaultNamedArgs()
+          </code></pre>
+        </section>
+        <section id="functions-varargs">
+          <h3>Variable Anzahl von Argumenten</h3>
+        </section>
+        <section>
+          <div><small style="vertical-align: bottom">Datei: FunctionsVariableArgs.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="3,5,12">
+            package de.rahn.kotlin.lang
+
+            fun asList(vararg args: String): List&lt;String&gt; {
+              val result = mutableListOf&lt;String&gt;()
+              for (arg in args) {
+                result.add(arg)
+              }
+              return result
+            }
+
+            fun functionsVariableArgs() {
+              println(asList("aa", "bb", "cc"))
+            }
+
+            fun main() = functionsVariableArgs()
+          </code></pre>
+        </section>
+        <section id="functions-first-class">
+          <h3>Funktionen erster Ordnung</h3>
+        </section>
+        <section>
+          <h4>Unit-returning (Java: void)</h4>
+          <div><small style="vertical-align: bottom">Datei: FunctionsUnitReturning.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="3-5">
+            package de.rahn.kotlin.lang
+
+            fun functionsUnitReturning() {
+              println("Hello World!")
+            }
+
+            fun main() = functionsUnitReturning()
+          </code></pre>
+        </section>
+        <section>
+          <h4>Single-expression</h4>
+          <div><small style="vertical-align: bottom">Datei: FunctionsSingleExpression.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="3|5-8|11-14">
+            package de.rahn.kotlin.lang
+
+            fun square(x: Int) = x * x
+
+            fun fibonacci(n: Int): Int = when (n) {
+              0 -> 0
+              1 -> 1
+              else -> fibonacci(n - 1) + fibonacci(n - 2)
+            }
+
+            fun fakultaet(n: Int): Double = when (n) {
+              0 -> 1.0
+              else -> n * fakultaet(n - 1)
+            }
+
+            fun functionsSingleExpression() {
+              println("Doppelt ${doppelt(10)}")
+              println("Fibonacci ${fibonacci(10)}")
+              println("Fakultät ${fakultaet(10)}")
+            }
+
+            fun main() = functionsSingleExpression()
+          </code></pre>
+        </section>
+        <section>
+          <h4>Explicit-return</h4>
+          <div><small style="vertical-align: bottom">Datei: FunctionsExplicitReturn.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="5-18">
+            package de.rahn.kotlin.lang
+
+            import kotlin.math.abs
+
+            fun sin(x: Double): Double {
+              var result = 0.0
+
+              for (n in 0..100) {
+                val z = (power(-1.0, n) * power(x, 2 * n + 1)) / fakultaet(2 * n + 1)
+                result += z
+                println("n: $n -> result=$result (z=$z)")
+
+                if (abs(z) < 0.000_000_000_001) {
+                  break
+                }
+              }
+
+              return result
+            }
+
+            fun functionsExplicitReturn() {
+              println("sin(1.0) = ${sin(1.0)}")
+            }
+
+            fun main() = functionsExplicitReturn()
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Dieser Algorithmus ist eine Näherung für sinus, die mit |z| < 10^-12 abbricht (genau genug)</li>
+              <li>Die Implementierung des Sinus wird auf den nächsten Seiten wiederverwendet</li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <h4>Tail-recursive (Verwendet <a href="https://en.wikipedia.org/wiki/Tail_call" rel="external">Tail-recursion/call</a> oder <a href="https://de.wikipedia.org/wiki/Endrekursion" rel="external">Endrekursion</a></h4>
+          <div><small style="vertical-align: bottom">Datei: FunctionsTailRecursion.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="7-18|17|21">
+            package de.rahn.kotlin.lang
+
+            import kotlin.math.abs
+
+            const val EPS = 1E-12
+
+            tailrec fun sin(x: Double, n: Int = 0, result: Double = 0.0): Double {
+              val m = 2 * n + 1
+              val z = (power(-1.0, n) * power(x, m)) / fakultaet(m)
+              val result2 = result + z
+              println("n: $n -> result=$result2 (z=$z)")
+
+              if (abs(z) < EPS) {
+                return result2;
+              }
+
+              return sin(x, n + 1, result2)
+            }
+
+            fun functionsTailRecursion() {
+              println("sin(1.0) = ${sin(1.0)}")
+            }
+
+            fun main() = functionsTailRecursion()
+          </code></pre>
+          <aside class="notes">
+            <li>Die rekursive Funktion, wird durch den Compiler, in eine Variante mit einer schnellen und effizienten schleifenbasierte Version optimiert</li>
+            <li>Damit wird das Risiko eines Stapelüberlaufs (Stack overflow) umgangen</li>
+            <li>Der rekursive Aufruf muss die letzte Operation sein</li>
+          </aside>
+        </section>
+        <section>
+          <h4>Generics</h4>
+          <div><small style="vertical-align: bottom">Datei: FunctionsGenerics.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="3">
+            package de.rahn.kotlin.lang
+
+            fun &lt;T&gt; genList(a: T): List&lt;T&gt; = listOf(a)
+
+            fun functionsGenerics() {
+              println(genList(1))
+              println(genList("Test"))
+            }
+
+            fun main() = functionsGenerics()
+          </code></pre>
+        </section>
+        <section id="functions-lambda">
+          <h3>Lambdas</h3>
+        </section>
+        <section>
+          <div><small style="vertical-align: bottom">Datei: FunctionsLambdas.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="4,6">
+            package de.rahn.kotlin.lang
+
+            fun functionsLambdas() {
+              val add = { a: Int, b: Int -> a + b }
+
+              println(add(42, 4711))
+            }
+
+            fun main() = functionsLambdas()
+          </code></pre>
+        </section>
+        <section id="functions-higher-order">
+          <h3>Funktionen höhere Ordnung</h3>
+        </section>
+        <section>
+          <div><small style="vertical-align: bottom">Datei: FunctionsHigherOrder.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="3-5|7-9|12|14-16">
+            package de.rahn.kotlin.lang
+
+            fun higherOrderFunctionArgs(f: (a: Int, b: Int) -> Int) {
+              println(f(42, 4711))
+            }
+
+            fun higherOrderFunctionReturn(): (Int, Int) -> Int {
+              return { a: Int, b: Int -> a + b }
+            }
+
+            fun functionsHigherOrder() {
+              higherOrderFunctionArgs(higherOrderFunctionReturn())
+
+              higherOrderFunctionArgs {
+                a: Int, b: Int -> a + b
+              }
+            }
+
+            fun main() = functionsHigherOrder()
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Funktionen höhere Ordnung sind Funktionen mit andere Funktionen als <strong><em>Argument</em></strong>
+                oder als <strong><em>Returnwert</em></strong></li>
+              <li>Bei einer Funktion als Argument können die Namen der Argumente auch entfallen (Siehe benannte Argumente)</li>
+              <li>Eine Funktion sollte immer als letztes Argument übergeben werden</li>
+              <li>Wir auch gerne bei DSLs genutzt</li>
+            </ul>
+          </aside>
+        </section>
+        <section id="functions-local">
+          <h3>Lokale Funktionen (Scoping)</h3>
+        </section>
+        <section>
+          <div><small style="vertical-align: bottom">Datei: FunctionsLocal.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="6-8|4,7">
+            package de.rahn.kotlin.lang
+
+            fun functionsLocal() {
+              var y = 42
+
+              fun f(x: Int): Int {
+                return x + y++
+              }
+
+              println(f(4711))
+              println(y)
+            }
+
+            fun main() = functionsLocal()
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Verschachtelte Funktionen dienen der Strukturierung des Programmcodes ohne die Sichtbarkeit zu
+                verletzen</li>
+              <li>Diese Funktionen können auf Variablen der umschließender Funktion zugreifen</li>
+            </ul>
+          </aside>
+        </section>
+        <section id="functions-member">
+          <h3>Member Funktionen (Scoping)</h3>
+        </section>
+        <section>
+          <div><small style="vertical-align: bottom">Datei: FunctionsMember.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="4-6">
+            package de.rahn.kotlin.lang
+
+            class FunctionsMember {
+              fun function(x: Int) {
+                println(x)
+              }
+            }
+
+            fun functionsMember(){
+              FunctionsMember().function(4711)
+            }
+
+            fun main() = functionsMember()
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Eine Funktion in einer Klasse oder Objekt, also eine Methode</li>
+              <li>Es gilt alles was auch für Top-level Funktionen gilt</li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <div><small style="vertical-align: bottom">Datei: FunctionsMember.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="8-10|4-6,8-10">
+            package de.rahn.kotlin.lang
+
+            class FunctionsMember {
+              fun function(x: Int) {
+                privateFunction(x)
+              }
+
+              private fun privateFunction(x: Int) {
+                println(x)
+              }
+            }
+
+            fun functionsMember(){
+              FunctionsMember().function(4711)
+            }
+
+            fun main() = functionsMember()
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Eine private Funktion - wie in Java</li>
+              <li>Default ist public</li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <h4>Infix</h4>
+          <div><small style="vertical-align: bottom">Datei: FunctionsMemberInfix.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="4,12|4,13">
+            package de.rahn.kotlin.lang
+
+            class FunctionsMemberInfix {
+              infix fun greetings(message: String) {
+                println(message)
+              }
+            }
+
+            fun functionsMemberInfix() {
+              val o = FunctionsMemberInfix()
+
+              o.greetings("Hello World!")
+              o greetings "Hello World!"
+            }
+
+            fun main() = functionsMemberInfix()
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Wird häufig für DSL verwendet</li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <h4>Extension</h4>
+          <div><small style="vertical-align: bottom">Datei: FunctionsMemberExtension.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="3,8|5,9">
+            package de.rahn.kotlin.lang
+
+            infix fun Int.mod(x: Int) = this % x
+
+            fun Int.toString() = "Mist"
+
+            fun functionsMemberExtension() {
+              println(17 mod 3)
+              println(18.toString())
+            }
+
+            fun main() = functionsMemberExtension()
+          </code></pre>
+          <pre>2
+18</pre>
+          <aside class="notes">
+            <ul>
+              <li>Eine existierende oder fremde Klassen erweitern</li>
+              <li>Der Instanz von Int ist als Receiver <strong>this</strong> verfügbar</li>
+              <li>Ist mit Vorsicht zu verwenden</li>
+              <li>Es stehen nur die öffentliche Schnittstelle zu Verfügung</li>
+              <li>Die Klasse gewinnt immer - existierende Funktionen können nicht überschrieben werden</li>
+              <li>Verhindert sogenannte Util-Klassen - <strong>StringUtil</strong></li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <h4>Extension als Member Function</h4>
+          <div><small style="vertical-align: bottom">Datei: FunctionsMemberExtensionMember.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="4-7|5|6|9-11|15">
+            package de.rahn.kotlin.lang
+
+            class FunctionsMemberExtensionMember {
+              fun Int.print() {
+                println(this@FunctionsMemberExtensionMember.toString())
+                println(toString())
+              }
+
+              fun doIt(x: Int) {
+                x.print()
+              }
+            }
+
+            fun functionsMemberExtensionMember(){
+              FunctionsMemberExtensionMember().doIt(4711)
+            }
+
+            fun main() = functionsMemberExtensionMember()
+          </code></pre>
+          <pre>de.rahn.kotlin.lang.FunctionsMemberExtensionMember@2f7c7260
+4711</pre>
+          <aside class="notes">
+            <ul>
+              <li>Diese Form der Extension gilt nur innerhalb der Klasse in der sie deklariert ist</li>
+            </ul>
+          </aside>
+        </section>
+        <section id="functions-inline">
+          <h3>Inline Funktionen</h3>
+        </section>
+        <section>
+          <div><small style="vertical-align: bottom">Datei: FunctionsInline.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="6-13|16-18">
+            package de.rahn.kotlin.lang
+
+            import java.util.concurrent.locks.Lock
+            import java.util.concurrent.locks.ReentrantLock
+
+            inline fun &lt;T&gt; lockTemplate(lock: Lock, body: () -> T): T {
+              lock.lock()
+              try {
+                return body()
+              } finally {
+                lock.unlock()
+              }
+            }
+
+            fun functionsInline() {
+              val s: String = lockTemplate(ReentrantLock()) {
+                "Synchronized call"
+              }
+              println(s)
+            }
+
+            fun main() = functionsInline()
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Reduziert den Overhead von Lambdas</li>
+              <li>Der Inhalt der Funktion und das übergebene Lambda, wird durch den Compiler, direkt an die Stelle des
+                Aufrufs eingesetzt</li>
+              <li>Interessant bei Funktionen, die eine Fehlerbehandlung durchführen und eine Ausnahme werfen. Die
+                Ausnahme wird dann an der Stelle geworfen, wo der Fehler ausgetreten ist!</li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <div><small style="vertical-align: bottom">Datei: FunctionsInlineNoinline.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="6-14|17-19">
+            package de.rahn.kotlin.lang
+
+            import java.util.concurrent.locks.Lock
+            import java.util.concurrent.locks.ReentrantLock
+
+            inline fun &lt;T&gt; lockTemplate2(noinline lock: () -> Lock, body: () -> T): T {
+              val lockObj = lock()
+              lockObj.lock()
+              try {
+                return body()
+              } finally {
+                lockObj.unlock()
+              }
+            }
+
+            fun functionsInline() {
+              val s: String = lockTemplate2({ ReentrantLock() }) {
+                "Synchronized call"
+              }
+              println(s)
+            }
+
+            fun main() = functionsInline()
+          </code></pre>
+        </section>
+        <section>
+          <h4>Weitere Konzepte der Inline Funktionen</h4>
+          <ul>
+            <li><strong>Non-local returns</strong><br>Ein Return in einer Inline Funktion, wird in der umschließende Funktion ausgeführt</li>
+            <li><strong>crossinline</strong> schaltet dieses Verhalten wieder ab</li>
+          </ul>
+        </section>
+      </section>
+      <section data-pos="classes-8">
+        <section id="classes">
+          <h2>Klassen, Objekte und Interfaces</h2>
+          <aside class="notes">
+            <div>Details: Grundlagen Klassen (Definition, primäre und sekundäre Konstruktoren, Properties,
+              Initializer-blocks, Setter, Getter, berechnete Properties, Annotationen), Vererbung, Interfaces</div>
+          </aside>
+        </section>
+        <section id="classes-basics">
+          <h3>Grundlagen Klassen</h3>
+        </section>
+        <section data-auto-animate>
+          <p data-id="text">Eine leere Klasse ...</p>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="3,6">
+            package de.rahn.kotlin.lang.classes
+
+            class Person
+
+            fun person() {
+              val person = Person()
+              println(person)
+            }
+
+            fun main() = person()
+          </code></pre>
+        </section>
+        <section data-auto-animate>
+          <p data-id="text">... mit Body</p>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="3-4,7">
+            package de.rahn.kotlin.lang.classes
+
+            class Person {
+            }
+
+            fun person() {
+              val person = Person()
+              println(person)
+            }
+
+            fun main() = person()
+          </code></pre>
+        </section>
+        <section data-auto-animate>
+          <p data-id="text">... mit einem primären Konstruktor</p>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="3-4,7">
+            package de.rahn.kotlin.lang.classes
+
+            class Person constructor(name: String) {
+            }
+
+            fun person() {
+              val person = Person("Müller")
+              println(person)
+            }
+
+            fun main() = person()
+          </code></pre>
+        </section>
+        <section data-auto-animate>
+          <p data-id="text">... kürzer</p>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="3-4,7">
+            package de.rahn.kotlin.lang.classes
+
+            class Person(name: String) {
+            }
+
+            fun person() {
+              val person = Person("Müller")
+              println(person)
+            }
+
+            fun main() = person()
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Das ist die normale Schreibweise!</li>
+            </ul>
+          </aside>
+        </section>
+        <section data-auto-animate>
+          <p data-id="text">... mit einem Property (Attribut, Field, ...)</p>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="4,9">
+            package de.rahn.kotlin.lang.classes
+
+            class Person(name: String) {
+              val lastName = name
+            }
+
+            fun person() {
+              val person = Person("Müller")
+              println(person.lastName)
+            }
+
+            fun main() = person()
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Properties müssen immer initialisiert werden</li>
+            </ul>
+          </aside>
+        </section>
+        <section data-auto-animate>
+          <p data-id="text">... müssen immer initialisiert werden</p>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="4-5,10">
+            package de.rahn.kotlin.lang.classes
+
+            class Person(name: String) {
+              val lastName = name
+              var age = -1
+            }
+
+            fun person() {
+              val person = Person("Müller")
+              println("${person.lastName} (${person.age})")
+            }
+
+            fun main() = person()
+          </code></pre>
+        </section>
+        <section data-auto-animate>
+          <p data-id="text">... setzen eines Properties</p>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="4-5,10">
+            package de.rahn.kotlin.lang.classes
+
+            class Person(name: String) {
+              val lastName = name
+              var age = -1
+            }
+
+            fun person() {
+              val person = Person("Müller")
+              person.age = 10
+              println("${person.lastName} (${person.age})")
+            }
+
+            fun main() = person()
+          </code></pre>
+        </section>
+        <section data-auto-animate>
+          <p data-id="text">... mit sekundärem Konstruktor</p>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="7-9,13">
+            package de.rahn.kotlin.lang.classes
+
+            class Person(name: String) {
+              val lastName = name
+              var age = -1
+
+              constructor(name: String, age: Int) : this(name) {
+                this.age = age
+              }
+            }
+
+            fun person() {
+              val person = Person("Müller", 20)
+              println("${person.lastName} (${person.age})")
+            }
+
+            fun main() = person()
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Es <strong>muss</strong> der primäre Konstruktor aufgerufen werden</li>
+              <li>Sonst so wie man es von Java kennt</li>
+              <li>Es können beliebig viele sekundäre Konstruktoren definiert werden</li>
+            </ul>
+          </aside>
+        </section>
+        <section data-auto-animate>
+          <p data-id="text">... mit Initializer-blocks</p>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="4-6|10-12|16-18|21|25-27|32">
+            package de.rahn.kotlin.lang.classes
+
+            class Person(name: String) {
+              init {
+                println("Init block No. 1: $name")
+              }
+
+              val lastName = name
+
+              init {
+                println("Init block No. 2")
+              }
+
+              var age = -1
+
+              init {
+                println("Init block No. 3")
+              }
+
+              constructor(name: String, age: Int) : this(name) {
+                println("Constructor")
+                this.age = age
+              }
+
+              init {
+                println("Init block No. 4")
+              }
+            }
+
+            fun person() {
+              val person = Person("Müller", 20)
+              println("${person.lastName} (${person.age})")
+            }
+
+            fun main() = person()
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Wenn der Block Nr. 1 ausgeführt wird, gibt es noch keine Properties</li>
+              <li>In den Blöcken können die Argumente des primären Konstruktor genutzt werden</li>
+              <li>Wenn der Block Nr. 2 ausgeführt wird, steht der Nachnamen zu Verfügung</li>
+              <li>Die Reihenfolge muss berücksichtigt werden</li>
+              <li>Kann eingesetzt werden um die Implementierung zu strukturieren</li>
+              <li>Sollte sparsam eingesetzt werden</li>
+            </ul>
+          </aside>
+        </section>
+        <section data-auto-animate>
+          <p data-id="text">... mit Initializer-blocks</p>
+          <p>Die Ausgabe in der Konsole</p>
+          <pre>Init block No. 1: Müller
+Init block No. 2
+Init block No. 3
+Init block No. 4
+Constructor
+Müller (20)</pre>
+          <aside class="notes">
+            <ul>
+              <li>Der primäre Konstruktor wird vor den Init-Blöcken ausgeführt</li>
+              <li>Ein sekundärer Konstruktor wird nach der Deklaration der Properties und der Ausführung der Init-Blöcken
+                ausgeführt.</li>
+            </ul>
+          </aside>
+        </section>
+        <section data-auto-animate>
+          <p data-id="text">... mit Property Definition im Konstruktor</p>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="3">
+            package de.rahn.kotlin.lang.classes
+
+            class Person2(val lastName: String,) {
+              var age = -1
+            }
+
+            fun person2() {
+              val person = Person2("Müller")
+              person.age = 20
+              println("${person.lastName} (${person.age})")
+            }
+
+            fun main() = person2()
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Die häufigste Form, wie Properties definiert werden</li>
+              <li><strong>Trailing-commas</strong> sind kein Problem</li>
+              <li>Es können alle Regel für Argumente verwendet werden</li>
+            </ul>
+          </aside>
+        </section>
+        <section data-auto-animate>
+          <p data-id="text">... mit einem Setter</p>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="5-9,14">
+            package de.rahn.kotlin.lang.classes
+
+            class Person2(val lastName: String,) {
+              var age = -1
+                set(value) {
+                  if (value >= 18) {
+                    age = value
+                  }
+                }
+            }
+
+            fun person2() {
+              val person = Person2("Müller")
+              person.age = 20
+              println("${person.lastName} (${person.age})")
+            }
+
+            fun main() = person2()
+          </code></pre>
+          <pre class="fragment" style="overflow-x: auto">Exception in thread "main" java.lang.StackOverflowError
+	at de.rahn.kotlin.lang.classes.Person2.setAge(Person2.kt:7)</pre>
+        </section>
+        <section data-auto-animate>
+          <p data-id="text">... mit einem Setter</p>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="7,14">
+            package de.rahn.kotlin.lang.classes
+
+            class Person2(val lastName: String,) {
+              var age = -1
+                set(value) {
+                  if (value >= 18) {
+                    this.age = value
+                  }
+                }
+            }
+
+            fun person2() {
+              val person = Person2("Müller")
+              person.age = 20
+              println("${person.lastName} (${person.age})")
+            }
+
+            fun main() = person2()
+          </code></pre>
+          <aside class="notes">
+            <div>In Zeile 7 (<strong>this</strong>) und in Zeile 14 (<strong>person</strong>) wird der gleiche Receiver
+              (Objekt) verwendet. D. H. es wird in Zeile 7 der Setter für <strong>age</strong> rekursiv aufgerufen.</div>
+          </aside>
+        </section>
+        <section data-auto-animate>
+          <p data-id="text">... mit einem Setter</p>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="7,14">
+            package de.rahn.kotlin.lang.classes
+
+            class Person2(val lastName: String,) {
+              var age = -1
+                set(value) {
+                  if (value >= 18) {
+                    field = value
+                  }
+                }
+            }
+
+            fun person2() {
+              val person = Person2("Müller")
+              person.age = 20
+              println("${person.lastName} (${person.age})")
+            }
+
+            fun main() = person2()
+          </code></pre>
+        </section>
+        <section data-auto-animate>
+          <p data-id="text">... mit einem Getter</p>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="5">
+            package de.rahn.kotlin.lang.classes
+
+            class Person2(val lastName: String,) {
+              var age = -1
+                get() = field
+                set(value) {
+                  if (value >= 18) {
+                    field = value
+                  }
+                }
+            }
+
+            fun person2() {
+              val person = Person2("Müller")
+              person.age = 20
+              println("${person.lastName} (${person.age})")
+            }
+
+            fun main() = person2()
+          </code></pre>
+        </section>
+        <section data-auto-animate>
+          <p data-id="text">... Sichtbarkeit verändert (Modifiers)</p>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="6">
+            package de.rahn.kotlin.lang.classes
+
+            class Person2(val lastName: String,) {
+              var age = -1
+                get() = field
+                private set(value) {
+                  if (value >= 18) {
+                    field = value
+                  }
+                }
+            }
+
+            fun person2() {
+              val person = Person2("Müller")
+              println("${person.lastName} (${person.age})")
+            }
+
+            fun main() = person2()
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Private: Der Setter kann nur noch innerhalb der Klasse aufgerufen werden</li>
+              <li>Internal: Der Setter kann nur noch innerhalb des Modules aufgerufen werden</li>
+            </ul>
+          </aside>
+        </section>
+        <section data-auto-animate>
+          <p data-id="text">... Sichtbarkeit verändert (Modifiers)</p>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="5,7">
+            package de.rahn.kotlin.lang.classes
+
+            class Person2(val lastName: String,) {
+              var age = -1
+                private set
+
+              private var salary = 0
+            }
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Den Standard Setter auf <strong>private</strong> setzen</li>
+              <li>Das komplette Property <strong>private</strong> setzen</li>
+            </ul>
+          </aside>
+        </section>
+        <section data-auto-animate>
+          <p data-id="text">... mit Computed-property</p>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="12-14,18-20">
+            package de.rahn.kotlin.lang.classes
+
+            class Person2(val lastName: String) {
+              var age = -1
+                get() = field
+                internal set(value) {
+                  if (value >= 18) {
+                    field = value
+                  }
+                }
+
+              val isValidAge: Boolean
+                get() = age >= 18
+            }
+
+            fun person2() {
+              val person = Person2("Müller")
+              if (!person.isValidAge) {
+                person.age = 20
+              }
+              println("${person.lastName} (${person.age})")
+            }
+
+            fun main() = person2()
+          </code></pre>
+        </section>
+        <section data-auto-animate>
+          <p data-id="text">... mit Annotation an Properties</p>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="17-18">
+            package de.rahn.kotlin.lang.classes
+
+            import org.springframework.beans.factory.annotation.Autowired
+
+            class Person2(val lastName: String) {
+              var age = -1
+                get() = field
+                internal set(value) {
+                  if (value >= 18) {
+                    field = value
+                  }
+                }
+
+              val isValidAge: Boolean
+                get() = age >= 18
+
+              var dependencyInjection: Any? = null
+                @Autowired set
+            }
+
+            fun person2() {
+              val person = Person2("Müller")
+              if (!person.isValidAge) {
+                person.age = 20
+              }
+              println("${person.lastName} (${person.age})")
+            }
+
+            fun main() = person2()
+          </code></pre>
+        </section>
+        <section id="classes-inheritance">
+          <h3>Vererbung</h3>
+        </section>
+        <section data-auto-animate>
+          <p data-id="title">Die Klasse Hund soll ein Säugetier sein</p>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="3-6,8">
+            package de.rahn.kotlin.lang.classes
+
+            class Saeugetier(val art: String = "Mammalia") {
+                val saeugtNachwuchs: Boolean
+                    get() = true
+            }
+
+            class Hund(val art: String = "Canidae")
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Zum Vererben muss die Klass Säugetier vorbereitet werden</li>
+            </ul>
+          </aside>
+        </section>
+        <section data-auto-animate>
+          <p data-id="title">Die Klasse Hund soll ein Säugetier sein</p>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="3">
+            package de.rahn.kotlin.lang.classes
+
+            open class Saeugetier(val art: String = "Mammalia") {
+                val saeugtNachwuchs: Boolean
+                    get() = true
+            }
+
+            class Hund(val art: String = "Canidae")
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Zum Vererben musste die Klass Säugetier geöffnet werden</li>
+            </ul>
+          </aside>
+        </section>
+        <section data-auto-animate>
+          <p data-id="title">Die Klasse Hund ist ein Säugetier</p>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="8">
+            package de.rahn.kotlin.lang.classes
+
+            open class Saeugetier(val art: String = "Mammalia") {
+                val saeugtNachwuchs: Boolean
+                    get() = true
+            }
+
+            class Hund(art: String = "Canidae") : Saeugetier(art)
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>In der Klasse Hund ist die <strong>art</strong> kein Property mehr</li>
+              <li>Die Klasse Hund muss den primären Konstruktor von Säugetier aufrufen</li>
+              <li>Der primäre Konstruktor muss als erstes kommen</li>
+            </ul>
+          </aside>
+        </section>
+        <section data-auto-animate>
+          <p data-id="title">Ein Säugetier ist ein Wirbeltier bzw. Chordatier</p>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="8-9,14-15|3,8-9">
+            package de.rahn.kotlin.lang.classes
+
+            abstract class Chordatier(val art: String = "Chordata") {
+                val hatHerz: Boolean
+                    get() = true
+            }
+
+            open class Wirbeltier(art: String = "Vertebrata")
+                : Chordatier(art) {
+                val hatWirbelsaeule: Boolean
+                    get() = true
+            }
+
+            open class Saeugetier(art: String = "Mammalia")
+                : Wirbeltier(art) {
+                val saeugtNachwuchs: Boolean
+                    get() = true
+            }
+
+            class Hund(art: String = "Canidae") : Saeugetier(art)
+          </code></pre>
+        </section>
+        <section data-auto-animate>
+          <p data-id="title">Abstrakte Member Funktion und Überschreiben</p>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="7-9,11|19-21|31-33">
+            package de.rahn.kotlin.lang.classes
+
+            abstract class Chordatier(val art: String = "Chordata") {
+                val hatHerz: Boolean
+                    get() = true
+
+                open fun sterben() {
+                    println("Röchel... Tot")
+                }
+
+                abstract fun essen()
+            }
+
+            open class Wirbeltier(art: String = "Vertebrata")
+                : Chordatier(art) {
+                val hatWirbelsaeule: Boolean
+                    get() = true
+
+                override fun essen() {
+                    TODO("Not yet implemented")
+                }
+            }
+
+            open class Saeugetier(art: String = "Mammalia")
+                : Wirbeltier(art) {
+                val saeugtNachwuchs: Boolean
+                    get() = true
+            }
+
+            class Hund(art: String = "Canidae") : Saeugetier(art) {
+                override fun sterben() {
+                    println("Jaulen... Tot")
+                }
+            }
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Damit einer Member funktion überschrieben werden kann, muss sie geöffnet werden</li>
+              <li>Das überschreiben muss mit <strong>override</strong> angezeigt werden</li>
+              <li>TODO statt ein Kommentar (Java) eine Inline Funktion, die eine Ausnahme wirft</li>
+            </ul>
+          </aside>
+        </section>
+        <section id="classes-interfaces">
+          <h3>Interfaces</h3>
+        </section>
+        <section>
+          <p>Definition</p>
+          <pre><code class="hljs" data-trim data-line-numbers="3-5|7-11">
+            package de.rahn.kotlin.lang.classes
+
+            interface Essen {
+                fun essen()
+            }
+
+            interface Sterben {
+                fun sterben() {
+                    println("Röchel... Tot")
+                }
+            }
+          </code></pre>
+        </section>
+        <section>
+          <p>Implementierung</p>
+          <pre><code class="hljs" data-trim data-line-numbers="3-4,10|14-16|20-22">
+            package de.rahn.kotlin.lang.classes
+
+            abstract class Chordatier(val art: String = "Chordata")
+                : Sterben, Essen {
+                val hatHerz: Boolean
+                    get() = true
+            }
+
+            open class Wirbeltier(art: String = "Vertebrata")
+                : Chordatier(art) {
+                val hatWirbelsaeule: Boolean
+                    get() = true
+
+                override fun essen() {
+                    TODO("Not yet implemented")
+                }
+            }
+
+            class Hund(art: String = "Canidae") : Saeugetier(art) {
+                override fun sterben() {
+                    println("Jaulen... Tot")
+                }
+            }
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Die Vererbung kommt mit dem primären Konstruktor zuerst</li>
+              <li>Danach die Interfaces</li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <p>Vererbung von Interfaces und<br>Auflösen von Override Konflikten</p>
+          <pre><code class="hljs" data-trim data-line-numbers="3-5|7,10-12|15,20-22|30-34|46-49|57-60">
+            package de.rahn.kotlin.lang.classes
+
+            interface Info {
+                fun infos(): Array&lt;String&gt;
+            }
+
+            interface Essen : Info {
+                fun essen()
+
+                override fun infos(): Array&lt;String&gt; {
+                    return arrayOf("Muss essen")
+                }
+            }
+
+            interface Sterben : Info {
+                fun sterben() {
+                    println("Röchel... Tot")
+                }
+
+                override fun infos(): Array&lt;String&gt; {
+                    return arrayOf("Kann sterben")
+                }
+            }
+
+            abstract class Chordatier(val art: String = "Chordata")
+                : Sterben, Essen {
+                val hatHerz: Boolean
+                    get() = true
+
+                override fun infos(): Array&lt;String&gt; {
+                    return super&lt;Sterben&gt;.infos() +
+                            super&lt;Essen&gt;.infos() +
+                            "Hat ein Herz"
+                }
+            }
+
+            open class Wirbeltier(art: String = "Vertebrata")
+                : Chordatier(art) {
+                val hatWirbelsaeule: Boolean
+                    get() = true
+
+                override fun essen() {
+                    TODO("Not yet implemented")
+                }
+
+                override fun infos(): Array&lt;String&gt; {
+                    return super.infos() +
+                            "Hat eine Wirbelsäule"
+                }
+            }
+
+            open class Saeugetier(art: String = "Mammalia")
+                : Wirbeltier(art) {
+                val saeugtNachwuchs: Boolean
+                    get() = true
+
+                override fun infos(): Array&lt;String&gt; {
+                    return super.infos() +
+                            "Säugt sein Nachwuchs"
+                }
+            }
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Vererbung von Interfaces, ähnlich wie in Java</li>
+              <li>Vorgriff: Collections / Arrays</li>
+              <li>Gibt es einen Konflikt, so muss die Klasse eine Member Funktion bereitstellen und dort den Konflikt
+                auflösen
+                <ul>
+                  <li>Es hilft nicht die Klasse abstrakt zu machen</li>
+                </ul>
+              </li>
+              <li>Verwendung von <strong>super</strong></li>
+              <li>Vorgriff: Der + ist ein Infix Operator
+                <ul>
+                  <li>Wegen dem Infix muss das + am Zeilenende stehen (Stichwort)</li>
+                </ul>
+              </li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <p>Die Infos für die Klasse Hund ausgeben</p>
+          <pre><code class="hljs" data-trim data-line-numbers="4,7-9">
+            package de.rahn.kotlin.lang.classes
+
+            fun tier() {
+                val hund = Hund()
+
+                println("Informationen über das Tier Hund:")
+                hund.infos().forEach {
+                    info -> println("- $info")
+                }
+            }
+
+            fun main() = tier()
+          </code></pre>
+          <div class="fragment">
+            <p>Die Ausgabe</p>
+            <pre>Informationen über das Tier Hund:
+- Kann sterben
+- Muss essen
+- Hat ein Herz
+- Hat eine Wirbelsäule
+- Säugt sein Nachwuchs
+</pre>
+          </div>
         </section>
         <section>
           <ul>
-            <li>Funktionen</li>
-            <li>Klassen, Objekte und Interfaces und Properties?
-              <ul>
-                <li>Attribute, Getter und Setter</li>
-                <li>Lateinit</li>
-                <li>Aliasnamen für Typen</li>
-                <li>Varianten für innere Klassen</li>
-                <li>Delegation</li>
-                <li>Umgang mit lazy</li>
-              </ul>
-            </li>
+            <li>Lateinit</li>
+            <li>Aliasnamen für Typen <strong>typealias</strong></li>
+            <li>Varianten für innere Klassen</li>
+            <li>Delegation</li>
+            <li>Umgang mit lazy</li>
+            <li>Attribute, Getter und Setter</li>
+            <li>Inline Getter und Setter</li>
           </ul>
         </section>
         <section>
@@ -752,14 +2247,22 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
           </ul>
         </section>
       </section>
-      <section>
+      <section data-pos="misc">
+        <section>
+          <h2>Weitere Konzepte</h2>
+          <ul>
+            <li>Funktionstypen
+              <ul>
+                <li>Anonyme Funktionen / Coroutines</li>
+              </ul>
+            </li>
+            <li>DSLs mit Kotlin</li>
+            <li>Interoperabilität mit Java</li>
+          </ul>
+        </section>
         <section>
           <h2>Fortgeschrittene Konzepte</h2>
           <ul>
-            <li>Erweiterungsfunktionen (Extensions?)</li>
-            <li>Funktionen als Member erster Ordnung</li>
-            <li>Funktionen höherer Ordnung</li>
-            <li>Verschachtelte Funktionen?</li>
             <li>Überladen von Operatoren</li>
             <li>Testbarkeit?</li>
             <li>Kotlin Lambdas (auch mit Receiver)</li>
@@ -771,29 +2274,11 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
               <ul>
                 <li>Unterschiedliche Fälle von Varianz</li>
                 <li>Projektionen</li>
-                <li>Reified Generics</li>
+                <li>Reified Generics (Inline Funktions)</li>
               </ul>
             </li>
             <li>Annotationen</li>
             <li>Reflection</li>
-          </ul>
-        </section>
-      </section>
-      <section>
-        <section>
-          <h2>Weitere Konzepte</h2>
-          <ul>
-            <li>Top-Level-Funktionen</li>
-            <li>Funktionstypen
-              <ul>
-                <li>Anonyme Funktionen / Coroutines</li>
-                <li>Infixnotation</li>
-                <li>Einsatzmöglichkeit Inline</li>
-                <li>Return Varianten</li>
-              </ul>
-            </li>
-            <li>DSLs mit Kotlin</li>
-            <li>Interoperabilität mit Java</li>
           </ul>
         </section>
       </section>
