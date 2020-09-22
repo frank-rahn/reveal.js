@@ -1,4 +1,12 @@
 @import url(fonts/source-sans-pro/source-sans-pro.css);
+@import url(fonts/awesome-fontello/awesome-fontello.css);
+a[rel*='external']::after {
+  font-family: awesome-fontello, 'Source Sans Pro', Helvetica, sans-serif;
+  font-size: 16px;
+  content: "\e82f";
+  padding-left: 5px;
+  speak: none; }
+
 section.has-light-background, section.has-light-background h1, section.has-light-background h2, section.has-light-background h3, section.has-light-background h4, section.has-light-background h5, section.has-light-background h6 {
   color: #222; }
 

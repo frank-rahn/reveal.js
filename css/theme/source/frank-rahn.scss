@@ -5,6 +5,7 @@
 
 // Include theme-specific fonts
 @import url(fonts/source-sans-pro/source-sans-pro.css);
+@import url(fonts/awesome-fontello/awesome-fontello.css);
 
 // Override theme settings (see ../template/settings.scss)
 $backgroundColor: #fffdf7;
@@ -33,6 +34,14 @@ $heading1Size: 2.5em;
 $heading2Size: 1.6em;
 $heading3Size: 1.3em;
 $heading4Size: 1.0em;
+
+a[rel*='external']::after {
+	font-family: awesome-fontello, 'Source Sans Pro', Helvetica, sans-serif;
+	font-size: 16px;
+	content: "\e82f";
+	padding-left: 5px;
+	speak: none;
+}
 
 section.has-light-background {
 	&, h1, h2, h3, h4, h5, h6 {
