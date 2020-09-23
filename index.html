@@ -658,7 +658,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
         <section id="java-11-changes">
           <h3>Die wichtigsten Änderungen</h3>
           <ul>
-            <li>Entfernen von JAX-WS, SAAJ, JAXB, JAF, JTA, CORBA und der Common Annotations</li>
+            <li>Entfernen von JAX-WS, SAAJ, JAXB, JAF, JTA,<br>CORBA und der Common Annotations</li>
             <li>API Erweiterungen</li>
             <li>HTTP Client</li>
             <li>Local-Variable Syntax für Lambda Parameters</li>
@@ -671,8 +671,8 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
           <h3>Entfernen von Java EE Modulen</h3>
           <h4>JAX-WS <small style="vertical-align: baseline;">(javax.xml.ws)</small></h4>
           <p>jakarta.xml.ws : jakarta.xml.ws-api : 2.3.3<br>com.sun.xml.ws : jaxws-rt : 2.3.3</p>
-          <h4>SAAJ <small style="vertical-align: baseline;">(com.sun.xml.messaging.saaj)</small></h4>
-          <p>com.sun.xml.messaging.saaj : saaj-impl : 1.5.2</p>
+          <h4>SAAJ <small style="vertical-align: baseline;">(javax.xml.soap)</small></h4>
+          <p>jakarta.xml.soap : jakarta.xml.soap-api : 1.4.2<br>com.sun.xml.messaging.saaj : saaj-impl : 1.5.2</p>
           <h4>JAXB <small style="vertical-align: baseline;">(javax.xml.bind)</small></h4>
           <p>jakarta.xml.bind : jakarta.xml.bind-api : 2.3.3<br>org.glassfish.jaxb : jaxb-runtime : 2.3.3</p>
         </section>
@@ -696,6 +696,10 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
         </section>
         <section>
           <h3>Entfernen von Java EE Modulen</h3>
+          <h4>MAIL (<small style="vertical-align: baseline;">javax.mail</small>)</h4>
+          <p>jakarta.mail : jakarta.mail-api : 1.6.5</p>
+          <h4>JMS (<small style="vertical-align: baseline;">javax.jms</small>)</h4>
+          <p>jakarta.jms : jakarta.jms-api : 2.0.3</p>
           <h4>CORBA (<small style="vertical-align: baseline;">javax.rmi.CORBA</small>)</h4>
           <p>Z. B. <a href="https://eclipse-ee4j.github.io/glassfish/" target="_blank" rel="external">Eclipse GlassFisch</a> oder <a href="https://www.wildfly.org/" target="_blank" rel="external">WildFly</a></p>
         </section>
