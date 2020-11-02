@@ -168,7 +168,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
         <p>In der Präsentation <a href="../changelog-java-versions" target="changelog-java-versions" title="Sprung zur Präsentation">Changelog Java Versions</a>
           habe ich alle Änderungen aus Sicht eines Entwicklers aufgeführt.</p>
       </section>
-      <section data-pos="intro-4">
+      <section data-pos="intro-3">
         <section id="intro">
           <h2>Einführung in Kotlin</h2>
           <aside class="notes">
@@ -180,6 +180,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
         </section>
         <section>
           <h4>Java</h4>
+          <div><small style="vertical-align: bottom">Datei: Application.java</small></div>
           <pre><code class="hljs" data-trim data-line-numbers>
             package de.rahn.kotlin.java;
 
@@ -232,6 +233,16 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
           <pre data-id="intro-kotlin"><code class="hljs" data-trim data-line-numbers>
             fun main() = println("Hello World!")
           </code></pre>
+          <div><small style="vertical-align: bottom">Datei: Application.java</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers>
+            package de.rahn.kotlin.java;
+
+            public class Application {
+              public static void main(String[] args) {
+                System.out.println("Hello World!");
+              }
+            }
+          </code></pre>
           <aside class="notes">
             <p>Angemessenheit: Die Wahl der Komprimierung sollte dem Problem bzw. Aufgabe angemessen sein.</p>
           </aside>
@@ -279,38 +290,173 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             </ul>
           </aside>
         </section>
+        <section id="intro-syntax">
+          <h3>Ein wenig Syntax</h3>
+        </section>
+        <section data-auto-animate>
+          <p>Kurze Einführung in die Syntax von Kotlin</p>
+          <div><small style="vertical-align: bottom">Datei: Syntax.kt</small></div>
+          <pre data-id="intro-kotlin"><code class="hljs" data-trim data-line-numbers="14|7,12|1,5|8|10|2-4|3|9-11">
+            class NamedValue(val name: String, var value: Int,) {
+                fun print() {
+                    println("$name = ${value + 1}")
+                }
+            }
+
+            fun start(name: String, value: Int,) {
+                val namedValue = NamedValue(name, value,)
+                namedValue.print()
+                namedValue.value = 10
+                namedValue.print()
+            }
+
+            fun main() = start("index", 5,)
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Erwähne das Komma</li>
+              <li>Es gibt nur die Klasse <code>Int</code></li>
+              <li>Unterschied zwischen <code>val</code> und <code>var</code> erklären</li>
+              <li>SETTER</li>
+              <li>String Template</li>
+            </ul>
+          </aside>
+        </section>
+        <section data-auto-animate>
+          <p>Kurze Einführung in die Syntax von Kotlin</p>
+          <div><small style="vertical-align: bottom">Datei: Syntax.kt</small></div>
+          <pre data-id="intro-kotlin"><code class="hljs" data-trim data-line-numbers="13-20|22">
+            class NamedValue(val name: String, var value: Int,) {
+                fun print() {
+                    println("$name = ${value + 1}")
+                }
+            }
+
+            fun start(name: String, value: Int,) {
+                val namedValue = NamedValue(name, value,)
+                namedValue.print()
+                namedValue.value = 10
+                namedValue.print()
+
+                val array = arrayOf(
+                    "Frank Rahn",
+                    "Martin Rahn",
+                    "Gerd Rahn",
+                    "Anita Rahn",
+                    "Alfred Rahn",
+                    "Ruth Rahn",
+                )
+
+                array.forEach { element -> println(element) }
+            }
+
+            fun main() = start("index", 5,)
+          </code></pre>
+        </section>
+        <section id="intro-interoperable">
+          <h3>Interoperabilität mit Java</h3>
+        </section>
+        <section>
+          <div><small style="vertical-align: bottom">Datei: TheJavaClass.java</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="3|23,25">
+            package de.rahn.kotlin.java;
+
+            import de.rahn.kotlin.lang.TheKotlinClass;
+
+            public class TheJavaClass {
+
+              private final String name;
+              private final int value;
+
+              public TheJavaClass(String name, int value) {
+                this.name = name;
+                this.value = value;
+
+                System.out.println("Java: Konstruktor");
+              }
+
+              public void print() {
+                System.out.println("Java: " + name + " = " + value);
+              }
+
+              public static void main(String[] args) {
+                System.out.println("Java: Start");
+                TheKotlinClass theKotlinClass = new TheKotlinClass("index", 4711);
+                System.out.println("Java: Kotlin-Class = " + theKotlinClass);
+                theKotlinClass.print();
+                System.out.println("Java: Finish");
+              }
+            }
+          </code></pre>
+        </section>
+        <section>
+          <div><small style="vertical-align: bottom">Datei: TheKotlinClass.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="3,9,11">
+            package de.rahn.kotlin.lang
+
+            import de.rahn.kotlin.java.TheJavaClass
+
+            class TheKotlinClass(val name: String, val value: Int) {
+
+                fun print() {
+                    println("Kotlin: Start with $name = $value")
+                    val theJavaClass = TheJavaClass(name, value)
+                    println("Kotlin: Java-Class = $theJavaClass")
+                    theJavaClass.print()
+                    println("Kotlin: Finish")
+                }
+            }
+          </code></pre>
+        </section>
         <section id="intro-multiplatform">
           <h3>Multiplatform</h3>
         </section>
         <section>
           <ul>
-            <li><strong>Kotlin/JVM</strong> für Java und Android</li>
-            <li><strong>Kotlin/JS</strong> ein Javascript transpiler</li>
+            <li><strong>Kotlin/JVM</strong> erzeugt Bytecode für die JVM
+              <ul style="list-style-type: none;">
+                <li>JVM Version 8 reicht aus</li>
+              </ul>
+            </li>
+            <li><strong>Kotlin/Android</strong> erzeugt eine Android App</li>
+            <li><strong>Kotlin/JS</strong> transpile nach JavaScript</li>
+            <li><strong>Kotlin/WASM</strong> compiliert nach <a href="https://webassembly.org/" rel="external">WebAssembly</a></li>
+            <li>Kotlin für <strong>Data Science</strong>
+              <ul style="list-style-type: none;">
+                <li><a href="https://github.com/Kotlin/kotlin-jupyter" rel="external">Kotlin-Kernel</a> für  Jupyter Notebook</li>
+                <li>Apache Zeppelin</li>
+              </ul>
+            </li>
+          </ul>
+          <aside class="notes">
+            <div><strong>Kotlin/Android</strong> gehört zu Kotlin/JVM</div>
+            <div>Seit JVM version 8 keine Änderung am Bytecode</div>
+            <div>Auf die Update-Politik von Oracle eingehen</div>
+          </aside>
+        </section>
+        <section>
+          <ul>
             <li><strong>Kotlin/Native</strong> mit <a href="https://de.wikipedia.org/wiki/LLVM" rel="external">LLVM</a> Maschinensprache<br>erstellen
               <ul>
                 <li>Android, iOS, watchOS, tvOS</li>
                 <li>Linux, macOS, Windows</li>
-                <li><a href="https://webassembly.org/" rel="external">WebAssembly</a></li>
+                <li>WebAssembly <em>(Deprecated)</em></li>
                 <li>arm32, arm64, x86, x86_64, MIPS, wasm32</li>
               </ul>
             </li>
-            <li>Kotlin für <strong>Data Science</strong></li>
           </ul>
-          <aside class="notes">
-            <div><strong>Kotlin/Android</strong> hängt noch an einer älteren Java Version fest</div>
-            <div><strong>Data Science</strong>: Jupyter Notebook, Apache Zeppelin</div>
-          </aside>
         </section>
         <section id="intro-history">
           <h3>Entwicklungsgeschichte</h3>
         </section>
         <section>
-          <p>Kommt noch ...</p>
           <ul>
-            <li>Erscheinungsjahr 2011</li>
-            <li>Wird von <a href="https://www.jetbrains.com/" target="_blank" rel="external">JetBrains</a> in Sankt Petersburg entwickelt</li>
-            <li>Stark geprägt von <a href="http://www.scala-lang.org/" target="_blank" rel="external">Scala</a></li>
-            <li>Google hat Kotlin 2019 zur bevorzugten Sprache für Android erklärt</li>
+            <li>Kotlin wird von <a href="https://www.jetbrains.com/" target="_blank" rel="external">JetBrains</a> in
+              Sankt Petersburg entwickelt</li>
+            <li>Ist stark geprägt von <a href="http://www.scala-lang.org/" target="_blank" rel="external">Scala</a></li>
+            <li>Erscheinungsjahr war 2011 und gilt seit 2016 als stabil</li>
+            <li>Google hat Kotlin 2019 zur <strong><em>bevorzugten Sprache</em></strong> für <strong><em>Android</em></strong>
+              erklärt, konnte aber schon seit 2017 genutzt werden</li>
           </ul>
         </section>
       </section>
