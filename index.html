@@ -1636,7 +1636,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
           </ul>
         </section>
       </section>
-      <section data-pos="classes-8">
+      <section data-pos="classes-7">
         <section id="classes">
           <h2>Klassen, Objekte und Interfaces</h2>
           <aside class="notes">
@@ -1695,7 +1695,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
           </code></pre>
         </section>
         <section data-auto-animate>
-          <p data-id="text">... kürzer</p>
+          <p data-id="text">... kürzer (Normale Schreibweise)</p>
           <pre data-id="code"><code class="hljs" data-trim data-line-numbers="3-4,7">
             package de.rahn.kotlin.lang.classes
 
@@ -1805,7 +1805,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
         </section>
         <section data-auto-animate>
           <p data-id="text">... mit Initializer-blocks</p>
-          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="4-6|10-12|16-18|21|25-27|32">
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="4-6|10-12|14,16-19|22|26-28|33">
             package de.rahn.kotlin.lang.classes
 
             class Person(name: String) {
@@ -1819,10 +1819,11 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
                 println("Init block No. 2")
               }
 
-              var age = -1
+              var age = 0
 
               init {
-                println("Init block No. 3")
+                age = -1
+                println("Init block No. 3: $age")
               }
 
               constructor(name: String, age: Int) : this(name) {
@@ -1858,7 +1859,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
           <p>Die Ausgabe in der Konsole</p>
           <pre>Init block No. 1: Müller
 Init block No. 2
-Init block No. 3
+Init block No. 3: -1
 Init block No. 4
 Constructor
 Müller (20)</pre>
