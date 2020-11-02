@@ -460,7 +460,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
           </ul>
         </section>
       </section>
-      <section data-pos="basics-5">
+      <section data-pos="basics-4">
         <section id="basics">
           <h2>Grundlagen von Kotlin</h2>
           <aside class="notes">
@@ -512,16 +512,39 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
           <h3>Variablen und Konstanten</h3>
         </section>
         <section data-auto-animate>
-          <h4 data-id="title">Read-only Variable</h4>
+          <h4 data-id="title">Variable</h4>
           <div data-id="file"><small style="vertical-align: bottom">Datei: Variables.kt</small></div>
-          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="7|8|7-9">
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="7">
             package de.rahn.kotlin.lang
 
             import kotlin.math.PI as PI_KOTLIN
             import java.lang.Math.PI as PI_JAVA
 
             fun variables() {
-              val width: Int = 3840
+              var width: Int = 3840
+              val height = 2160
+              println("4K-UHD: Breite = $width, Höhe = $height")
+
+              println("Kreiszahl: $PI_KOTLIN")
+            }
+
+            fun main() = variables()
+          </code></pre>
+          <aside class="notes">
+            <div>Vollständige Definition</div>
+          </aside>
+        </section>
+        <section data-auto-animate>
+          <h4 data-id="title">Read-only Variable</h4>
+          <div data-id="file"><small style="vertical-align: bottom">Datei: Variables.kt</small></div>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="8">
+            package de.rahn.kotlin.lang
+
+            import kotlin.math.PI as PI_KOTLIN
+            import java.lang.Math.PI as PI_JAVA
+
+            fun variables() {
+              var width: Int = 3840
               val height = 2160
               println("4K-UHD: Breite = $width, Höhe = $height")
 
@@ -532,14 +555,13 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
           </code></pre>
           <aside class="notes">
             <ol>
-              <li>Vollständige Definition</li>
+              <li>Darf nur einmal zugewiesen werden</li>
               <li>Reduzierte Definition, ist ein Int</li>
-              <li>String Template</li>
             </ol>
           </aside>
         </section>
         <section data-auto-animate>
-          <h4 data-id="title">Konstante (Compile-Time Constants)</h4>
+          <h4 data-id="title">Compile-Time Constants</h4>
           <div data-id="file"><small style="vertical-align: bottom">Datei: Variables.kt</small></div>
           <pre data-id="code"><code class="hljs" data-trim data-line-numbers="6,13">
             package de.rahn.kotlin.lang
@@ -550,7 +572,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             const val PI: Double = 3.14159
 
             fun variables() {
-              val width: Int = 3840
+              var width: Int = 3840
               val height = 2160
               println("4K-UHD: Breite = $width, Höhe = $height")
 
@@ -559,6 +581,9 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
 
             fun main() = variables()
           </code></pre>
+          <aside class="notes">
+            <div>Muss zur Compile-Zeit berechenbar sein</div>
+          </aside>
         </section>
         <section id="basics-strings">
           <h3>Strings, Kotlin Shell</h3>
@@ -574,7 +599,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             const val PI: Double = 3.14159
 
             fun variables() {
-              val width: Int = 3840
+              var width: Int = 3840
               val height = 2160
               println("4K-UHD: Breite = $width, Höhe = $height")
 
@@ -606,7 +631,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             const val PI: Double = 3.14159
 
             fun variables() {
-              val width: Int = 3840
+              var width: Int = 3840
               val height = 2160
               println("4K-UHD: Breite = $width, Höhe = $height")
 
