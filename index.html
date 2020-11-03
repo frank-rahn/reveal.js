@@ -244,7 +244,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             }
           </code></pre>
           <aside class="notes">
-            <p>Angemessenheit: Die Wahl der Komprimierung sollte dem Problem bzw. Aufgabe angemessen sein.</p>
+            <div>Angemessenheit: Die Wahl der Komprimierung sollte dem Problem bzw. Aufgabe angemessen sein.</div>
           </aside>
         </section>
         <section id="intro-basics">
@@ -262,7 +262,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             <li>Freundlich zu Entwicklungswerkzeugen</li>
           </ul>
           <aside class="notes">
-              <div>Beispiel von <strong>Microsoft</strong> und dem SQL-Gremium (ISO/IEC) erzählen</div>
+            <div>Beispiel von <strong>Microsoft</strong> und dem SQL-Gremium (ISO/IEC) erzählen</div>
           </aside>
         </section>
         <section>
@@ -283,11 +283,9 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             </li>
           </ul>
           <aside class="notes">
-            <ul>
-              <li>Objektorientiert</li>
-              <li>Prozedural: Prozeduren, ...</li>
-              <li>Funktional: Labda, ...</li>
-            </ul>
+            <div>Objektorientiert</div>
+            <div>Prozedural: Prozeduren, ...</div>
+            <div>Funktional: Labda, ...</div>
           </aside>
         </section>
         <section id="intro-syntax">
@@ -313,13 +311,11 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             fun main() = start("index", 5,)
           </code></pre>
           <aside class="notes">
-            <ul>
-              <li>Erwähne das Komma</li>
-              <li>Es gibt nur die Klasse <code>Int</code></li>
-              <li>Unterschied zwischen <code>val</code> und <code>var</code> erklären</li>
-              <li>SETTER</li>
-              <li>String Template</li>
-            </ul>
+            <div>Erwähne das Komma</div>
+            <div>Es gibt nur die Klasse <code>Int</code></div>
+            <div>Unterschied zwischen <code>val</code> und <code>var</code> erklären</div>
+            <div>SETTER</div>
+            <div>String Template</div>
           </aside>
         </section>
         <section data-auto-animate>
@@ -506,10 +502,8 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             fun main() = variables()
           </code></pre>
           <aside class="notes">
-            <ol>
-              <li>Darf nur einmal zugewiesen werden</li>
-              <li>Reduzierte Definition, ist ein Int</li>
-            </ol>
+            <div>Darf nur einmal zugewiesen werden</div>
+            <div>Reduzierte Definition, ist ein Int</div>
           </aside>
         </section>
         <section data-auto-animate>
@@ -554,12 +548,9 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             fun main() = variables()
           </code></pre>
           <aside class="notes">
-            <ol>
-              <li>Definition eines Strings</li>
-              <li>Zugriff auf ein Zeichen und ${ ... } für aufwändigere Dinge<br>
-                "$text[6]" liefert Hallo World![6]
-              </li>
-            </ol>
+            <div>Definition eines Strings</div>
+            <div>Zugriff auf ein Zeichen und ${ ... } für aufwändigere Dinge "$text[6]" liefert Hallo World![6]
+            </div>
           </aside>
         </section>
         <section>
@@ -598,6 +589,10 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             >>> :quit
             $
           </code></pre>
+          <aside class="notes">
+            <div><code>==</code>: Vergleicht den Inhalt</div>
+            <div><code>===</code>: Vergleicht den Speicherort</div>
+          </aside>
         </section>
         <section data-auto-animate>
           <h4 data-id="title">Raw-String</h4>
@@ -682,6 +677,10 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
                 at de.rahn.kotlin.lang.NullSafetyKt.nullSafety(NullSafety.kt:11)
             </code></pre>
           </div>
+          <aside class="notes">
+            <div><code>?.</code>: Safe-Call-Operator</div>
+            <div><code>?:</code>: Elvis-Operator, da kann auch <code>return</code> stehen</div>
+          </aside>
         </section>
         <section id="basics-numbers">
           <h3>Nummern</h3>
@@ -792,11 +791,9 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             fun main() = variables()
           </code></pre>
           <aside class="notes">
-            <ul>
-              <li>Normale Verwendung, wie in Java, nur static entfällt</li>
-              <li>Zusätzlich kann das Element umbenannt werden</li>
-              <li>String Template</li>
-            </ul>
+            <div>Normale Verwendung, wie in Java, nur static entfällt</div>
+            <div>Zusätzlich kann das Element umbenannt werden</div>
+            <div>String Template</div>
           </aside>
         </section>
       </section>
@@ -964,10 +961,8 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             fun main() = controlFlowWhen("")
           </code></pre>
           <aside class="notes">
-            <ul>
-              <li>Die Kotlin Klasse Any entspricht der Klasse Object von Java.</li>
-              <li>Statt max() sollte natürlich eine Member-Funktion verwendet werden</li>
-            </ul>
+            <div>Die Kotlin Klasse Any entspricht der Klasse Object von Java.</div>
+            <div>Statt max() sollte natürlich eine Member-Funktion verwendet werden</div>
           </aside>
         </section>
         <section id="control-flow-for">
@@ -1014,11 +1009,9 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             >>>
           </code></pre>
           <aside class="notes">
-            <ul>
-              <li>(Int)Range in verschieden Richtungen und Schritten</li>
-              <li>Letztes Element dabei oder nicht</li>
-              <li>In Zeile 21 wird eine Zeichenkette wie ein Array benutzt</li>
-            </ul>
+            <div>(Int)Range in verschieden Richtungen und Schritten</div>
+            <div>Letztes Element dabei oder nicht</div>
+            <div>In Zeile 21 wird eine Zeichenkette wie ein Array benutzt</div>
           </aside>
         </section>
         <section id="control-flow-while">
@@ -1051,9 +1044,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             fun main() = controlFlowWhile()
           </code></pre>
           <aside class="notes">
-            <ul>
-              <li>Man beachte die Definition in Zeile 15 und Verwendung in 17</li>
-            </ul>
+            <div>Man beachte die Definition in Zeile 15 und Verwendung in 17</div>
           </aside>
         </section>
       </section>
@@ -1092,9 +1083,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             fun main() = functions()
           </code></pre>
           <aside class="notes">
-            <ul>
-              <li><strong>Trailing-commas</strong> sind kein Problem</li>
-            </ul>
+            <div><strong>Trailing-commas</strong> sind kein Problem</div>
           </aside>
         </section>
         <section id="functions-default-named-args">
@@ -1230,10 +1219,8 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             fun main() = functionsExplicitReturn()
           </code></pre>
           <aside class="notes">
-            <ul>
-              <li>Dieser Algorithmus ist eine Näherung für sinus, die mit |z| < 10^-12 abbricht (genau genug)</li>
-              <li>Die Implementierung des Sinus wird auf den nächsten Seiten wiederverwendet</li>
-            </ul>
+            <div>Dieser Algorithmus ist eine Näherung für sinus, die mit |z| < 10^-12 abbricht (genau genug)</div>
+            <div>Die Implementierung des Sinus wird auf den nächsten Seiten wiederverwendet</div>
           </aside>
         </section>
         <section>
@@ -1268,11 +1255,9 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             fun main() = functionsTailRecursion()
           </code></pre>
           <aside class="notes">
-            <ul>
-              <li>Die rekursive Funktion, wird durch den Compiler, in eine Variante mit einer schnellen und effizienten schleifenbasierte Version optimiert</li>
-              <li>Damit wird das Risiko eines Stapelüberlaufs (Stack overflow) umgangen</li>
-              <li>Der rekursive Aufruf muss die letzte Operation sein</li>
-            </ul>
+            <div>Die rekursive Funktion, wird durch den Compiler, in eine Variante mit einer schnellen und effizienten schleifenbasierte Version optimiert</div>
+            <div>Damit wird das Risiko eines Stapelüberlaufs (Stack overflow) umgangen</div>
+            <div>Der rekursive Aufruf muss die letzte Operation sein</div>
           </aside>
         </section>
         <section>
@@ -1335,13 +1320,11 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             fun main() = functionsHigherOrder()
           </code></pre>
           <aside class="notes">
-            <ul>
-              <li>Funktionen höhere Ordnung sind Funktionen mit andere Funktionen als <strong><em>Argument</em></strong>
-                oder als <strong><em>Returnwert</em></strong></li>
-              <li>Bei einer Funktion als Argument können die Namen der Argumente auch entfallen (Siehe benannte Argumente)</li>
-              <li>Eine Funktion sollte immer als letztes Argument übergeben werden</li>
-              <li>Wir auch gerne bei DSLs genutzt</li>
-            </ul>
+            <div>Funktionen höhere Ordnung sind Funktionen mit andere Funktionen als <strong><em>Argument</em></strong>
+              oder als <strong><em>Returnwert</em></strong></div>
+            <div>Bei einer Funktion als Argument können die Namen der Argumente auch entfallen (Siehe benannte Argumente)</div>
+            <div>Eine Funktion sollte immer als letztes Argument übergeben werden</div>
+            <div>Wir auch gerne bei DSLs genutzt</div>
           </aside>
         </section>
         <section id="functions-local">
@@ -1366,11 +1349,9 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             fun main() = functionsLocal()
           </code></pre>
           <aside class="notes">
-            <ul>
-              <li>Verschachtelte Funktionen dienen der Strukturierung des Programmcodes ohne die Sichtbarkeit zu
-                verletzen</li>
-              <li>Diese Funktionen können auf Variablen der umschließender Funktion zugreifen</li>
-            </ul>
+            <div>Verschachtelte Funktionen dienen der Strukturierung des Programmcodes ohne die Sichtbarkeit zu
+              verletzen</div>
+            <div>Diese Funktionen können auf Variablen der umschließender Funktion zugreifen</div>
           </aside>
         </section>
         <section id="functions-member">
@@ -1394,10 +1375,8 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             fun main() = functionsMember()
           </code></pre>
           <aside class="notes">
-            <ul>
-              <li>Eine Funktion in einer Klasse oder Objekt, also eine Methode</li>
-              <li>Es gilt alles was auch für Top-level Funktionen gilt</li>
-            </ul>
+            <div>Eine Funktion in einer Klasse oder Objekt, also eine Methode</div>
+            <div>Es gilt alles was auch für Top-level Funktionen gilt</div>
           </aside>
         </section>
         <section>
@@ -1422,10 +1401,8 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             fun main() = functionsMember()
           </code></pre>
           <aside class="notes">
-            <ul>
-              <li>Eine private Funktion - wie in Java</li>
-              <li>Default ist public</li>
-            </ul>
+            <div>Eine private Funktion - wie in Java</div>
+            <div>Default ist public</div>
           </aside>
         </section>
         <section>
@@ -1450,9 +1427,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             fun main() = functionsMemberInfix()
           </code></pre>
           <aside class="notes">
-            <ul>
-              <li>Wird häufig für DSL verwendet</li>
-            </ul>
+            <div>Wird häufig für DSL verwendet</div>
           </aside>
         </section>
         <section>
@@ -1475,14 +1450,12 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
           <pre>2
 18</pre>
           <aside class="notes">
-            <ul>
-              <li>Eine existierende oder fremde Klassen erweitern</li>
-              <li>Der Instanz von Int ist als Receiver <strong>this</strong> verfügbar</li>
-              <li>Ist mit Vorsicht zu verwenden</li>
-              <li>Es stehen nur die öffentliche Schnittstelle zu Verfügung</li>
-              <li>Die Klasse gewinnt immer - existierende Funktionen können nicht überschrieben werden</li>
-              <li>Verhindert sogenannte Util-Klassen - <strong>StringUtil</strong></li>
-            </ul>
+            <div>Eine existierende oder fremde Klassen erweitern</div>
+            <div>Der Instanz von Int ist als Receiver <strong>this</strong> verfügbar</div>
+            <div>Ist mit Vorsicht zu verwenden</div>
+            <div>Es stehen nur die öffentliche Schnittstelle zu Verfügung</div>
+            <div>Die Klasse gewinnt immer - existierende Funktionen können nicht überschrieben werden</div>
+            <div>Verhindert sogenannte Util-Klassen - <strong>StringUtil</strong></div>
           </aside>
         </section>
         <section>
@@ -1511,9 +1484,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
           <pre>de.rahn.kotlin.lang.FunctionsMemberExtensionMember@2f7c7260
 4711</pre>
           <aside class="notes">
-            <ul>
-              <li>Diese Form der Extension gilt nur innerhalb der Klasse in der sie deklariert ist</li>
-            </ul>
+            <div>Diese Form der Extension gilt nur innerhalb der Klasse in der sie deklariert ist</div>
           </aside>
         </section>
         <section id="functions-inline">
@@ -1546,13 +1517,11 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             fun main() = functionsInline()
           </code></pre>
           <aside class="notes">
-            <ul>
-              <li>Reduziert den Overhead von Lambdas</li>
-              <li>Der Inhalt der Funktion und das übergebene Lambda, wird durch den Compiler, direkt an die Stelle des
-                Aufrufs eingesetzt</li>
-              <li>Interessant bei Funktionen, die eine Fehlerbehandlung durchführen und eine Ausnahme werfen. Die
-                Ausnahme wird dann an der Stelle geworfen, wo der Fehler ausgetreten ist!</li>
-            </ul>
+            <div>Reduziert den Overhead von Lambdas</div>
+            <div>Der Inhalt der Funktion und das übergebene Lambda, wird durch den Compiler, direkt an die Stelle des
+              Aufrufs eingesetzt</div>
+            <div>Interessant bei Funktionen, die eine Fehlerbehandlung durchführen und eine Ausnahme werfen. Die
+              Ausnahme wird dann an der Stelle geworfen, wo der Fehler ausgetreten ist!</div>
           </aside>
         </section>
         <section>
@@ -1665,9 +1634,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             fun main() = person()
           </code></pre>
           <aside class="notes">
-            <ul>
-              <li>Das ist die normale Schreibweise!</li>
-            </ul>
+            <div>Das ist die normale Schreibweise!</div>
           </aside>
         </section>
         <section data-auto-animate>
@@ -1687,9 +1654,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             fun main() = person()
           </code></pre>
           <aside class="notes">
-            <ul>
-              <li>Properties müssen immer initialisiert werden</li>
-            </ul>
+            <div>Properties müssen immer initialisiert werden</div>
           </aside>
         </section>
         <section data-auto-animate>
@@ -1751,11 +1716,9 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             fun main() = person()
           </code></pre>
           <aside class="notes">
-            <ul>
-              <li>Es <strong>muss</strong> der primäre Konstruktor aufgerufen werden</li>
-              <li>Sonst so wie man es von Java kennt</li>
-              <li>Es können beliebig viele sekundäre Konstruktoren definiert werden</li>
-            </ul>
+            <div>Es <strong>muss</strong> der primäre Konstruktor aufgerufen werden</div>
+            <div>Sonst so wie man es von Java kennt</div>
+            <div>Es können beliebig viele sekundäre Konstruktoren definiert werden</div>
           </aside>
         </section>
         <section data-auto-animate>
@@ -1799,14 +1762,12 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             fun main() = person()
           </code></pre>
           <aside class="notes">
-            <ul>
-              <li>Wenn der Block Nr. 1 ausgeführt wird, gibt es noch keine Properties</li>
-              <li>In den Blöcken können die Argumente des primären Konstruktor genutzt werden</li>
-              <li>Wenn der Block Nr. 2 ausgeführt wird, steht der Nachnamen zu Verfügung</li>
-              <li>Die Reihenfolge muss berücksichtigt werden</li>
-              <li>Kann eingesetzt werden um die Implementierung zu strukturieren</li>
-              <li>Sollte sparsam eingesetzt werden</li>
-            </ul>
+            <div>Wenn der Block Nr. 1 ausgeführt wird, gibt es noch keine Properties</div>
+            <div>In den Blöcken können die Argumente des primären Konstruktor genutzt werden</div>
+            <div>Wenn der Block Nr. 2 ausgeführt wird, steht der Nachnamen zu Verfügung</div>
+            <div>Die Reihenfolge muss berücksichtigt werden</div>
+            <div>Kann eingesetzt werden um die Implementierung zu strukturieren</div>
+            <div>Sollte sparsam eingesetzt werden</div>
           </aside>
         </section>
         <section data-auto-animate>
@@ -1819,11 +1780,9 @@ Init block No. 4
 Constructor
 Müller (20)</pre>
           <aside class="notes">
-            <ul>
-              <li>Der primäre Konstruktor wird vor den Init-Blöcken ausgeführt</li>
-              <li>Ein sekundärer Konstruktor wird nach der Deklaration der Properties und der Ausführung der Init-Blöcken
-                ausgeführt.</li>
-            </ul>
+            <div>Der primäre Konstruktor wird vor den Init-Blöcken ausgeführt</div>
+            <div>Ein sekundärer Konstruktor wird nach der Deklaration der Properties und der Ausführung der Init-Blöcken
+              ausgeführt.</div>
           </aside>
         </section>
         <section data-auto-animate>
@@ -1844,11 +1803,9 @@ Müller (20)</pre>
             fun main() = person2()
           </code></pre>
           <aside class="notes">
-            <ul>
-              <li>Die häufigste Form, wie Properties definiert werden</li>
-              <li><strong>Trailing-commas</strong> sind kein Problem</li>
-              <li>Es können alle Regel für Argumente verwendet werden</li>
-            </ul>
+            <div>Die häufigste Form, wie Properties definiert werden</div>
+            <div><strong>Trailing-commas</strong> sind kein Problem</div>
+            <div>Es können alle Regel für Argumente verwendet werden</div>
           </aside>
         </section>
         <section data-auto-animate>
@@ -1973,10 +1930,8 @@ Müller (20)</pre>
             fun main() = person2()
           </code></pre>
           <aside class="notes">
-            <ul>
-              <li>Private: Der Setter kann nur noch innerhalb der Klasse aufgerufen werden</li>
-              <li>Internal: Der Setter kann nur noch innerhalb des Modules aufgerufen werden</li>
-            </ul>
+            <div>Private: Der Setter kann nur noch innerhalb der Klasse aufgerufen werden</div>
+            <div>Internal: Der Setter kann nur noch innerhalb des Modules aufgerufen werden</div>
           </aside>
         </section>
         <section data-auto-animate>
@@ -1992,10 +1947,8 @@ Müller (20)</pre>
             }
           </code></pre>
           <aside class="notes">
-            <ul>
-              <li>Den Standard Setter auf <strong>private</strong> setzen</li>
-              <li>Das komplette Property <strong>private</strong> setzen</li>
-            </ul>
+            <div>Den Standard Setter auf <strong>private</strong> setzen</div>
+            <div>Das komplette Property <strong>private</strong> setzen</div>
           </aside>
         </section>
         <section data-auto-animate>
@@ -2077,9 +2030,7 @@ Müller (20)</pre>
             class Hund(val art: String = "Canidae")
           </code></pre>
           <aside class="notes">
-            <ul>
-              <li>Zum Vererben muss die Klass Säugetier vorbereitet werden</li>
-            </ul>
+            <div>Zum Vererben muss die Klass Säugetier vorbereitet werden</div>
           </aside>
         </section>
         <section data-auto-animate>
@@ -2095,9 +2046,7 @@ Müller (20)</pre>
             class Hund(val art: String = "Canidae")
           </code></pre>
           <aside class="notes">
-            <ul>
-              <li>Zum Vererben musste die Klass Säugetier geöffnet werden</li>
-            </ul>
+            <div>Zum Vererben musste die Klass Säugetier geöffnet werden</div>
           </aside>
         </section>
         <section data-auto-animate>
@@ -2113,11 +2062,9 @@ Müller (20)</pre>
             class Hund(art: String = "Canidae") : Saeugetier(art)
           </code></pre>
           <aside class="notes">
-            <ul>
-              <li>In der Klasse Hund ist die <strong>art</strong> kein Property mehr</li>
-              <li>Die Klasse Hund muss den primären Konstruktor von Säugetier aufrufen</li>
-              <li>Der primäre Konstruktor muss als erstes kommen</li>
-            </ul>
+            <div>In der Klasse Hund ist die <strong>art</strong> kein Property mehr</div>
+            <div>Die Klasse Hund muss den primären Konstruktor von Säugetier aufrufen</div>
+            <div>Der primäre Konstruktor muss als erstes kommen</div>
           </aside>
         </section>
         <section data-auto-animate>
@@ -2184,11 +2131,9 @@ Müller (20)</pre>
             }
           </code></pre>
           <aside class="notes">
-            <ul>
-              <li>Damit einer Member funktion überschrieben werden kann, muss sie geöffnet werden</li>
-              <li>Das überschreiben muss mit <strong>override</strong> angezeigt werden</li>
-              <li>TODO statt ein Kommentar (Java) eine Inline Funktion, die eine Ausnahme wirft</li>
-            </ul>
+            <div>Damit einer Member funktion überschrieben werden kann, muss sie geöffnet werden</div>
+            <div>Das überschreiben muss mit <strong>override</strong> angezeigt werden</div>
+            <div>TODO statt ein Kommentar (Java) eine Inline Funktion, die eine Ausnahme wirft</div>
           </aside>
         </section>
         <section id="classes-interfaces">
@@ -2238,10 +2183,8 @@ Müller (20)</pre>
             }
           </code></pre>
           <aside class="notes">
-            <ul>
-              <li>Die Vererbung kommt mit dem primären Konstruktor zuerst</li>
-              <li>Danach die Interfaces</li>
-            </ul>
+            <div>Die Vererbung kommt mit dem primären Konstruktor zuerst</div>
+            <div>Danach die Interfaces</div>
           </aside>
         </section>
         <section>
@@ -2310,22 +2253,20 @@ Müller (20)</pre>
             }
           </code></pre>
           <aside class="notes">
-            <ul>
-              <li>Vererbung von Interfaces, ähnlich wie in Java</li>
-              <li>Vorgriff: Collections / Arrays</li>
-              <li>Gibt es einen Konflikt, so muss die Klasse eine Member Funktion bereitstellen und dort den Konflikt
-                auflösen
-                <ul>
-                  <li>Es hilft nicht die Klasse abstrakt zu machen</li>
-                </ul>
-              </li>
-              <li>Verwendung von <strong>super</strong></li>
-              <li>Vorgriff: Der + ist ein Infix Operator
-                <ul>
-                  <li>Wegen dem Infix muss das + am Zeilenende stehen (Stichwort)</li>
-                </ul>
-              </li>
-            </ul>
+            <div>Vererbung von Interfaces, ähnlich wie in Java</div>
+            <div>Vorgriff: Collections / Arrays</div>
+            <div>Gibt es einen Konflikt, so muss die Klasse eine Member Funktion bereitstellen und dort den Konflikt
+              auflösen
+              <ul style="list-style-type: none">
+                <li>Es hilft nicht die Klasse abstrakt zu machen</li>
+              </ul>
+            </div>
+            <div>Verwendung von <strong>super</strong></div>
+            <div>Vorgriff: Der + ist ein Infix Operator
+              <ul style="list-style-type: none">
+                <li>Wegen dem Infix muss das + am Zeilenende stehen (Stichwort)</li>
+              </ul>
+            </div>
           </aside>
         </section>
         <section>
