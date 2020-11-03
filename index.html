@@ -467,65 +467,19 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             Details: Package/Import, Variablen, Konstanten, Strings, kotlinc-jvm, Standardtypen, Null/Call Safety
           </aside>
         </section>
-        <section id="basics-package">
-          <h3>Package / Import</h3>
-        </section>
-        <section data-auto-animate>
-          <h4 data-id="title">Package</h4>
-          <div data-id="file"><small style="vertical-align: bottom">Datei: Variables.kt</small></div>
-          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="1">
-            package de.rahn.kotlin.lang
-
-            fun variables() {
-            }
-
-            fun main() = variables()
-          </code></pre>
-          <aside class="notes">
-            Normale Verwendung, wie in Java
-          </aside>
-        </section>
-        <section data-auto-animate>
-          <h4 data-id="title">Import</h4>
-          <div data-id="file"><small style="vertical-align: bottom">Datei: Variables.kt</small></div>
-          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="3-4|7">
-            package de.rahn.kotlin.lang
-
-            import kotlin.math.PI as PI_KOTLIN
-            import java.lang.Math.PI as PI_JAVA
-
-            fun variables() {
-              println("Kreiszahl: $PI_KOTLIN")
-            }
-
-            fun main() = variables()
-          </code></pre>
-          <aside class="notes">
-            <ul>
-              <li>Normale Verwendung, wie in Java, nur static entfällt</li>
-              <li>Zusätzlich kann das Element umbenannt werden</li>
-              <li>String Template</li>
-            </ul>
-          </aside>
-        </section>
         <section id="basics-variable">
           <h3>Variablen und Konstanten</h3>
         </section>
         <section data-auto-animate>
           <h4 data-id="title">Variable</h4>
           <div data-id="file"><small style="vertical-align: bottom">Datei: Variables.kt</small></div>
-          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="7">
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="4">
             package de.rahn.kotlin.lang
-
-            import kotlin.math.PI as PI_KOTLIN
-            import java.lang.Math.PI as PI_JAVA
 
             fun variables() {
               var width: Int = 3840
               val height = 2160
               println("4K-UHD: Breite = $width, Höhe = $height")
-
-              println("Kreiszahl: $PI_KOTLIN")
             }
 
             fun main() = variables()
@@ -537,18 +491,13 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
         <section data-auto-animate>
           <h4 data-id="title">Read-only Variable</h4>
           <div data-id="file"><small style="vertical-align: bottom">Datei: Variables.kt</small></div>
-          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="8">
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="5">
             package de.rahn.kotlin.lang
-
-            import kotlin.math.PI as PI_KOTLIN
-            import java.lang.Math.PI as PI_JAVA
 
             fun variables() {
               var width: Int = 3840
               val height = 2160
               println("4K-UHD: Breite = $width, Höhe = $height")
-
-              println("Kreiszahl: $PI_KOTLIN")
             }
 
             fun main() = variables()
@@ -563,11 +512,8 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
         <section data-auto-animate>
           <h4 data-id="title">Compile-Time Constants</h4>
           <div data-id="file"><small style="vertical-align: bottom">Datei: Variables.kt</small></div>
-          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="6,13">
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="3,10">
             package de.rahn.kotlin.lang
-
-            import kotlin.math.PI as PI_KOTLIN
-            import java.lang.Math.PI as PI_JAVA
 
             const val PI: Double = 3.14159
 
@@ -586,27 +532,20 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
           </aside>
         </section>
         <section id="basics-strings">
-          <h3>Strings, Kotlin Shell</h3>
+          <h3>Strings und Kotlin Shell</h3>
         </section>
-        <section data-auto-animate>
-          <div data-id="file"><small style="vertical-align: bottom">Datei: Variables.kt</small></div>
-          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="15|16">
+        <section>
+          <h4>Strings</h4>
+          <div><small style="vertical-align: bottom">Datei: Variables.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="4|5|7">
             package de.rahn.kotlin.lang
 
-            import kotlin.math.PI as PI_KOTLIN
-            import java.lang.Math.PI as PI_JAVA
-
-            const val PI: Double = 3.14159
-
             fun variables() {
-              var width: Int = 3840
-              val height = 2160
-              println("4K-UHD: Breite = $width, Höhe = $height")
-
-              println("Kreiszahl: $PI")
-
               var text: String = "Hallo World!"
               println("Bitte das 7. Zeichen: '${text[6]}' aus '$text'")
+
+              var character: Char = text.get(6)
+              println(character)
             }
 
             fun main() = variables()
@@ -619,33 +558,6 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
               </li>
             </ol>
           </aside>
-        </section>
-        <section data-auto-animate>
-          <div data-id="file"><small style="vertical-align: bottom">Datei: Variables.kt</small></div>
-          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="18">
-            package de.rahn.kotlin.lang
-
-            import kotlin.math.PI as PI_KOTLIN
-            import java.lang.Math.PI as PI_JAVA
-
-            const val PI: Double = 3.14159
-
-            fun variables() {
-              var width: Int = 3840
-              val height = 2160
-              println("4K-UHD: Breite = $width, Höhe = $height")
-
-              println("Kreiszahl: $PI")
-
-              var text: String = "Hallo World!"
-              println("Bitte das 7. Zeichen: '${text[6]}' aus '$text'")
-
-              var character: Char = text.get(6)
-              println(character)
-            }
-
-            fun main() = variables()
-          </code></pre>
         </section>
         <section>
           <h4>kotlinc-jvm ist die Shell für Kotlin</h4>
@@ -732,6 +644,42 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
 ..consetetur sadipscing elitr,
 ..sed diam nonumy eirmod tempor</pre>
         </section>
+        <section id="basics-null-safety">
+          <h3>Null Safety / Call Safety</h3>
+        </section>
+        <section>
+          <div><small style="vertical-align: bottom">Datei: NullSafety.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="3|4-5|7-9|11|4,5,7-8,11,14">
+            package de.rahn.kotlin.lang
+
+            fun nullSafety(name: String?) {
+              println(name?.length)
+              println(name?.length ?: "x")
+
+              name?.let {
+                println(name.length)
+              }
+
+              println(name!!.length)
+            }
+
+            fun main() = nullSafety("Rahn") // nullSafety(null)
+          </code></pre>
+          <div class="r-stack">
+            <pre class="fragment"><code data-trim>
+              4
+              4
+              4
+              4
+            </code></pre>
+            <pre class="fragment" style="overflow-y: auto"><code data-trim>
+              null
+              x
+              Exception in thread "main" java.lang.NullPointerException
+                at de.rahn.kotlin.lang.NullSafetyKt.nullSafety(NullSafety.kt:11)
+            </code></pre>
+          </div>
+        </section>
         <section id="basics-numbers">
           <h3>Nummern</h3>
         </section>
@@ -807,42 +755,46 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             val doubleValue = 3.14e10
           </code></pre>
         </section>
-        <section id="basics-null-safety">
-          <h3>Null Safety / Call Safety</h3>
+        <section id="basics-package">
+          <h3>Package / Import</h3>
         </section>
-        <section>
-          <div><small style="vertical-align: bottom">Datei: NullSafety.kt</small></div>
-          <pre><code class="hljs" data-trim data-line-numbers="3|4-5|7-9|11">
+        <section data-auto-animate>
+          <h4 data-id="title">Package</h4>
+          <div data-id="file"><small style="vertical-align: bottom">Datei: Variables.kt</small></div>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="1">
             package de.rahn.kotlin.lang
 
-            fun nullSafety(name: String?) {
-              println(name?.length)
-              println(name?.length ?: "x")
-
-              name?.let {
-                println(name.length)
-              }
-
-              println(name!!.length)
+            fun variables() {
             }
 
-            //fun main() = nullSafety("Rahn")
-            //fun main() = nullSafety(null)
+            fun main() = variables()
           </code></pre>
-          <div class="r-stack">
-            <pre class="fragment"><code data-trim>
-              4
-              4
-              4
-              4
-            </code></pre>
-            <pre class="fragment" style="overflow-y: auto"><code data-trim>
-              null
-              x
-              Exception in thread "main" java.lang.NullPointerException
-                at de.rahn.kotlin.lang.NullSafetyKt.nullSafety(NullSafety.kt:11)
-            </code></pre>
-          </div>
+          <aside class="notes">
+            Normale Verwendung, wie in Java
+          </aside>
+        </section>
+        <section data-auto-animate>
+          <h4 data-id="title">Import</h4>
+          <div data-id="file"><small style="vertical-align: bottom">Datei: Variables.kt</small></div>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="3-4|7">
+            package de.rahn.kotlin.lang
+
+            import kotlin.math.PI as PI_KOTLIN
+            import java.lang.Math.PI as PI_JAVA
+
+            fun variables() {
+              println("Kreiszahl: $PI_KOTLIN")
+            }
+
+            fun main() = variables()
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Normale Verwendung, wie in Java, nur static entfällt</li>
+              <li>Zusätzlich kann das Element umbenannt werden</li>
+              <li>String Template</li>
+            </ul>
+          </aside>
         </section>
       </section>
       <section data-pos="control-flow-5">
