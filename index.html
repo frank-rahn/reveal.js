@@ -467,7 +467,8 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
         <section id="basics">
           <h2>Grundlagen von Kotlin</h2>
           <aside class="notes">
-            Details: Package/Import, Variablen, Konstanten, Strings, kotlinc-jvm, Standardtypen, Null/Call Safety
+            Details: Variablen/Konstanten, Destructuring Declarations, Kotlin Shell (kotlinc-jvm), Null/Call Safety,
+            Strings, Standardtypen, Package/Import
           </aside>
         </section>
         <section id="basics-variable">
@@ -533,8 +534,121 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             <div>Geht nur auf der <strong>Top-Level Ebene</strong></div>
           </aside>
         </section>
+        <section id="basics-destructuring-declarations">
+          <h3>Destructuring Declarations</h3>
+        </section>
+        <section data-auto-animate>
+          <h4 data-id="title">Destructuring Declarations</h4>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="4,5|7,8|10|12|13">
+            package de.rahn.kotlin.lang
+
+            fun destructuringDeclarations() {
+                val pair = Pair("index", 4711)
+                println("First = ${pair.first}, Second = ${pair.second}")
+
+                val (first, second) = pair
+                println("First = $first, Second = $second")
+
+                println("First = ${pair.component1()}, Second = ${pair.component2()}")
+
+                val map = mapOf(pair)
+                for ((key, value) in map) {
+                    println("Key = $key, Value = $value")
+                }
+            }
+
+            fun main() = destructuringDeclarations()
+          </code></pre>
+        </section>
+        <section data-auto-animate>
+          <h4 data-id="title">Ungenutzte Variablen</h4>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="16">
+            package de.rahn.kotlin.lang
+
+            fun destructuringDeclarations() {
+                val pair = Pair("index", 4711)
+                println("First = ${pair.first}, Second = ${pair.second}")
+
+                val (first, second) = pair
+                println("First = $first, Second = $second")
+
+                println("First = ${pair.component1()}, Second = ${pair.component2()}")
+
+                val map = mapOf(pair)
+                for ((key, value) in map) {
+                    println("Key = $key, Value = $value")
+                }
+                for ((_, value) in map) {
+                    println("Value = $value")
+                }
+            }
+
+            fun main() = destructuringDeclarations()
+          </code></pre>
+        </section>
+        <section id="basics-shell">
+          <h3>Kotlin Shell</h3>
+        </section>
+        <section>
+          <h4>kotlinc-jvm ist die Shell für Kotlin</h4>
+          <pre><code class="hljs" data-trim data-line-numbers="1|4|5-6|7-8|9-10|11">
+            $ kotlinc-jvm
+            Welcome to Kotlin version 1.4.10 (JRE 11.0.9+11)
+            Type :help for help, :quit for quit
+            >>> val s = "Hello World!"
+            >>> println(s)
+            Hello World!
+            >>> 1 + 2
+            res2: kotlin.Int = 3
+            >>> println(res2)
+            3
+            >>> :quit
+          </code></pre>
+        </section>
+        <section id="basics-null-safety">
+          <h3>Null Safety / Call Safety</h3>
+        </section>
+        <section>
+          <div><small style="vertical-align: bottom">Datei: NullSafety.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="3|4-5|7-9|11|4,5,7-8,11,14">
+            package de.rahn.kotlin.lang
+
+            fun nullSafety(name: String?) {
+              println(name?.length)
+              println(name?.length ?: "x")
+
+              name?.let {
+                println(name.length)
+              }
+
+              println(name!!.length)
+            }
+
+            fun main() = nullSafety("Rahn") // nullSafety(null)
+          </code></pre>
+          <div class="r-stack">
+            <pre class="fragment"><code data-trim>
+              4
+              4
+              4
+              4
+            </code></pre>
+            <pre class="fragment" style="overflow-y: auto"><code data-trim>
+              null
+              x
+              Exception in thread "main" java.lang.NullPointerException
+                at de.rahn.kotlin.lang.NullSafetyKt.nullSafety(NullSafety.kt:11)
+            </code></pre>
+          </div>
+          <aside class="notes">
+            <div><code>?.</code>: Safe-Call-Operator</div>
+            <div><code>?:</code>: Elvis-Operator, da kann auch <code>return</code> stehen</div>
+            <div><code>!!</code>: Der Daten Typ <strong>String?</strong> wird zu <strong>String</strong> geändert, bei
+              <code>null</code> wird eine <code>NullPointerException</code> geworfen</div>
+          </aside>
+        </section>
         <section id="basics-strings">
-          <h3>Strings und Kotlin Shell</h3>
+          <h3>Strings</h3>
         </section>
         <section>
           <h4>Strings</h4>
@@ -566,10 +680,61 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             </div>
           </aside>
         </section>
+        <section data-auto-animate>
+          <h4 data-id="title">Raw-String</h4>
+          <div data-id="file"><small style="vertical-align: bottom">Datei: Strings.kt</small></div>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="">
+            package de.rahn.kotlin.lang
+
+            fun strings() {
+              val text = """
+                  Lorem ipsum dolor sit amet,
+                  consetetur sadipscing elitr,
+                  sed diam nonumy eirmod tempor
+                  WHERE path = "C:\windows\temp"
+                """
+              println(text)
+            }
+
+            fun main() = strings()
+          </code></pre>
+          <div data-id="text">Ich hab die Blanks durch . ersetzt</div>
+          <pre data-id="output">
+
+......Lorem ipsum dolor sit amet,
+......consetetur sadipscing elitr,
+......sed diam nonumy eirmod tempor
+......WHERE path = "C:\windows\temp"
+....</pre>
+        </section>
+        <section data-auto-animate>
+          <h4 data-id="title">Raw-String</h4>
+          <div data-id="file"><small style="vertical-align: bottom">Datei: Strings.kt</small></div>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="">
+            package de.rahn.kotlin.lang
+
+            fun strings() {
+              val text = """
+                  Lorem ipsum dolor sit amet,
+                  consetetur sadipscing elitr,
+                  sed diam nonumy eirmod tempor
+                  WHERE path = "C:\windows\temp"
+                """.trimIndent()
+              println(text)
+            }
+
+            fun main() = strings()
+          </code></pre>
+          <div data-id="text">Ich hab die Blanks durch . ersetzt</div>
+          <pre data-id="output">Lorem ipsum dolor sit amet,
+consetetur sadipscing elitr,
+sed diam nonumy eirmod tempor
+WHERE path = "C:\windows\temp"</pre>
+        </section>
         <section>
-          <h4>kotlinc-jvm ist die Shell für Kotlin</h4>
+          <h4>Operationen auf Strings</h4>
           <pre><code class="hljs" data-trim
-            data-line-numbers="1|4|4-6|7,8|9,10|11,12|13,14|15,16|17,18|19,20|21,22|23,24|25,26|27,28|29,30|31,32|33,34|35,36|37-49|50,51|52,53|54,55|56,57|58,59|60">
+            data-line-numbers="4|4-6|7,8|9,10|11,12|13,14|15,16|17,18|19,20|21,22|23,24|25,26|27,28|29,30|31,32|33,34|35,36|37-49|50,51|52,53|54,55|56,57|58,59">
             $ kotlinc-jvm
             Welcome to Kotlin version 1.4.0 (JRE 11.0.8+10)
             Type :help for help, :quit for quit
@@ -635,99 +800,6 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
           <aside class="notes">
             <div><code>==</code>: Vergleicht den Inhalt</div>
             <div><code>===</code>: Vergleicht den Speicherort</div>
-          </aside>
-        </section>
-        <section data-auto-animate>
-          <h4 data-id="title">Raw-String</h4>
-          <div data-id="file"><small style="vertical-align: bottom">Datei: Strings.kt</small></div>
-          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="">
-            package de.rahn.kotlin.lang
-
-            fun strings() {
-              val text = """
-                  Lorem ipsum dolor sit amet,
-                  consetetur sadipscing elitr,
-                  sed diam nonumy eirmod tempor
-                  WHERE path = "C:\windows\temp"
-                """
-              println(text)
-            }
-
-            fun main() = strings()
-          </code></pre>
-          <div data-id="text">Ich hab die Blanks durch . ersetzt</div>
-          <pre data-id="output">
-
-......Lorem ipsum dolor sit amet,
-......consetetur sadipscing elitr,
-......sed diam nonumy eirmod tempor
-......WHERE path = "C:\windows\temp"
-....</pre>
-        </section>
-        <section data-auto-animate>
-          <h4 data-id="title">Raw-String</h4>
-          <div data-id="file"><small style="vertical-align: bottom">Datei: Strings.kt</small></div>
-          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="">
-            package de.rahn.kotlin.lang
-
-            fun strings() {
-              val text = """
-                  Lorem ipsum dolor sit amet,
-                  consetetur sadipscing elitr,
-                  sed diam nonumy eirmod tempor
-                  WHERE path = "C:\windows\temp"
-                """.trimIndent()
-              println(text)
-            }
-
-            fun main() = strings()
-          </code></pre>
-          <div data-id="text">Ich hab die Blanks durch . ersetzt</div>
-          <pre data-id="output">Lorem ipsum dolor sit amet,
-consetetur sadipscing elitr,
-sed diam nonumy eirmod tempor
-WHERE path = "C:\windows\temp"</pre>
-        </section>
-        <section id="basics-null-safety">
-          <h3>Null Safety / Call Safety</h3>
-        </section>
-        <section>
-          <div><small style="vertical-align: bottom">Datei: NullSafety.kt</small></div>
-          <pre><code class="hljs" data-trim data-line-numbers="3|4-5|7-9|11|4,5,7-8,11,14">
-            package de.rahn.kotlin.lang
-
-            fun nullSafety(name: String?) {
-              println(name?.length)
-              println(name?.length ?: "x")
-
-              name?.let {
-                println(name.length)
-              }
-
-              println(name!!.length)
-            }
-
-            fun main() = nullSafety("Rahn") // nullSafety(null)
-          </code></pre>
-          <div class="r-stack">
-            <pre class="fragment"><code data-trim>
-              4
-              4
-              4
-              4
-            </code></pre>
-            <pre class="fragment" style="overflow-y: auto"><code data-trim>
-              null
-              x
-              Exception in thread "main" java.lang.NullPointerException
-                at de.rahn.kotlin.lang.NullSafetyKt.nullSafety(NullSafety.kt:11)
-            </code></pre>
-          </div>
-          <aside class="notes">
-            <div><code>?.</code>: Safe-Call-Operator</div>
-            <div><code>?:</code>: Elvis-Operator, da kann auch <code>return</code> stehen</div>
-            <div><code>!!</code>: Der Daten Typ <strong>String?</strong> wird zu <strong>String</strong> geändert, bei
-              <code>null</code> wird eine <code>NullPointerException</code> geworfen</div>
           </aside>
         </section>
         <section id="basics-numbers">
