@@ -1264,17 +1264,20 @@ WHERE path = "C:\windows\temp"</pre>
       <section data-pos="functions-6">
         <section id="functions">
           <h2>Funktionen</h2>
+          <p>Prozedurale Programmierung</p>
           <aside class="notes">
-            Details: Grundlagen Funktionen, Default &amp; benannte Argumente, Variable Argumente, Funktionen erster Ordnung
-            (Unit-returning, Single-expression, Explicit-return, Tail-recursion, Generics), Lambdas, Funktionen höhere
-            Ordnung, Scoping (Lokale Funktionen, Member Funktion, Infix, Extension), Inline Function
+            <div>* Details: Grundlagen (Top-level, Unit-returning, Single-expression, Explicit-return,
+              Tail-recursion, Generics), Argumente (Default, Benannte, Variable), Scoping (Top-level, Local, member)</div>
+            <div>* Prozedurale Programmierung ist nicht genau definiert</div>
+            <div>* Imperativen oder strukturierte Programmierung</div>
           </aside>
         </section>
         <section id="functions-basics">
           <h3>Grundlagen Funktionen</h3>
         </section>
-        <section>
+        <section id="functions-top-level">
           <h4>Top-level functions</h4>
+          <p>Die Top-level Funktionen können von überall aufgerufen werden</p>
           <div><small style="vertical-align: bottom">Datei: Functions.kt</small></div>
           <pre><code class="hljs" data-trim data-line-numbers="3-11|3,14">
             package de.rahn.kotlin.lang
@@ -1296,84 +1299,15 @@ WHERE path = "C:\windows\temp"</pre>
             fun main() = functions()
           </code></pre>
           <aside class="notes">
-            <div><strong>Trailing-commas</strong> sind kein Problem</div>
+            <ul>
+              <li><strong>Trailing-commas</strong> sind kein Problem</li>
+              <li>Funktionsnamen werden kleingeschrieben</li>
+              <li><code>fun</code> und <code>return</code> und <code>Unit</code></li>
+              <li>Ähnlich wie die Methoden bei Java</li>
+            </ul>
           </aside>
         </section>
-        <section id="functions-default-named-args">
-          <h3>Default und benannte Argumente</h3>
-        </section>
-        <section>
-          <div><small style="vertical-align: bottom">Datei: FunctionsDefaultNamedArgs.kt</small></div>
-          <pre><code class="hljs" data-trim data-line-numbers="12,22|12,23,24">
-            package de.rahn.kotlin.lang
-
-            fun sum(sum: Int, i: Int, reihe: Int): Int {
-              val vielfaches = i % reihe == 0
-              if (vielfaches) {
-                print("$i, ")
-                return sum + i
-              }
-              return sum
-            }
-
-            fun x(reihe: Int, until: Int = 100): Int {
-              var sum = 0
-              for (i in 0..until) {
-                sum = sum(sum, i, reihe)
-              }
-              println("Sum: $sum")
-              return sum
-            }
-
-            fun functionsDefaultNamedArgs() {
-              x(7)
-              x(reihe = 7)
-              x(3, until = 60)
-            }
-
-            fun main() = functionsDefaultNamedArgs()
-          </code></pre>
-        </section>
-        <section id="functions-varargs">
-          <h3>Variable Anzahl von Argumenten</h3>
-        </section>
-        <section>
-          <div><small style="vertical-align: bottom">Datei: FunctionsVariableArgs.kt</small></div>
-          <pre><code class="hljs" data-trim data-line-numbers="3,5,12">
-            package de.rahn.kotlin.lang
-
-            fun asList(vararg args: String): List&lt;String&gt; {
-              val result = mutableListOf&lt;String&gt;()
-              for (arg in args) {
-                result.add(arg)
-              }
-              return result
-            }
-
-            fun functionsVariableArgs() {
-              println(asList("aa", "bb", "cc"))
-            }
-
-            fun main() = functionsVariableArgs()
-          </code></pre>
-        </section>
-        <section id="functions-first-class">
-          <h3>Funktionen erster Ordnung</h3>
-        </section>
-        <section>
-          <h4>Unit-returning (Java: void)</h4>
-          <div><small style="vertical-align: bottom">Datei: FunctionsUnitReturning.kt</small></div>
-          <pre><code class="hljs" data-trim data-line-numbers="3-5">
-            package de.rahn.kotlin.lang
-
-            fun functionsUnitReturning() {
-              println("Hello World!")
-            }
-
-            fun main() = functionsUnitReturning()
-          </code></pre>
-        </section>
-        <section>
+        <section id="functions-single-expression">
           <h4>Single-expression</h4>
           <div><small style="vertical-align: bottom">Datei: FunctionsSingleExpression.kt</small></div>
           <pre><code class="hljs" data-trim data-line-numbers="3|5-8|11-14">
@@ -1401,7 +1335,7 @@ WHERE path = "C:\windows\temp"</pre>
             fun main() = functionsSingleExpression()
           </code></pre>
         </section>
-        <section>
+        <section id="functions-explicit-return">
           <h4>Explicit-return</h4>
           <div><small style="vertical-align: bottom">Datei: FunctionsExplicitReturn.kt</small></div>
           <pre><code class="hljs" data-trim data-line-numbers="5-18">
@@ -1436,7 +1370,51 @@ WHERE path = "C:\windows\temp"</pre>
             <div>Die Implementierung des Sinus wird auf den nächsten Seiten wiederverwendet</div>
           </aside>
         </section>
-        <section>
+        <section id="functions-unit-returning" data-auto-animate>
+          <h4>Unit-returning</h4>
+          <p>Java: <code>void</code></p>
+          <div><small style="vertical-align: bottom">Datei: FunctionsUnitReturning.kt</small></div>
+          <pre data-id="functions-kotlin"><code class="hljs" data-trim data-line-numbers="3-5">
+            package de.rahn.kotlin.lang
+
+            fun functionsUnitReturning(): Unit {
+              println("Hello World!")
+            }
+
+            fun main() = functionsUnitReturning()
+          </code></pre>
+        </section>
+        <section data-auto-animate>
+          <h4>Unit-returning</h4>
+          <p>Java: <code>void</code></p>
+          <div><small style="vertical-align: bottom">Datei: FunctionsUnitReturning.kt</small></div>
+          <pre data-id="functions-kotlin"><code class="hljs" data-trim data-line-numbers="3-5">
+            package de.rahn.kotlin.lang
+
+            fun functionsUnitReturning() {
+              println("Hello World!")
+            }
+
+            fun main() = functionsUnitReturning()
+          </code></pre>
+        </section>
+        <section id="functions-generics">
+          <h4>Generics</h4>
+          <div><small style="vertical-align: bottom">Datei: FunctionsGenerics.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="3">
+            package de.rahn.kotlin.lang
+
+            fun &lt;T&gt; genList(a: T): List&lt;T&gt; = listOf(a)
+
+            fun functionsGenerics() {
+              println(genList(1))
+              println(genList("Test"))
+            }
+
+            fun main() = functionsGenerics()
+          </code></pre>
+        </section>
+        <section id="functions-tail-recursive">
           <h4>Tail-recursive</h4>
           <p>Verwendet <a href="https://en.wikipedia.org/wiki/Tail_call" rel="external">Tail-recursion/call</a> oder
             <a href="https://de.wikipedia.org/wiki/Endrekursion" rel="external">Endrekursion</a></p>
@@ -1467,6 +1445,176 @@ WHERE path = "C:\windows\temp"</pre>
 
             fun main() = functionsTailRecursion()
           </code></pre>
+          <aside class="notes">
+            <div>Die rekursive Funktion, wird durch den Compiler, in eine Variante mit einer schnellen und effizienten schleifenbasierte Version optimiert</div>
+            <div>Damit wird das Risiko eines Stapelüberlaufs (Stack overflow) umgangen</div>
+            <div>Der rekursive Aufruf muss die letzte Operation sein</div>
+          </aside>
+        </section>
+        <section id="functions-args">
+          <h3>Argumente</h3>
+          <aside class="notes">
+            <div>Argumente sind Read-Only <code>val</code></div>
+          </aside>
+        </section>
+        <section id="functions-default-named-args">
+          <h4>Default und benannte Argumente</h4>
+          <div><small style="vertical-align: bottom">Datei: FunctionsDefaultNamedArgs.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="12,22|12,22-24">
+            package de.rahn.kotlin.lang
+
+            fun sum(sum: Int, i: Int, reihe: Int): Int {
+              val vielfaches = i % reihe == 0
+              if (vielfaches) {
+                print("$i, ")
+                return sum + i
+              }
+              return sum
+            }
+
+            fun x(reihe: Int, until: Int = 100): Int {
+              var sum = 0
+              for (i in 0..until) {
+                sum = sum(sum, i, reihe)
+              }
+              println("Sum: $sum")
+              return sum
+            }
+
+            fun functionsDefaultNamedArgs() {
+              x(7)
+              x(reihe = 7)
+              x(3, until = 60)
+            }
+
+            fun main() = functionsDefaultNamedArgs()
+          </code></pre>
+          <aside class="notes">
+            <div>Bei Default Argumenten gibt's keine Typinferenz</div>
+            <div>Overloading: Funktionen mit gleichem Namen und unterschiedlichen Argumenten</div>
+          </aside>
+        </section>
+        <section id="functions-varargs">
+          <h4>Variable Anzahl von Argumenten</h4>
+          <div><small style="vertical-align: bottom">Datei: FunctionsVariableArgs.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="3,5|12|14|16-17">
+            package de.rahn.kotlin.lang
+
+            fun asList(vararg args: String): List&lt;String&gt; {
+              val result = mutableListOf&lt;String&gt;()
+              for (arg in args) {
+                result.add(arg)
+              }
+              return result
+            }
+
+            fun functionsVariableArgs() {
+              println(asList())
+
+              println(asList("aa", "bb", "cc"))
+
+              val liste = arrayOf("aa", "bb")
+              println(asList(*liste, "cc"))
+            }
+
+            fun main() = functionsVariableArgs()
+          </code></pre>
+          <aside class="notes">
+            <div>Der * Spread-Operator</div>
+          </aside>
+        </section>
+        <section id="functions-scope">
+          <h3>Operationsraum einer Funktion</h3>
+        </section>
+        <section>
+          <h4>Arten von Funktionen</h4>
+          <ul>
+            <li><a href="#functions-top-level" title="Gehe zu den Top-level Function">Top-level Functions</a></li>
+            <li>Local Functions</li>
+            <li>Member Funktionen</li>
+          </ul>
+        </section>
+        <section id="functions-local">
+          <h4>Local Function</h4>
+          <div><small style="vertical-align: bottom">Datei: FunctionsLocal.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="6-8|4,7">
+            package de.rahn.kotlin.lang
+
+            fun functionsLocal() {
+              var y = 42
+
+              fun f(x: Int): Int {
+                return x + y++
+              }
+
+              println(f(4711))
+              println(y)
+            }
+
+            fun main() = functionsLocal()
+          </code></pre>
+          <aside class="notes">
+            <div>* Verschachtelte Funktionen dienen der Strukturierung des Programmcodes ohne die Sichtbarkeit zu
+              verletzen</div>
+            <div>* Diese Funktionen können auf Variablen der umschließender Funktion zugreifen (Geltungsbereich)</div>
+          </aside>
+        </section>
+        <section id="functions-member" data-auto-animate>
+          <h4>Member Function</h4>
+          <div><small style="vertical-align: bottom">Datei: FunctionsMember.kt</small></div>
+          <pre data-id="functions-kotlin"><code class="hljs" data-trim data-line-numbers="4-6">
+            package de.rahn.kotlin.lang
+
+            class FunctionsMember {
+              fun function(x: Int) {
+                println(x)
+              }
+            }
+
+            fun functionsMember(){
+              FunctionsMember().function(4711)
+            }
+
+            fun main() = functionsMember()
+          </code></pre>
+          <aside class="notes">
+            <div>* Eine Funktion in einer Klasse oder Objekt, also eine Methode</div>
+            <div>* Diese Funktionen können auf Variablen der umschließender Klasse zugreifen (Geltungsbereich)</div>
+            <div>* Es gilt alles was auch für Top-level Funktionen gilt</div>
+          </aside>
+        </section>
+        <section data-auto-animate>
+          <h4>Member Function</h4>
+          <div><small style="vertical-align: bottom">Datei: FunctionsMember.kt</small></div>
+          <pre data-id="functions-kotlin"><code class="hljs" data-trim data-line-numbers="8-10|4-6,8-10">
+            package de.rahn.kotlin.lang
+
+            class FunctionsMember {
+              fun function(x: Int) {
+                privateFunction(x)
+              }
+
+              private fun privateFunction(x: Int) {
+                println(x)
+              }
+            }
+
+            fun functionsMember(){
+              FunctionsMember().function(4711)
+            }
+
+            fun main() = functionsMember()
+          </code></pre>
+          <aside class="notes">
+            <div>* Eine private Funktion - wie in Java</div>
+            <div>* Default ist public</div>
+          </aside>
+        </section>
+      </section>
+      <section>
+        <section id="functions2">
+          <h2>Funktionen2</h2>
+          <p>Funktionale Programmierung</p>
           <aside class="notes">
             <div>Die rekursive Funktion, wird durch den Compiler, in eine Variante mit einer schnellen und effizienten schleifenbasierte Version optimiert</div>
             <div>Damit wird das Risiko eines Stapelüberlaufs (Stack overflow) umgangen</div>
