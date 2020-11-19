@@ -1633,38 +1633,41 @@ WHERE path = "C:\windows\temp"</pre>
           </aside>
         </section>
       </section>
-      <section>
-        <section id="functions2">
-          <h2>Funktionen2</h2>
+      <section data-pos="lambdas-7">
+        <section id="lanbdas">
+          <h2>Lambdas und Funktionen höherer Ordnung</h2>
           <p>Funktionale Programmierung</p>
           <aside class="notes">
-            <div>Die rekursive Funktion, wird durch den Compiler, in eine Variante mit einer schnellen und effizienten schleifenbasierte Version optimiert</div>
-            <div>Damit wird das Risiko eines Stapelüberlaufs (Stack overflow) umgangen</div>
-            <div>Der rekursive Aufruf muss die letzte Operation sein</div>
+            <div>Details: Lambda-Ausdruck bzw. Closure, Funktionen höherer Ordnung, Inline Funktionen</div>
           </aside>
         </section>
-        <section>
-          <h4>Generics</h4>
-          <div><small style="vertical-align: bottom">Datei: FunctionsGenerics.kt</small></div>
-          <pre><code class="hljs" data-trim data-line-numbers="3">
+        <section id="lambdas-lambda">
+          <h3>Lambda-Ausdruck bzw. Closure</h3>
+        </section>
+        <section data-auto-animate>
+          <h4>Lambda-Ausdruck bzw. Closure</h4>
+          <div><small style="vertical-align: bottom">Datei: FunctionsLambdas.kt</small></div>
+          <pre data-id="lambdas-kotlin"><code class="hljs" data-trim data-line-numbers="4,6">
             package de.rahn.kotlin.lang
 
-            fun &lt;T&gt; genList(a: T): List&lt;T&gt; = listOf(a)
+            fun functionsLambdas() {
+              val add: (Int, Int) -> Int = { a, b -> a + b }
 
-            fun functionsGenerics() {
-              println(genList(1))
-              println(genList("Test"))
+              println(add(42, 4711))
             }
 
-            fun main() = functionsGenerics()
+            fun main() = functionsLambdas()
           </code></pre>
+          <aside class="notes">
+            <div>* Lambda-Ausdrücke verwenden kein <code>return</code>.</div>
+            <div>* Keine Parameter werden mit <code>()</code> angegeben.</div>
+            <div>* Kein Rückgabewert wird mit <code>Unit</code> angegeben.</div>
+          </aside>
         </section>
-        <section id="functions-lambda">
-          <h3>Lambdas</h3>
-        </section>
-        <section>
+        <section data-auto-animate>
+          <h4>Lambda-Ausdruck bzw. Closure</h4>
           <div><small style="vertical-align: bottom">Datei: FunctionsLambdas.kt</small></div>
-          <pre><code class="hljs" data-trim data-line-numbers="4,6">
+          <pre data-id="lambdas-kotlin"><code class="hljs" data-trim data-line-numbers="4">
             package de.rahn.kotlin.lang
 
             fun functionsLambdas() {
@@ -1676,12 +1679,17 @@ WHERE path = "C:\windows\temp"</pre>
             fun main() = functionsLambdas()
           </code></pre>
         </section>
-        <section id="functions-higher-order">
-          <h3>Funktionen höhere Ordnung</h3>
+        <section id="lambdas-functions-higher-order">
+          <h3>Funktionen höherer Ordnung</h3>
+          <aside class="notes">
+            <div>Funktionen höherer Ordnung sind Funktionen mit andere Funktionen als <strong><em>Argument</em></strong>
+              oder als <strong><em>Returnwert</em></strong></div>
+          </aside>
         </section>
         <section>
+          <h4>Funktionen höherer Ordnung</h4>
           <div><small style="vertical-align: bottom">Datei: FunctionsHigherOrder.kt</small></div>
-          <pre><code class="hljs" data-trim data-line-numbers="3-5|7-9|12|14-16">
+          <pre><code class="hljs" data-trim data-line-numbers="3-5|7-9|12|14|16-18|20-22">
             package de.rahn.kotlin.lang
 
             fun higherOrderFunctionArgs(f: (a: Int, b: Int) -> Int) {
@@ -1695,185 +1703,181 @@ WHERE path = "C:\windows\temp"</pre>
             fun functionsHigherOrder() {
               higherOrderFunctionArgs(higherOrderFunctionReturn())
 
+              higherOrderFunctionArgs({ a: Int, b: Int -> a + b })
+
               higherOrderFunctionArgs {
                 a: Int, b: Int -> a + b
+              }
+
+              higherOrderFunctionArgs {
+                a, b -> a + b
               }
             }
 
             fun main() = functionsHigherOrder()
           </code></pre>
           <aside class="notes">
-            <div>Funktionen höhere Ordnung sind Funktionen mit andere Funktionen als <strong><em>Argument</em></strong>
-              oder als <strong><em>Returnwert</em></strong></div>
-            <div>Bei einer Funktion als Argument können die Namen der Argumente auch entfallen (Siehe benannte Argumente)</div>
-            <div>Eine Funktion sollte immer als letztes Argument übergeben werden</div>
-            <div>Wir auch gerne bei DSLs genutzt</div>
-          </aside>
-        </section>
-        <section id="functions-local">
-          <h3>Lokale Funktionen (Scoping)</h3>
-        </section>
-        <section>
-          <div><small style="vertical-align: bottom">Datei: FunctionsLocal.kt</small></div>
-          <pre><code class="hljs" data-trim data-line-numbers="6-8|4,7">
-            package de.rahn.kotlin.lang
-
-            fun functionsLocal() {
-              var y = 42
-
-              fun f(x: Int): Int {
-                return x + y++
-              }
-
-              println(f(4711))
-              println(y)
-            }
-
-            fun main() = functionsLocal()
-          </code></pre>
-          <aside class="notes">
-            <div>Verschachtelte Funktionen dienen der Strukturierung des Programmcodes ohne die Sichtbarkeit zu
-              verletzen</div>
-            <div>Diese Funktionen können auf Variablen der umschließender Funktion zugreifen</div>
-          </aside>
-        </section>
-        <section id="functions-member">
-          <h3>Member Funktionen (Scoping)</h3>
-        </section>
-        <section>
-          <div><small style="vertical-align: bottom">Datei: FunctionsMember.kt</small></div>
-          <pre><code class="hljs" data-trim data-line-numbers="4-6">
-            package de.rahn.kotlin.lang
-
-            class FunctionsMember {
-              fun function(x: Int) {
-                println(x)
-              }
-            }
-
-            fun functionsMember(){
-              FunctionsMember().function(4711)
-            }
-
-            fun main() = functionsMember()
-          </code></pre>
-          <aside class="notes">
-            <div>Eine Funktion in einer Klasse oder Objekt, also eine Methode</div>
-            <div>Es gilt alles was auch für Top-level Funktionen gilt</div>
+            <div>* Bei einer Funktion als Argument können die Namen der Argumente auch entfallen (Siehe benannte Argumente)</div>
+            <div>* Eine Funktion sollte immer als letztes Argument übergeben werden</div>
+            <div>* Wird auch gerne bei DSLs genutzt</div>
           </aside>
         </section>
         <section>
-          <div><small style="vertical-align: bottom">Datei: FunctionsMember.kt</small></div>
-          <pre><code class="hljs" data-trim data-line-numbers="8-10|4-6,8-10">
+          <h4>Funktionen höherer Ordnung</h4>
+          <pre><code class="hljs" data-trim data-line-numbers="4|5-8|9-12|13-16|17-20|21-24|25-28">
+            $ kotlinc-jvm
+            Welcome to Kotlin version 1.4.10 (JRE 11.0.9.1+1)
+            Type :help for help, :quit for quit
+            >>> val array = arrayOf("Frank", "Martin", "Gerd")
+            >>> array.forEach({ s: String -> println(s.reversed()) })
+            knarF
+            nitraM
+            dreG
+            >>> array.forEach() { s: String -> println(s.reversed()) }
+            knarF
+            nitraM
+            dreG
+            >>> array.forEach() { s -> println(s.reversed()) }
+            knarF
+            nitraM
+            dreG
+            >>> array.forEach() { println(it.reversed()) }
+            knarF
+            nitraM
+            dreG
+            >>> array.forEach { println(it.reversed()) }
+            knarF
+            nitraM
+            dreG
+            >>> array.forEach(::println)
+            Frank
+            Martin
+            Gerd
+            >>>
+          </code></pre>
+        </section>
+        <section id="lambdas-typealias">
+          <h4>typealias mit Lambdas</h4>
+          <div><small style="vertical-align: bottom">Datei: FunctionsHigherOrder.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="3|3,5|3,5,9">
             package de.rahn.kotlin.lang
 
-            class FunctionsMember {
-              fun function(x: Int) {
-                privateFunction(x)
+            typealias Lambda = (Int, Int) -> Int
+
+            fun higherOrderFunctionArgs(f: Lambda) {
+              println(f(42, 4711))
+            }
+
+            fun higherOrderFunctionReturn(): Lambda {
+              return { a: Int, b: Int -> a + b }
+            }
+
+            fun functionsHigherOrder() {
+              higherOrderFunctionArgs(higherOrderFunctionReturn())
+
+              higherOrderFunctionArgs({ a: Int, b: Int -> a + b })
+
+              higherOrderFunctionArgs {
+                a: Int, b: Int -> a + b
               }
 
-              private fun privateFunction(x: Int) {
-                println(x)
+              higherOrderFunctionArgs {
+                a, b -> a + b
               }
             }
 
-            fun functionsMember(){
-              FunctionsMember().function(4711)
-            }
-
-            fun main() = functionsMember()
+            fun main() = functionsHigherOrder()
           </code></pre>
           <aside class="notes">
-            <div>Eine private Funktion - wie in Java</div>
-            <div>Default ist public</div>
+            <div>* Bei einer Funktion als Argument können die Namen der Argumente auch entfallen (Siehe benannte Argumente)</div>
+            <div>* Eine Funktion sollte immer als letztes Argument übergeben werden</div>
+            <div>* Wird auch gerne bei DSLs genutzt</div>
           </aside>
+        </section>
+        <section id="lambdas-anonyme-functions">
+          <h3>Anonyme Funktionen</h3>
         </section>
         <section>
-          <h4>Infix</h4>
-          <div><small style="vertical-align: bottom">Datei: FunctionsMemberInfix.kt</small></div>
-          <pre><code class="hljs" data-trim data-line-numbers="4,12|4,13">
+          <h4>Anonyme Funktionen</h4>
+          <div><small style="vertical-align: bottom">Datei: FunctionsAnonymousFunction.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="4,5|8">
             package de.rahn.kotlin.lang
 
-            class FunctionsMemberInfix {
-              infix fun greetings(message: String) {
-                println(message)
-              }
+            fun anonymousFunction() {
+              val add = fun(a: Int, b: Int): Int { return a + b }
+              println(add(1, 3))
+
+              arrayOf("Frank", "Martin", "Gerd").forEach(
+                  fun(element: String) { println(element) }
+              )
             }
 
-            fun functionsMemberInfix() {
-              val o = FunctionsMemberInfix()
-
-              o.greetings("Hello World!")
-              o greetings "Hello World!"
-            }
-
-            fun main() = functionsMemberInfix()
+            fun main() = anonymousFunction()
           </code></pre>
-          <aside class="notes">
-            <div>Wird häufig für DSL verwendet</div>
-          </aside>
         </section>
-        <section>
-          <h4>Extension</h4>
-          <div><small style="vertical-align: bottom">Datei: FunctionsMemberExtension.kt</small></div>
-          <pre><code class="hljs" data-trim data-line-numbers="3,8|5,9">
-            package de.rahn.kotlin.lang
-
-            infix fun Int.mod(x: Int) = this % x
-
-            fun Int.toString() = "Mist"
-
-            fun functionsMemberExtension() {
-              println(17 mod 3)
-              println(18.toString())
-            }
-
-            fun main() = functionsMemberExtension()
-          </code></pre>
-          <pre>2
-18</pre>
-          <aside class="notes">
-            <div>Eine existierende oder fremde Klassen erweitern</div>
-            <div>Der Instanz von Int ist als Receiver <strong>this</strong> verfügbar</div>
-            <div>Ist mit Vorsicht zu verwenden</div>
-            <div>Es stehen nur die öffentliche Schnittstelle zu Verfügung</div>
-            <div>Die Klasse gewinnt immer - existierende Funktionen können nicht überschrieben werden</div>
-            <div>Verhindert sogenannte Util-Klassen - <strong>StringUtil</strong></div>
-          </aside>
-        </section>
-        <section>
-          <h4>Extension als Member Function</h4>
-          <div><small style="vertical-align: bottom">Datei: FunctionsMemberExtensionMember.kt</small></div>
-          <pre><code class="hljs" data-trim data-line-numbers="4-7|5|6|9-11|15">
-            package de.rahn.kotlin.lang
-
-            class FunctionsMemberExtensionMember {
-              fun Int.print() {
-                println(this@FunctionsMemberExtensionMember.toString())
-                println(toString())
-              }
-
-              fun doIt(x: Int) {
-                x.print()
-              }
-            }
-
-            fun functionsMemberExtensionMember(){
-              FunctionsMemberExtensionMember().doIt(4711)
-            }
-
-            fun main() = functionsMemberExtensionMember()
-          </code></pre>
-          <pre>de.rahn.kotlin.lang.FunctionsMemberExtensionMember@2f7c7260
-4711</pre>
-          <aside class="notes">
-            <div>Diese Form der Extension gilt nur innerhalb der Klasse in der sie deklariert ist</div>
-          </aside>
-        </section>
-        <section id="functions-inline">
+        <section id="lambdas-functions-inline">
           <h3>Inline Funktionen</h3>
         </section>
         <section>
+          <h4>Warum Inline Funkionen?</h4>
+          <ul>
+            <li>Lambdas haben einen Overhead
+              <ul>
+                <li>Lambdas sind Objekte</li>
+                <li>Variablen und Argumente müssen gespeichert</li>
+                <li>...</li>
+              </ul>
+            </li>
+            <li>Durch Inlining wird der Bytecode direkt an die Aufrufstelle gesetzt</li>
+            <li>Erhöht den Anteil des generierten Bytecodes</li>
+          </ul>
+          <aside class="notes">
+            <div>* Inlining liefert Leistungsverbesserungen</div>
+            <div>* Manche Lambdas werden hier exklusiv verwendet</div>
+          </aside>
+        </section>
+        <section data-auto-animate>
+          <h4>Inline Funkionen</h4>
+          <p data-id="text">In Kotlin ...</p>
+          <pre data-id="code"><code class="hljs" data-trim>
+            inline fun inlined(lambda: () -> Unit) {
+              println("Starting ...")
+              lambda()
+              println("Finished!")
+            }
+
+            fun main() {
+              inlined { println("Hello, World!") }
+            }
+          </code></pre>
+          <aside class="notes">
+            <div>Ähnlich wie die Template-Klassen des Spring Frameworks</div>
+          </aside>
+        </section>
+        <section data-auto-animate>
+          <h4>Inline Funkionen</h4>
+          <p data-id="text">Im Bytecode ...</p>
+          <pre data-id="code"><code class="hljs" data-trim>
+            fun main() {
+              println("Starting ...")
+              println("Hello, World!")
+              println("Finished!")
+            }
+          </code></pre>
+          <aside class="notes">
+            <div>Die <code>main()</code> Funktion wird im Bytecode so aussehen</div>
+          </aside>
+        </section>
+        <section>
+          <h4>Nicht Anwenden</h4>
+          <ul>
+            <li><strong><em>Nicht</em></strong> bei großen Funktionen verwenden</li>
+            <li>Inlining geht bei Rekursionen nicht</li>
+            <li>Zuweisung des Lambdas an Variablen</li>
+          </ul>
+        </section>
+        <section>
+          <h4>Inline Funkionen</h4>
           <div><small style="vertical-align: bottom">Datei: FunctionsInline.kt</small></div>
           <pre><code class="hljs" data-trim data-line-numbers="6-13|16-18">
             package de.rahn.kotlin.lang
@@ -1900,14 +1904,15 @@ WHERE path = "C:\windows\temp"</pre>
             fun main() = functionsInline()
           </code></pre>
           <aside class="notes">
-            <div>Reduziert den Overhead von Lambdas</div>
-            <div>Der Inhalt der Funktion und das übergebene Lambda, wird durch den Compiler, direkt an die Stelle des
-              Aufrufs eingesetzt</div>
-            <div>Interessant bei Funktionen, die eine Fehlerbehandlung durchführen und eine Ausnahme werfen. Die
+            <div>* Reduziert den Overhead von Lambdas</div>
+            <div>* Der Inhalt der Funktion und das übergebene Lambda, wird durch den Compiler, direkt an die Aufrufstelle
+              des Aufrufs eingesetzt</div>
+            <div>* Interessant bei Funktionen, die eine Fehlerbehandlung durchführen und eine Ausnahme werfen. Die
               Ausnahme wird dann an der Stelle geworfen, wo der Fehler ausgetreten ist!</div>
           </aside>
         </section>
-        <section>
+        <section id="lambdas-functions-inline-noinline">
+          <h4>Noinline Inline Funkionen</h4>
           <div><small style="vertical-align: bottom">Datei: FunctionsInlineNoinline.kt</small></div>
           <pre><code class="hljs" data-trim data-line-numbers="6-14|17-19">
             package de.rahn.kotlin.lang
@@ -1935,11 +1940,89 @@ WHERE path = "C:\windows\temp"</pre>
             fun main() = functionsInline()
           </code></pre>
         </section>
+        <section id="lambdas-functions-inline-non-local-returns" data-auto-animate>
+          <h4>Non-local returns Inline Funktionen</h4>
+          <div><small style="vertical-align: bottom">Datei: FunctionsInlineNonLocalReturns.kt</small></div>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="3-5|8-14|16">
+            package de.rahn.kotlin.lang
+
+            inline fun inlined2(x: Int, lambda: (Int) -> String): String {
+              return lambda(x)
+            }
+
+            fun nonLocalReturn(): Boolean {
+              val b = inlined2(-1) {
+                if (it > 0) {
+                  return false
+                }
+
+                "Ok"
+              }
+
+              return b == "Ok"
+            }
+
+            fun main() = println(nonLocalReturn())
+          </code></pre>
+          <aside class="notes">
+            <div><strong>Non-local returns</strong><br>Ein Return in einer Inline Funktion, wird in der umschließende Funktion ausgeführt</div>
+          </aside>
+        </section>
+        <section data-auto-animate>
+          <h4>Non-local returns Inline Funktionen</h4>
+          <div><small style="vertical-align: bottom">Datei: FunctionsInlineNonLocalReturns.kt</small></div>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="8-14|10|7">
+            package de.rahn.kotlin.lang
+
+            inline fun inlined2(x: Int, lambda: (Int) -> String): String {
+              return lambda(x)
+            }
+
+            fun nonLocalReturn(): Boolean {
+              val b = inlined2(5) {
+                if (it > 0) {
+                  return false
+                }
+
+                "Ok"
+              }
+
+              return b == "Ok"
+            }
+
+            fun main() = println(nonLocalReturn())
+          </code></pre>
+        </section>
+        <section id="lambdas-functions-inline-crossinline">
+          <h4>Crossinline Funktionen</h4>
+          <p>Non-locale returns sind hier nicht erlaubt</p>
+          <div><small style="vertical-align: bottom">Datei: FunctionsInlineCrossinline.kt</small></div>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="2-5|7-11|14">
+            package de.rahn.kotlin.lang
+
+            interface Button {
+              fun pushMe(): String
+            }
+
+            inline fun controller(crossinline body: () -> String): Button {
+              return object : Button {
+                override fun pushMe() = body()
+              }
+            }
+
+            fun functionsInlineCrossinline() {
+              val button = controller { "pushed" }
+
+              println(button.pushMe())
+            }
+
+            fun main() = functionsInlineCrossinline()
+          </code></pre>
+        </section>
         <section>
           <h4>Weitere Konzepte der Inline Funktionen</h4>
           <ul>
-            <li><strong>Non-local returns</strong><br>Ein Return in einer Inline Funktion, wird in der umschließende Funktion ausgeführt</li>
-            <li><strong>crossinline</strong> schaltet dieses Verhalten wieder ab</li>
+            <li>Geplant sind Unterstützung für <code>break</code> und <code>continue</code></li>
           </ul>
         </section>
       </section>
@@ -1949,7 +2032,8 @@ WHERE path = "C:\windows\temp"</pre>
           <p>Objektorientiete Programmierung</p>
           <aside class="notes">
             <div>Details: Grundlagen Klassen (Definition, primäre und sekundäre Konstruktoren, Properties,
-              Initializer-blocks, Setter, Getter, berechnete Properties, Annotationen), Vererbung, Interfaces</div>
+              Initializer-blocks, Setter, Getter, berechnete Properties, Annotationen), Vererbung, Interfaces, Scoping
+              (Member Funktion, Infix, Extension)</div>
           </aside>
         </section>
         <section id="classes-basics">
@@ -2100,9 +2184,9 @@ WHERE path = "C:\windows\temp"</pre>
             fun main() = person()
           </code></pre>
           <aside class="notes">
-            <div>Es <strong>muss</strong> der primäre Konstruktor aufgerufen werden</div>
-            <div>Sonst so wie man es von Java kennt</div>
-            <div>Es können beliebig viele sekundäre Konstruktoren definiert werden</div>
+            <div>* Es <strong>muss</strong> der primäre Konstruktor aufgerufen werden</div>
+            <div>* Sonst so wie man es von Java kennt</div>
+            <div>* Es können beliebig viele sekundäre Konstruktoren definiert werden</div>
           </aside>
         </section>
         <section data-auto-animate>
@@ -2146,12 +2230,12 @@ WHERE path = "C:\windows\temp"</pre>
             fun main() = person()
           </code></pre>
           <aside class="notes">
-            <div>Wenn der Block Nr. 1 ausgeführt wird, gibt es noch keine Properties</div>
-            <div>In den Blöcken können die Argumente des primären Konstruktor genutzt werden</div>
-            <div>Wenn der Block Nr. 2 ausgeführt wird, steht der Nachnamen zu Verfügung</div>
-            <div>Die Reihenfolge muss berücksichtigt werden</div>
-            <div>Kann eingesetzt werden um die Implementierung zu strukturieren</div>
-            <div>Sollte sparsam eingesetzt werden</div>
+            <div>* Wenn der Block Nr. 1 ausgeführt wird, gibt es noch keine Properties</div>
+            <div>* In den Blöcken können die Argumente des primären Konstruktor genutzt werden</div>
+            <div>* Wenn der Block Nr. 2 ausgeführt wird, steht der Nachnamen zu Verfügung</div>
+            <div>* Die Reihenfolge muss berücksichtigt werden</div>
+            <div>* Kann eingesetzt werden um die Implementierung zu strukturieren</div>
+            <div>* Sollte sparsam eingesetzt werden</div>
           </aside>
         </section>
         <section data-auto-animate>
@@ -2164,8 +2248,8 @@ Init block No. 4
 Constructor
 Müller (20)</pre>
           <aside class="notes">
-            <div>Der primäre Konstruktor wird vor den Init-Blöcken ausgeführt</div>
-            <div>Ein sekundärer Konstruktor wird nach der Deklaration der Properties und der Ausführung der Init-Blöcken
+            <div>* Der primäre Konstruktor wird vor den Init-Blöcken ausgeführt</div>
+            <div>* Ein sekundärer Konstruktor wird nach der Deklaration der Properties und der Ausführung der Init-Blöcken
               ausgeführt.</div>
           </aside>
         </section>
@@ -2187,9 +2271,9 @@ Müller (20)</pre>
             fun main() = person2()
           </code></pre>
           <aside class="notes">
-            <div>Die häufigste Form, wie Properties definiert werden</div>
-            <div><strong>Trailing-commas</strong> sind kein Problem</div>
-            <div>Es können alle Regel für Argumente verwendet werden</div>
+            <div>* Die häufigste Form, wie Properties definiert werden</div>
+            <div>* <strong>Trailing-commas</strong> sind kein Problem</div>
+            <div>* Es können alle Regel für Argumente verwendet werden</div>
           </aside>
         </section>
         <section data-auto-animate>
@@ -2314,8 +2398,8 @@ Müller (20)</pre>
             fun main() = person2()
           </code></pre>
           <aside class="notes">
-            <div>Private: Der Setter kann nur noch innerhalb der Klasse aufgerufen werden</div>
-            <div>Internal: Der Setter kann nur noch innerhalb des Modules aufgerufen werden</div>
+            <div>* Private: Der Setter kann nur noch innerhalb der Klasse aufgerufen werden</div>
+            <div>* Internal: Der Setter kann nur noch innerhalb des Modules aufgerufen werden</div>
           </aside>
         </section>
         <section data-auto-animate>
@@ -2331,8 +2415,8 @@ Müller (20)</pre>
             }
           </code></pre>
           <aside class="notes">
-            <div>Den Standard Setter auf <strong>private</strong> setzen</div>
-            <div>Das komplette Property <strong>private</strong> setzen</div>
+            <div>* Den Standard Setter auf <strong>private</strong> setzen</div>
+            <div>* Das komplette Property <strong>private</strong> setzen</div>
           </aside>
         </section>
         <section data-auto-animate>
@@ -2446,9 +2530,9 @@ Müller (20)</pre>
             class Hund(art: String = "Canidae") : Saeugetier(art)
           </code></pre>
           <aside class="notes">
-            <div>In der Klasse Hund ist die <strong>art</strong> kein Property mehr</div>
-            <div>Die Klasse Hund muss den primären Konstruktor von Säugetier aufrufen</div>
-            <div>Der primäre Konstruktor muss als erstes kommen</div>
+            <div>* In der Klasse Hund ist die <strong>art</strong> kein Property mehr</div>
+            <div>* Die Klasse Hund muss den primären Konstruktor von Säugetier aufrufen</div>
+            <div>* Der primäre Konstruktor muss als erstes kommen</div>
           </aside>
         </section>
         <section data-auto-animate>
@@ -2515,9 +2599,9 @@ Müller (20)</pre>
             }
           </code></pre>
           <aside class="notes">
-            <div>Damit einer Member funktion überschrieben werden kann, muss sie geöffnet werden</div>
-            <div>Das überschreiben muss mit <strong>override</strong> angezeigt werden</div>
-            <div>TODO statt ein Kommentar (Java) eine Inline Funktion, die eine Ausnahme wirft</div>
+            <div>* Damit einer Member funktion überschrieben werden kann, muss sie geöffnet werden</div>
+            <div>* Das überschreiben muss mit <strong>override</strong> angezeigt werden</div>
+            <div>* TODO statt ein Kommentar (Java) eine Inline Funktion, die eine Ausnahme wirft</div>
           </aside>
         </section>
         <section id="classes-interfaces">
@@ -2567,8 +2651,8 @@ Müller (20)</pre>
             }
           </code></pre>
           <aside class="notes">
-            <div>Die Vererbung kommt mit dem primären Konstruktor zuerst</div>
-            <div>Danach die Interfaces</div>
+            <div>* Die Vererbung kommt mit dem primären Konstruktor zuerst</div>
+            <div>* Danach die Interfaces</div>
           </aside>
         </section>
         <section>
@@ -2637,16 +2721,16 @@ Müller (20)</pre>
             }
           </code></pre>
           <aside class="notes">
-            <div>Vererbung von Interfaces, ähnlich wie in Java</div>
-            <div>Vorgriff: Collections / Arrays</div>
-            <div>Gibt es einen Konflikt, so muss die Klasse eine Member Funktion bereitstellen und dort den Konflikt
+            <div>* Vererbung von Interfaces, ähnlich wie in Java</div>
+            <div>* Vorgriff: Collections / Arrays</div>
+            <div>* Gibt es einen Konflikt, so muss die Klasse eine Member Funktion bereitstellen und dort den Konflikt
               auflösen
               <ul style="list-style-type: none">
                 <li>Es hilft nicht die Klasse abstrakt zu machen</li>
               </ul>
             </div>
-            <div>Verwendung von <strong>super</strong></div>
-            <div>Vorgriff: Der + ist ein Infix Operator
+            <div>* Verwendung von <strong>super</strong></div>
+            <div>* Vorgriff: Der + ist ein Infix Operator
               <ul style="list-style-type: none">
                 <li>Wegen dem Infix muss das + am Zeilenende stehen (Stichwort)</li>
               </ul>
@@ -2704,6 +2788,88 @@ Müller (20)</pre>
             <li>Exceptionhandling</li>
           </ul>
         </section>
+        <section id="infix">
+          <h4>Infix</h4>
+          <div><small style="vertical-align: bottom">Datei: FunctionsMemberInfix.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="4,12|4,13">
+            package de.rahn.kotlin.lang
+
+            class FunctionsMemberInfix {
+              infix fun greetings(message: String) {
+                println(message)
+              }
+            }
+
+            fun functionsMemberInfix() {
+              val o = FunctionsMemberInfix()
+
+              o.greetings("Hello World!")
+              o greetings "Hello World!"
+            }
+
+            fun main() = functionsMemberInfix()
+          </code></pre>
+          <aside class="notes">
+            <div>Wird häufig für DSL verwendet</div>
+          </aside>
+        </section>
+        <section id="extension">
+          <h4>Extension</h4>
+          <div><small style="vertical-align: bottom">Datei: FunctionsMemberExtension.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="3,8|5,9">
+            package de.rahn.kotlin.lang
+
+            infix fun Int.mod(x: Int) = this % x
+
+            fun Int.toString() = "Mist"
+
+            fun functionsMemberExtension() {
+              println(17 mod 3)
+              println(18.toString())
+            }
+
+            fun main() = functionsMemberExtension()
+          </code></pre>
+          <pre>2
+18</pre>
+          <aside class="notes">
+            <div>* Eine existierende oder fremde Klassen erweitern</div>
+            <div>* Der Instanz von Int ist als Receiver <strong>this</strong> verfügbar</div>
+            <div>* Ist mit Vorsicht zu verwenden</div>
+            <div>* Es stehen nur die öffentliche Schnittstelle zu Verfügung</div>
+            <div>* Die Klasse gewinnt immer - existierende Funktionen können nicht überschrieben werden</div>
+            <div>* Verhindert sogenannte Util-Klassen - <strong>StringUtil</strong></div>
+          </aside>
+        </section>
+        <section>
+          <h4>Extension als Member Function</h4>
+          <div><small style="vertical-align: bottom">Datei: FunctionsMemberExtensionMember.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="4-7|5|6|9-11|15">
+            package de.rahn.kotlin.lang
+
+            class FunctionsMemberExtensionMember {
+              fun Int.print() {
+                println(this@FunctionsMemberExtensionMember.toString())
+                println(toString())
+              }
+
+              fun doIt(x: Int) {
+                x.print()
+              }
+            }
+
+            fun functionsMemberExtensionMember(){
+              FunctionsMemberExtensionMember().doIt(4711)
+            }
+
+            fun main() = functionsMemberExtensionMember()
+          </code></pre>
+          <pre>de.rahn.kotlin.lang.FunctionsMemberExtensionMember@2f7c7260
+4711</pre>
+          <aside class="notes">
+            <div>Diese Form der Extension gilt nur innerhalb der Klasse in der sie deklariert ist</div>
+          </aside>
+        </section>
       </section>
       <section data-pos="baustelle">
         <section>
@@ -2714,7 +2880,6 @@ Müller (20)</pre>
           <ul>
             <li>Funktionstypen
               <ul>
-                <li>Anonyme Funktionen</li>
                 <li>Coroutines (Asynchrone Programmierung)</li>
                 <li>Operator Overloading</li>
               </ul>
@@ -2728,7 +2893,7 @@ Müller (20)</pre>
           <ul>
             <li>Überladen von Operatoren</li>
             <li>Testbarkeit?</li>
-            <li>Kotlin Lambdas (auch mit Receiver)</li>
+            <li>Kotlin Lambdas mit Receiver</li>
             <li>Generics in Kotlin
               <ul>
                 <li>Unterschiedliche Fälle von Varianz</li>
