@@ -283,13 +283,13 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             </li>
             <li><strong>DSL</strong>s mit Kotlin
               <ul><li>Beispiele: <a href="https://blog.gradle.org/kotlin-meets-gradle" target="_blank" rel="external">Gradle</a>,
-                <a href="https://spring.io/blog/2017/01/04/introducing-kotlin-support-in-spring-framework-5-0" target="_blank" rel="external">Spring Framework</a>, ...</li></ul>
+                <a href="https://spring.io/blog/2017/01/04/introducing-kotlin-support-in-spring-framework-5-0" target="_blank" rel="external">Spring Framework</a>, &hellip;</li></ul>
             </li>
           </ul>
           <aside class="notes">
             <div>* Objektorientiert</div>
-            <div>* Prozedural: Prozeduren, ...</div>
-            <div>* Funktional: Labda, ...</div>
+            <div>* Prozedural: Prozeduren, &hellip;</div>
+            <div>* Funktional: Labda, &hellip;</div>
           </aside>
         </section>
         <section id="intro-syntax">
@@ -685,7 +685,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
           </code></pre>
           <aside class="notes">
             <div>* Definition eines Strings</div>
-            <div>* <strong>String-Interpolation</strong>: Zugriff auf ein Zeichen und ${ ... } für aufwändigere Dinge "$text[6]" liefert Hallo World![6]
+            <div>* <strong>String-Interpolation</strong>: Zugriff auf ein Zeichen und ${ &hellip; } für aufwändigere Dinge "$text[6]" liefert Hallo World![6]
             </div>
           </aside>
         </section>
@@ -1581,7 +1581,7 @@ WHERE path = "C:\windows\temp"</pre>
         <section>
           <h4>Arten von Funktionen</h4>
           <ul>
-            <li><a href="#functions-top-level" title="Gehe zu den Top-level Function">Top-level Functions</a></li>
+            <li><a href="#functions-top-level" title="Gehe zu den Top-level Functions">Top-level Functions</a></li>
             <li>Local Functions</li>
             <li>Member Funktionen</li>
           </ul>
@@ -1629,6 +1629,8 @@ WHERE path = "C:\windows\temp"</pre>
 
             fun main() = functionsMember()
           </code></pre>
+          <p>Mehr zu den Member Functions bei den <a href="#classes-functions-member" title="Gehe zu den Member Functions bei
+              den Klassen">Klassen</a></p>
           <aside class="notes">
             <div>* Eine Funktion in einer Klasse oder Objekt, also eine Methode</div>
             <div>* Diese Funktionen können auf Variablen der umschließender Klasse zugreifen (Geltungsbereich)</div>
@@ -1657,6 +1659,8 @@ WHERE path = "C:\windows\temp"</pre>
 
             fun main() = functionsMember()
           </code></pre>
+          <p>Mehr zu den Member Functions bei den <a href="#classes-functions-member" title="Gehe zu den Member Functions bei
+              den Klassen">Klassen</a></p>
           <aside class="notes">
             <div>* Eine private Funktion - wie in Java</div>
             <div>* Default ist public</div>
@@ -1855,7 +1859,7 @@ WHERE path = "C:\windows\temp"</pre>
               <ul>
                 <li>Lambdas sind Objekte</li>
                 <li>Variablen und Argumente müssen gespeichert</li>
-                <li>...</li>
+                <li>&hellip;</li>
               </ul>
             </li>
             <li>Durch Inlining wird der Bytecode direkt an die Aufrufstelle gesetzt</li>
@@ -1868,7 +1872,7 @@ WHERE path = "C:\windows\temp"</pre>
         </section>
         <section data-auto-animate>
           <h4>Inline Funkionen</h4>
-          <p data-id="text">In Kotlin ...</p>
+          <p data-id="text">In Kotlin &hellip;</p>
           <pre data-id="code"><code class="hljs" data-trim>
             inline fun inlined(lambda: () -> Unit) {
               println("Starting ...")
@@ -1886,7 +1890,7 @@ WHERE path = "C:\windows\temp"</pre>
         </section>
         <section data-auto-animate>
           <h4>Inline Funkionen</h4>
-          <p data-id="text">Im Bytecode ...</p>
+          <p data-id="text">Im Bytecode &hellip;</p>
           <pre data-id="code"><code class="hljs" data-trim>
             fun main() {
               println("Starting ...")
@@ -2058,19 +2062,20 @@ WHERE path = "C:\windows\temp"</pre>
       </section>
       <section data-pos="classes-7">
         <section id="classes">
-          <h2>Klassen und Objekte</h2>
-          <p>Objektorientiete Programmierung</p>
+          <h2>Klassen</h2>
+          <p>Objektorientierte Programmierung Teil I</p>
           <aside class="notes">
-            <div>Details: Grundlagen Klassen (Definition, primäre und sekundäre Konstruktoren, Properties,
-              Initializer-blocks, Setter, Getter, berechnete Properties, Annotationen), Vererbung, Interfaces, Scoping
-              (Member Funktion, Infix, Extension)</div>
+            <div>Details: Grundlagen Klassen (Definition, primäre und sekundäre Konstruktoren, Initializer-blocks,
+              Setter, Getter, Modifiers, inline, berechnete und lateinit Properties, Annotationen), Member Funktion
+              (Lateinit Infix, Extension, Scope Functions)</div>
           </aside>
         </section>
         <section id="classes-basics">
           <h3>Grundlagen Klassen</h3>
         </section>
         <section data-auto-animate>
-          <p data-id="text">Eine leere Klasse ...</p>
+          <p data-id="text">Eine leere Klasse &hellip;</p>
+          <div><small style="vertical-align: bottom">Datei: Person.kt</small></div>
           <pre data-id="code"><code class="hljs" data-trim data-line-numbers="3,6">
             package de.rahn.kotlin.lang.classes
 
@@ -2083,9 +2088,14 @@ WHERE path = "C:\windows\temp"</pre>
 
             fun main() = person()
           </code></pre>
+          <aside class="notes">
+            <div>* Alle Klassen sind per Default <code>public</code></div>
+            <div>* <code>new</code> wird nicht benötigt</div>
+          </aside>
         </section>
         <section data-auto-animate>
-          <p data-id="text">... mit Body</p>
+          <p data-id="text">&hellip; mit Body</p>
+          <div><small style="vertical-align: bottom">Datei: Person.kt</small></div>
           <pre data-id="code"><code class="hljs" data-trim data-line-numbers="3-4,7">
             package de.rahn.kotlin.lang.classes
 
@@ -2099,9 +2109,13 @@ WHERE path = "C:\windows\temp"</pre>
 
             fun main() = person()
           </code></pre>
+          <aside class="notes">
+            <div>Die Klasse ist immer noch leer</div>
+          </aside>
         </section>
-        <section data-auto-animate>
-          <p data-id="text">... mit einem primären Konstruktor</p>
+        <section id="classes-basics-constructor-primary" data-auto-animate>
+          <p data-id="text">&hellip; mit einem primären Konstruktor</p>
+          <div><small style="vertical-align: bottom">Datei: Person.kt</small></div>
           <pre data-id="code"><code class="hljs" data-trim data-line-numbers="3-4,7">
             package de.rahn.kotlin.lang.classes
 
@@ -2117,7 +2131,8 @@ WHERE path = "C:\windows\temp"</pre>
           </code></pre>
         </section>
         <section data-auto-animate>
-          <p data-id="text">... kürzer (Normale Schreibweise)</p>
+          <p data-id="text">&hellip; kürzer (Normale Schreibweise)</p>
+          <div><small style="vertical-align: bottom">Datei: Person.kt</small></div>
           <pre data-id="code"><code class="hljs" data-trim data-line-numbers="3-4,7">
             package de.rahn.kotlin.lang.classes
 
@@ -2135,8 +2150,9 @@ WHERE path = "C:\windows\temp"</pre>
             <div>Das ist die normale Schreibweise!</div>
           </aside>
         </section>
-        <section data-auto-animate>
-          <p data-id="text">... mit einem Property (Attribut, Field, ...)</p>
+        <section id="classes-basics-property" data-auto-animate>
+          <p data-id="text">&hellip; mit einem Property (Attribut, Field, &hellip;)</p>
+          <div><small style="vertical-align: bottom">Datei: Person.kt</small></div>
           <pre data-id="code"><code class="hljs" data-trim data-line-numbers="4,9">
             package de.rahn.kotlin.lang.classes
 
@@ -2156,7 +2172,8 @@ WHERE path = "C:\windows\temp"</pre>
           </aside>
         </section>
         <section data-auto-animate>
-          <p data-id="text">... müssen immer initialisiert werden</p>
+          <p data-id="text">&hellip; müssen immer initialisiert werden</p>
+          <div><small style="vertical-align: bottom">Datei: Person.kt</small></div>
           <pre data-id="code"><code class="hljs" data-trim data-line-numbers="4-5,10">
             package de.rahn.kotlin.lang.classes
 
@@ -2174,7 +2191,8 @@ WHERE path = "C:\windows\temp"</pre>
           </code></pre>
         </section>
         <section data-auto-animate>
-          <p data-id="text">... setzen eines Properties</p>
+          <p data-id="text">&hellip; setzen eines Properties</p>
+          <div><small style="vertical-align: bottom">Datei: Person.kt</small></div>
           <pre data-id="code"><code class="hljs" data-trim data-line-numbers="4-5,10">
             package de.rahn.kotlin.lang.classes
 
@@ -2192,8 +2210,9 @@ WHERE path = "C:\windows\temp"</pre>
             fun main() = person()
           </code></pre>
         </section>
-        <section data-auto-animate>
-          <p data-id="text">... mit sekundärem Konstruktor</p>
+        <section id="classes-basics-constructor-secondary" data-auto-animate>
+          <p data-id="text">&hellip; mit sekundärem Konstruktor</p>
+          <div><small style="vertical-align: bottom">Datei: Person.kt</small></div>
           <pre data-id="code"><code class="hljs" data-trim data-line-numbers="7-9,13">
             package de.rahn.kotlin.lang.classes
 
@@ -2214,47 +2233,49 @@ WHERE path = "C:\windows\temp"</pre>
             fun main() = person()
           </code></pre>
           <aside class="notes">
-            <div>* Es <strong>muss</strong> der primäre Konstruktor aufgerufen werden</div>
+            <div>* Der sekundäre Konstruktor kann andere sekundäre Konstruktoren aufrufen (mit <code>this()</code>),
+              aber der letzte Konstruktor <strong>muß</strong> den primären Konstruktor aufrufen</div>
             <div>* Sonst so wie man es von Java kennt</div>
             <div>* Es können beliebig viele sekundäre Konstruktoren definiert werden</div>
           </aside>
         </section>
-        <section data-auto-animate>
-          <p data-id="text">... mit Initializer-blocks</p>
-          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="4-6|10-12|14,16-19|22|26-28|33">
+        <section id="classes-basics-initializer-blocks" data-auto-animate>
+          <p data-id="text">&hellip; mit Initializer-blocks</p>
+          <div><small style="vertical-align: bottom">Datei: Person.kt</small></div>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="4-6|10-12|14,16-19|22|26-28|33|32">
             package de.rahn.kotlin.lang.classes
 
             class Person(name: String) {
               init {
-                println("Init block No. 1: $name")
+                println("Init block No. 1: name=$name")
               }
 
               val lastName = name
 
               init {
-                println("Init block No. 2")
+                println("Init block No. 2: lastName=$lastName")
               }
 
               var age = 0
 
               init {
                 age = -1
-                println("Init block No. 3: $age")
+                println("Init block No. 3: age=$age")
               }
 
               constructor(name: String, age: Int) : this(name) {
-                println("Constructor")
+                println("Secondary Constructor")
                 this.age = age
               }
 
               init {
-                println("Init block No. 4")
+                println("Init block No. 4: age=$age")
               }
             }
 
             fun person() {
               val person = Person("Müller", 20)
-              println("${person.lastName} (${person.age})")
+              println("Function person: ${person.lastName} (${person.age})")
             }
 
             fun main() = person()
@@ -2269,22 +2290,24 @@ WHERE path = "C:\windows\temp"</pre>
           </aside>
         </section>
         <section data-auto-animate>
-          <p data-id="text">... mit Initializer-blocks</p>
+          <p data-id="text">&hellip; mit Initializer-blocks</p>
           <p>Die Ausgabe in der Konsole</p>
-          <pre>Init block No. 1: Müller
-Init block No. 2
-Init block No. 3: -1
-Init block No. 4
-Constructor
-Müller (20)</pre>
+          <pre>Init block No. 1: name=Müller
+Init block No. 2: lastName=Müller
+Init block No. 3: age=-1
+Init block No. 4: age=-1
+Secondary Constructor
+Function person: Müller (20)</pre>
           <aside class="notes">
             <div>* Der primäre Konstruktor wird vor den Init-Blöcken ausgeführt</div>
+            <div>* Die Init-Blöcke erweitern den primären Konstruktor</div>
             <div>* Ein sekundärer Konstruktor wird nach der Deklaration der Properties und der Ausführung der Init-Blöcken
               ausgeführt.</div>
           </aside>
         </section>
-        <section data-auto-animate>
-          <p data-id="text">... mit Property Definition im Konstruktor</p>
+        <section id="classes-basics-constructor-primary-with-properties" data-auto-animate>
+          <p data-id="text">&hellip; mit Property Definition im Konstruktor</p>
+          <div><small style="vertical-align: bottom">Datei: Person2.kt</small></div>
           <pre data-id="code"><code class="hljs" data-trim data-line-numbers="3">
             package de.rahn.kotlin.lang.classes
 
@@ -2306,8 +2329,44 @@ Müller (20)</pre>
             <div>* Es können alle Regel für Argumente verwendet werden</div>
           </aside>
         </section>
-        <section data-auto-animate>
-          <p data-id="text">... mit einem Setter</p>
+        <section id="classes-basics-without-primary-constructor" data-auto-animate>
+          <p data-id="text">&hellip; ohne primären Konstruktor</p>
+          <div><small style="vertical-align: bottom">Datei: Person3.kt</small></div>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="3|3,7,12">
+            package de.rahn.kotlin.lang.classes
+
+            class Person3 {
+              val lastName: String
+              var age: Int
+
+              constructor(lastName: String, age: Int) {
+                this.lastName = lastName
+                this.age = age
+              }
+
+              constructor() {
+                lastName = "Mustermann"
+                age = 30
+              }
+            }
+
+            fun person3() {
+              var person = Person3()
+              println("${person.lastName} (${person.age})")
+
+              person = Person3("Müller", 20)
+              println("${person.lastName} (${person.age})")
+            }
+
+            fun main() = person3()
+          </code></pre>
+          <aside class="notes">
+            <div>Alle Properties müssen initialisiert werden</div>
+          </aside>
+        </section>
+        <section id="classes-basics-setter" data-auto-animate>
+          <p data-id="text">&hellip; mit einem Setter</p>
+          <div><small style="vertical-align: bottom">Datei: Person2.kt</small></div>
           <pre data-id="code"><code class="hljs" data-trim data-line-numbers="5-9,14">
             package de.rahn.kotlin.lang.classes
 
@@ -2332,7 +2391,8 @@ Müller (20)</pre>
 	at de.rahn.kotlin.lang.classes.Person2.setAge(Person2.kt:7)</pre>
         </section>
         <section data-auto-animate>
-          <p data-id="text">... mit einem Setter</p>
+          <p data-id="text">&hellip; mit einem Setter</p>
+          <div><small style="vertical-align: bottom">Datei: Person2.kt</small></div>
           <pre data-id="code"><code class="hljs" data-trim data-line-numbers="7,14">
             package de.rahn.kotlin.lang.classes
 
@@ -2359,7 +2419,8 @@ Müller (20)</pre>
           </aside>
         </section>
         <section data-auto-animate>
-          <p data-id="text">... mit einem Setter</p>
+          <p data-id="text">&hellip; mit einem Setter</p>
+          <div><small style="vertical-align: bottom">Datei: Person2.kt</small></div>
           <pre data-id="code"><code class="hljs" data-trim data-line-numbers="7,14">
             package de.rahn.kotlin.lang.classes
 
@@ -2382,7 +2443,35 @@ Müller (20)</pre>
           </code></pre>
         </section>
         <section data-auto-animate>
-          <p data-id="text">... mit einem Getter</p>
+          <p data-id="text">&hellip; mit einem Setter</p>
+          <div><small style="vertical-align: bottom">Datei: Person2.kt</small></div>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="3|17|4|11-13|5-9">
+            package de.rahn.kotlin.lang.classes
+
+            class Person2(val lastName: String, age: Int) {
+              var age = -1
+                set(value) {
+                  if (value >= 18) {
+                    field = value
+                  }
+                }
+
+              init {
+                this.age = age
+              }
+            }
+
+            fun person2() {
+              val person = Person2("Müller", 12)
+              println("${person.lastName} (${person.age})")
+            }
+
+            fun main() = person2()
+          </code></pre>
+        </section>
+        <section id="classes-basics-getter" data-auto-animate>
+          <p data-id="text">&hellip; mit einem Getter</p>
+          <div><small style="vertical-align: bottom">Datei: Person2.kt</small></div>
           <pre data-id="code"><code class="hljs" data-trim data-line-numbers="5">
             package de.rahn.kotlin.lang.classes
 
@@ -2405,8 +2494,9 @@ Müller (20)</pre>
             fun main() = person2()
           </code></pre>
         </section>
-        <section data-auto-animate>
-          <p data-id="text">... Sichtbarkeit verändert (Modifiers)</p>
+        <section id="classes-basics-modifiers" data-auto-animate>
+          <p data-id="text">&hellip; Sichtbarkeit verändert (Modifiers)</p>
+          <div><small style="vertical-align: bottom">Datei: Person2.kt</small></div>
           <pre data-id="code"><code class="hljs" data-trim data-line-numbers="6">
             package de.rahn.kotlin.lang.classes
 
@@ -2428,12 +2518,12 @@ Müller (20)</pre>
             fun main() = person2()
           </code></pre>
           <aside class="notes">
-            <div>* Private: Der Setter kann nur noch innerhalb der Klasse aufgerufen werden</div>
-            <div>* Internal: Der Setter kann nur noch innerhalb des Modules aufgerufen werden</div>
+            <div>Private: Der Setter kann nur noch innerhalb der Klasse aufgerufen werden</div>
           </aside>
         </section>
         <section data-auto-animate>
-          <p data-id="text">... Sichtbarkeit verändert (Modifiers)</p>
+          <p data-id="text">&hellip; Sichtbarkeit verändert (Modifiers)</p>
+          <div><small style="vertical-align: bottom">Datei: Person2.kt</small></div>
           <pre data-id="code"><code class="hljs" data-trim data-line-numbers="5,7">
             package de.rahn.kotlin.lang.classes
 
@@ -2450,8 +2540,45 @@ Müller (20)</pre>
           </aside>
         </section>
         <section data-auto-animate>
-          <p data-id="text">... mit Computed-property</p>
-          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="12-14,18-20">
+          <p data-id="text">&hellip; Sichtbarkeit verändert (Modifiers)</p>
+          <div><small style="vertical-align: bottom">Datei: Person2.kt</small></div>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="5">
+            package de.rahn.kotlin.lang.classes
+
+            class Person2(val lastName: String,) {
+              var age = -1
+                internal set
+
+              private var salary = 0
+            }
+          </code></pre>
+          <aside class="notes">
+            <div>* Internal: Der Setter kann nur noch innerhalb des Modules aufgerufen werden</div>
+            <div>* Module: IntelliJ IDEA Modul, Maven Projekt, Gradle source set, Alles was mit einem Aufruf kompiliert
+              wird</div>
+          </aside>
+        </section>
+        <section id="classes-basics-property-inline" data-auto-animate>
+          <p data-id="text">&hellip; mit Inline-Property</p>
+          <div><small style="vertical-align: bottom">Datei: Person2.kt</small></div>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="5,7">
+            package de.rahn.kotlin.lang.classes
+
+            class Person2(val lastName: String,) {
+              var age = -1
+                inline set
+
+              inline var salary = 0
+            }
+          </code></pre>
+          <aside class="notes">
+            <div>Wie bei den Inline-Funktionen</div>
+          </aside>
+        </section>
+        <section id="classes-basics-property-computed" data-auto-animate>
+          <p data-id="text">&hellip; mit Computed-Property</p>
+          <div><small style="vertical-align: bottom">Datei: Person2.kt</small></div>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="12,13|12,13,18-20">
             package de.rahn.kotlin.lang.classes
 
             class Person2(val lastName: String) {
@@ -2477,9 +2604,14 @@ Müller (20)</pre>
 
             fun main() = person2()
           </code></pre>
+          <aside class="notes">
+            <div>Es kann auch eine Single-Expression-Member-Funktion definiert werden (Geschmacksache)<br>
+              <code>obj.isValid</code> vs. <code>obj.isValid()</code></div>
+          </aside>
         </section>
-        <section data-auto-animate>
-          <p data-id="text">... mit Annotation an Properties</p>
+        <section id="classes-basics-property-annotated" data-auto-animate>
+          <p data-id="text">&hellip; mit Annotated-Property</p>
+          <div><small style="vertical-align: bottom">Datei: Person2.kt</small></div>
           <pre data-id="code"><code class="hljs" data-trim data-line-numbers="17-18">
             package de.rahn.kotlin.lang.classes
 
@@ -2511,6 +2643,456 @@ Müller (20)</pre>
 
             fun main() = person2()
           </code></pre>
+        </section>
+        <section id="classes-basics-property-lateinit">
+          <p>&hellip; mit Lateinit-Property</p>
+          <div><small style="vertical-align: bottom">Datei: Person4.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="4|4,8-10">
+            package de.rahn.kotlin.lang.classes
+
+            class Person4(val lastName: String) {
+              private lateinit var status: String
+
+              val getStatus: String
+                get() {
+                  if (!::status.isInitialized) {
+                    status = "Ok"
+                  }
+
+                  return status
+                }
+            }
+
+            fun person4() {
+              val person = Person4("Müller")
+              println("${person.lastName} (${person.getStatus})")
+            }
+
+            fun main() = person4()
+          </code></pre>
+          <aside class="notes">
+            <div>* <strong><em>Wichtig</em></strong> das Peoterty muß mit <code>var</code> deklariert werden</div>
+            <div>* Die Elementaren Datentypen (<code>Int</code>, <code>Double</code>, &hellip;) sind nicht zugelassen</div>
+          </aside>
+        </section>
+        <section id="classes-functions-member">
+          <h3>Member-Function</h3>
+          <p>Die <a href="#functions-member" title="Gehe zu den member Functions">Member Functions</a> wurden bei dem
+            <a href="#functions-scope" title="Gehe zu dem Operationsraum einer Funktion">Operationsraum einer Funktion</a>
+            schon grundsätzlich beschrieben</p>
+        </section>
+        <section id="classes-functions-member-infix">
+          <h4>Infix</h4>
+          <div><small style="vertical-align: bottom">Datei: FunctionsMemberInfix.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="4,12|4,13">
+            package de.rahn.kotlin.lang
+
+            class FunctionsMemberInfix {
+              infix fun greetings(message: String) {
+                println(message)
+              }
+            }
+
+            fun functionsMemberInfix() {
+              val o = FunctionsMemberInfix()
+
+              o.greetings("Hello World!")
+              o greetings "Hello World!"
+            }
+
+            fun main() = functionsMemberInfix()
+          </code></pre>
+          <aside class="notes">
+            <div>Wird häufig für DSL verwendet</div>
+          </aside>
+        </section>
+        <section id="classes-functions-member-extension" data-auto-animate>
+          <h4>Extension</h4>
+          <div><small style="vertical-align: bottom">Datei: FunctionsMemberExtension.kt</small></div>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="3,8">
+            package de.rahn.kotlin.lang
+
+            fun Int.mod(x: Int) = this % x
+
+            fun Int.toString() = "Mist"
+
+            fun functionsMemberExtension() {
+              println(17.mod(3))
+              println(18.toString())
+            }
+
+            fun main() = functionsMemberExtension()
+          </code></pre>
+          <pre>2
+18</pre>
+          <aside class="notes">
+            <div>* Eine existierende oder fremde Klassen erweitern</div>
+            <div>* Der Instanz von Int ist als Receiver <strong>this</strong> verfügbar</div>
+            <div>* Ist mit Vorsicht zu verwenden</div>
+            <div>* Es stehen nur die öffentliche Schnittstelle zu Verfügung</div>
+            <div>* Verhindert sogenannte Util-Klassen - <strong>StringUtil</strong></div>
+          </aside>
+        </section>
+        <section data-auto-animate>
+          <h4>Extension</h4>
+          <div><small style="vertical-align: bottom">Datei: FunctionsMemberExtension.kt</small></div>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="3,8|5,9">
+            package de.rahn.kotlin.lang
+
+            infix fun Int.mod(x: Int) = this % x
+
+            fun Int.toString() = "Mist"
+
+            fun functionsMemberExtension() {
+              println(17 mod 3)
+              println(18.toString())
+            }
+
+            fun main() = functionsMemberExtension()
+          </code></pre>
+          <pre>2
+18</pre>
+          <aside class="notes">
+            <div>* Jetzt mit <code>infix</code></div>
+            <div>* Die Klasse gewinnt immer - existierende Funktionen können nicht überschrieben werden</div>
+          </aside>
+        </section>
+        <section>
+          <h4>Extension als Member Function</h4>
+          <div><small style="vertical-align: bottom">Datei: FunctionsMemberExtensionMember.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="4-7|5|6|9-11|15">
+            package de.rahn.kotlin.lang
+
+            class FunctionsMemberExtensionMember {
+              fun Int.print() {
+                println(this@FunctionsMemberExtensionMember.toString())
+                println(toString())
+              }
+
+              fun doIt(x: Int) {
+                x.print()
+              }
+            }
+
+            fun functionsMemberExtensionMember(){
+              FunctionsMemberExtensionMember().doIt(4711)
+            }
+
+            fun main() = functionsMemberExtensionMember()
+          </code></pre>
+          <pre>de.rahn.kotlin.lang.FunctionsMemberExtensionMember@2f7c7260
+4711</pre>
+          <aside class="notes">
+            <div>Diese Form der Extension gilt nur innerhalb der Klasse in der sie deklariert ist</div>
+          </aside>
+        </section>
+        <section id="classes-functions-scope">
+          <h4>Scope Functions</h4>
+          <table>
+            <tr>
+              <th>Funktion</th>
+              <th>Objektzugriff</th>
+              <th>Returnwert</th>
+            </tr>
+            <tr>
+              <td><code class="hljs" style="font-size: 30px;">obj.let {&hellip;}</code></td>
+              <td><code class="hljs" style="font-size: 30px;">it</code></td>
+              <td rowspan="3" style="vertical-align: middle;">Lambda<br>Returnwert</td>
+            </tr>
+            <tr>
+              <td><code class="hljs" style="font-size: 30px;">obj.run {&hellip;}</code></td>
+              <td rowspan="3" style="vertical-align: middle;"><code class="hljs" style="font-size: 30px;">this</code></td>
+            </tr>
+            <tr>
+              <td><code class="hljs" style="font-size: 30px;">with(obj) {&hellip;}</code></td>
+            </tr>
+            <tr>
+              <td><code class="hljs" style="font-size: 30px;">obj.apply {&hellip;}</code></td>
+              <td rowspan="2" style="vertical-align: middle; border-bottom: none;"><code class="hljs" style="font-size: 30px;">obj</code></td>
+            </tr>
+            <tr>
+              <td><code class="hljs" style="font-size: 30px;">obj.also {&hellip;}</code></td>
+              <td><code class="hljs" style="font-size: 30px;">it</code></td>
+            </tr>
+          </table>
+          <aside class="notes">
+            <div>Diese Funktionen werden im Kontext eines Objektes ausgeführt</div>
+          </aside>
+        </section>
+        <section>
+          <h4>Scope Functions</h4>
+          <table>
+            <tr>
+              <th>Funktion</th>
+              <th>Objektzugriff</th>
+              <th>Returnwert</th>
+            </tr>
+            <tr>
+              <td><code class="hljs" style="font-size: 30px;">run {&hellip;}</code></td>
+              <td>-</td>
+              <td style="vertical-align: middle;">Lambda<br>Returnwert</td>
+            </tr>
+            <tr>
+              <td><code class="hljs" style="font-size: 30px;">obj.takeIf {&hellip;}</code></td>
+              <td rowspan="2" style="vertical-align: middle; border-bottom: none;"><code class="hljs" style="font-size: 30px;">it</code></td>
+              <td rowspan="2" style="vertical-align: middle; border-bottom: none;"><code class="hljs" style="font-size: 30px;">obj or null</code></td>
+            </tr>
+            <tr>
+              <td><code class="hljs" style="font-size: 30px;">obj.takeUnless {&hellip;}</code></td>
+            </tr>
+          </table>
+        </section>
+        <section id="classes-functions-scope-let">
+          <h4>Scope Function: let {&hellip;}</h4>
+          <div><small style="vertical-align: bottom">Datei: FunctionsScopeLet.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="4-7|9-10|9-15">
+            package de.rahn.kotlin.lang
+
+            fun functionsScopeLet() {
+              val b = "test".let {
+                it.isEmpty()
+              }
+              println("b: $b")
+
+              val myString: String? = "Hello World!"
+              myString?.let {
+                println("Länge myString: ${it.length}")
+                it.reversed()
+              }.let {
+                println("it: $it")
+              }
+            }
+
+            fun main() = functionsScopeLet()
+          </code></pre>
+          <aside class="notes">
+            <div>* <strong>Objektzugriff</strong>: <code>it</code></div>
+            <div>* <strong>Returnwert</strong>: Lambda Returnwert</div>
+            <div>* Ausführen eines Lambda für Nicht-Null-Objekte</div>
+            <div>* Einführung eines Ausdrucks als Variable im lokalen Bereich</div>
+          </aside>
+        </section>
+        <section id="classes-functions-scope-run">
+          <h4>Scope Function: run {&hellip;}</h4>
+          <div><small style="vertical-align: bottom">Datei: FunctionsScopeRun.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="4-7|9-10|9-15|17-20|23|22-26">
+            package de.rahn.kotlin.lang
+
+            fun functionsScopeRun() {
+              val b = "test".run {
+                isEmpty()
+              }
+              println("b: $b")
+
+              val myString: String? = "Hello World!"
+              myString?.run {
+                println("Länge myString: $length")
+                reversed()
+              }.run {
+                println("this: $this")
+              }
+
+              val zahl = run {
+                4711
+              }
+              println("zahl: $zahl")
+
+              run {
+                val zahl = 100
+                println("$zahl: $b")
+              }
+              println("$zahl: $b")
+            }
+
+            fun main() = functionsScopeRun()
+          </code></pre>
+          <aside class="notes">
+            <div>* <strong>Objektzugriff</strong>: <code>this</code> und <code>-</code></div>
+            <div>* <strong>Returnwert</strong>: Lambda Returnwert</div>
+            <div>* Macht das gleiche wie <code>let</code> nur statt <code>it</code> wird <code>this</code> verwendet</div>
+            <div>* Die Variable <code>zahl</code> wird in Zeile 23 <strong>shadowed</strong></div>
+            <div>* Objektkonfiguration und Berechnung eines Ergebnisses</div>
+            <div>* Gruppierungsfunktionsaufrufe für ein Objekt</div>
+            <div>* Ausführen von Anweisungen, bei denen ein Ausdruck erforderlich ist</div>
+          </aside>
+        </section>
+        <section id="classes-functions-scope-with">
+          <h4>Scope Function: with {&hellip;}</h4>
+          <div><small style="vertical-align: bottom">Datei: FunctionsScopeWith.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="4,9|5,9,10|9,10,13|6">
+            package de.rahn.kotlin.lang
+
+            fun functionsScopeWith() {
+              class User {
+                var name = ""
+                private var age = -1
+              }
+
+              val name = with(User()) {
+                name = "Frank Rahn"
+
+                println("user = $name")
+                name
+              }
+              println("user = $name")
+            }
+
+            fun main() = functionsScopeWith()
+          </code></pre>
+          <aside class="notes">
+            <div>* <strong>Objektzugriff</strong>: <code>this</code></div>
+            <div>* <strong>Returnwert</strong>: Lambda Returnwert</div>
+            <div>* Gruppierungsfunktionsaufrufe für ein Objekt</div>
+          </aside>
+        </section>
+        <section id="classes-functions-scope-apply">
+          <h4>Scope Function: apply {&hellip;}</h4>
+          <div><small style="vertical-align: bottom">Datei: FunctionsScopeApply.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="4,8|5,8-10">
+            package de.rahn.kotlin.lang
+
+            fun functionsScopeApply() {
+              class User {
+                var name = ""
+              }
+
+              val user = User().apply {
+                name = "Frank Rahn"
+              }
+              println("user = ${user.name}")
+            }
+
+            fun main() = functionsScopeApply()
+          </code></pre>
+          <aside class="notes">
+            <div>* <strong>Objektzugriff</strong>: <code>this</code></div>
+            <div>* <strong>Returnwert</strong>: der Receiver (<code>this</code>)</div>
+            <div>* Objektkonfiguration</div>
+            <div>* Monitoring (Logging)</div>
+          </aside>
+        </section>
+        <section>
+          <h4>Scope Function: apply {&hellip;}</h4>
+          <div><small style="vertical-align: bottom">Datei: User.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="8,12-14">
+            package de.rahn.kotlin.lang.classes
+
+            import org.slf4j.LoggerFactory
+
+            class User(name: String) {
+              private val LOGGER = LoggerFactory.getLogger(javaClass)
+
+              var name = name.apply { LOGGER.info(this) }
+            }
+
+            fun user() {
+              val user = User("Frank Rahn").apply {
+                name = "Martin Rahn"
+              }
+              println(user.name)
+            }
+
+            fun main() = user()
+          </code></pre>
+          <aside class="notes">
+            <div>* Monitoring (Logging)</div>
+            <div>* Objektkonfiguration</div>
+            <div>* <code>val b = User().apply {&hellip;}.run {saveInDatabase(this)}</code></div>
+          </aside>
+        </section>
+        <section id="classes-functions-scope-also">
+          <h4>Scope Function: also {&hellip;}</h4>
+          <div><small style="vertical-align: bottom">Datei: FunctionsScopeAlso.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="4,8|5,8-10">
+            package de.rahn.kotlin.lang
+
+            fun functionsScopeAlso() {
+              class User {
+                var name = ""
+              }
+
+              val user = User().also {
+                it.name = "Frank Rahn"
+              }
+              println("user = ${user.name}")
+            }
+
+            fun main() = functionsScopeAlso()
+          </code></pre>
+          <aside class="notes">
+            <div>* <strong>Objektzugriff</strong>: <code>it</code></div>
+            <div>* <strong>Returnwert</strong>: der Receiver (<code>obj</code>)</div>
+            <div>* Macht das gleiche wie <code>apply</code> nur statt <code>it</code> wird <code>this</code> verwendet</div>
+            <div>* Zusätzliche Effekte</div>
+          </aside>
+        </section>
+        <section id="classes-functions-scope-takeIf">
+          <h4>Scope Function: takeIf {&hellip;}</h4>
+          <div><small style="vertical-align: bottom">Datei: FunctionsScopeTakeIf.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="4,8|5,8-10">
+            package de.rahn.kotlin.lang
+
+            fun functionsScopeTakeIf() {
+              class User(val name: String)
+
+              val user = User("Frank Rahn").takeIf {
+                it.name.length == 7
+              }
+              println("user = $user")
+            }
+
+            fun main() = functionsScopeTakeIf()
+          </code></pre>
+          <aside class="notes">
+            <div>* <strong>Objektzugriff</strong>: <code>it</code></div>
+            <div>* <strong>Returnwert</strong>: der Receiver (<code>obj</code>) oder <code>null</code></div>
+          </aside>
+        </section>
+        <section id="classes-functions-scope-takeUnless">
+          <h4>Scope Function: takeIf {&hellip;}</h4>
+          <div><small style="vertical-align: bottom">Datei: FunctionsScopeTakeUnless.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="4,8|5,8-10">
+            package de.rahn.kotlin.lang
+
+            fun functionsScopeTakeIf() {
+              class User(val name: String)
+
+              val user = User("Frank Rahn").takeIf {
+                it.name.length == 7
+              }
+              println("user = $user")
+            }
+
+            fun main() = functionsScopeTakeIf()
+          </code></pre>
+          <aside class="notes">
+            <div>* <strong>Objektzugriff</strong>: <code>it</code></div>
+            <div>* <strong>Returnwert</strong>: der Receiver (<code>obj</code>) oder <code>null</code></div>
+          </aside>
+        </section>
+      </section>
+      <section data-pos="objects-8">
+        <section id="objects">
+          <h2>Objekte</h2>
+          <p>Objektorientierte Programmierung Teil II</p>
+          <aside class="notes">
+            <div>Details: Grundlagen Objekte (Definition)</div>
+          </aside>
+        </section>
+        <section id="objects-basics">
+          <h3>Grundlagen Objekte</h3>
+        </section>
+        <section>
+          <h3 style="color: #6a1520"><em>Baustelle &hellip;!</em></h3>
+        </section>
+      </section>
+      <section data-pos="classes-9">
+        <section>
+          <h2>Rest</h2>
+          <p>Objektorientierte Programmierung Teil III</p>
+          <aside class="notes">
+            <div>Details: Vererbung, Interfaces</div>
+          </aside>
         </section>
         <section id="classes-inheritance">
           <h3>Vererbung</h3>
@@ -2795,19 +3377,17 @@ Müller (20)</pre>
           </div>
         </section>
         <section>
-          <h3 style="color: #6a1520"><em>Baustelle ...!</em></h3>
+          <h3 style="color: #6a1520"><em>Baustelle &hellip;!</em></h3>
           <ul>
-            <li>Lateinit</li>
             <li>Aliasnamen für Typen <strong>typealias</strong></li>
             <li>Varianten für innere Klassen</li>
             <li>Delegation</li>
             <li>Umgang mit <strong>lazy</strong></li>
-            <li>Attribute, Getter und Setter</li>
             <li>Inline Getter und Setter</li>
           </ul>
         </section>
         <section>
-          <h3 style="color: #6a1520"><em>Baustelle ...!</em></h3>
+          <h3 style="color: #6a1520"><em>Baustelle &hellip;!</em></h3>
           <ul>
             <li>Enums und when</li>
             <li>Basistypen oder einfache Typen</li>
@@ -2818,92 +3398,10 @@ Müller (20)</pre>
             <li>Exceptionhandling</li>
           </ul>
         </section>
-        <section id="infix">
-          <h4>Infix</h4>
-          <div><small style="vertical-align: bottom">Datei: FunctionsMemberInfix.kt</small></div>
-          <pre><code class="hljs" data-trim data-line-numbers="4,12|4,13">
-            package de.rahn.kotlin.lang
-
-            class FunctionsMemberInfix {
-              infix fun greetings(message: String) {
-                println(message)
-              }
-            }
-
-            fun functionsMemberInfix() {
-              val o = FunctionsMemberInfix()
-
-              o.greetings("Hello World!")
-              o greetings "Hello World!"
-            }
-
-            fun main() = functionsMemberInfix()
-          </code></pre>
-          <aside class="notes">
-            <div>Wird häufig für DSL verwendet</div>
-          </aside>
-        </section>
-        <section id="extension">
-          <h4>Extension</h4>
-          <div><small style="vertical-align: bottom">Datei: FunctionsMemberExtension.kt</small></div>
-          <pre><code class="hljs" data-trim data-line-numbers="3,8|5,9">
-            package de.rahn.kotlin.lang
-
-            infix fun Int.mod(x: Int) = this % x
-
-            fun Int.toString() = "Mist"
-
-            fun functionsMemberExtension() {
-              println(17 mod 3)
-              println(18.toString())
-            }
-
-            fun main() = functionsMemberExtension()
-          </code></pre>
-          <pre>2
-18</pre>
-          <aside class="notes">
-            <div>* Eine existierende oder fremde Klassen erweitern</div>
-            <div>* Der Instanz von Int ist als Receiver <strong>this</strong> verfügbar</div>
-            <div>* Ist mit Vorsicht zu verwenden</div>
-            <div>* Es stehen nur die öffentliche Schnittstelle zu Verfügung</div>
-            <div>* Die Klasse gewinnt immer - existierende Funktionen können nicht überschrieben werden</div>
-            <div>* Verhindert sogenannte Util-Klassen - <strong>StringUtil</strong></div>
-          </aside>
-        </section>
-        <section>
-          <h4>Extension als Member Function</h4>
-          <div><small style="vertical-align: bottom">Datei: FunctionsMemberExtensionMember.kt</small></div>
-          <pre><code class="hljs" data-trim data-line-numbers="4-7|5|6|9-11|15">
-            package de.rahn.kotlin.lang
-
-            class FunctionsMemberExtensionMember {
-              fun Int.print() {
-                println(this@FunctionsMemberExtensionMember.toString())
-                println(toString())
-              }
-
-              fun doIt(x: Int) {
-                x.print()
-              }
-            }
-
-            fun functionsMemberExtensionMember(){
-              FunctionsMemberExtensionMember().doIt(4711)
-            }
-
-            fun main() = functionsMemberExtensionMember()
-          </code></pre>
-          <pre>de.rahn.kotlin.lang.FunctionsMemberExtensionMember@2f7c7260
-4711</pre>
-          <aside class="notes">
-            <div>Diese Form der Extension gilt nur innerhalb der Klasse in der sie deklariert ist</div>
-          </aside>
-        </section>
       </section>
       <section data-pos="baustelle">
         <section>
-          <h2 style="color: #6a1520"><em>Baustelle ...!</em></h2>
+          <h2 style="color: #6a1520"><em>Baustelle &hellip;!</em></h2>
         </section>
         <section>
           <h3>Weitere Konzepte</h3>
