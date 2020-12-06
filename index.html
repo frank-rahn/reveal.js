@@ -33,7 +33,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
   <meta property="article:publisher" content="https://www.facebook.com/frank.rahn">
   <meta property="article:author" content="https://www.facebook.com/frank.rahn">
   <meta property="article:published_time" content="2020-09-02T12:00:00+00:00">
-  <meta property="article:modified_time" content="2020-11-29T12:00:00+00:00">
+  <meta property="article:modified_time" content="2020-12-06T12:00:00+00:00">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:creator" content="@frank_rahn">
   <meta name="twitter:site" content="@frank_rahn">
@@ -614,7 +614,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
           </code></pre>
         </section>
         <section id="basics-null-safety">
-          <h3>Null Safety / Call Safety</h3>
+          <h3>Null Safety / Call Safety / Safe Casts</h3>
         </section>
         <section>
           <h4>Null Safety / Call Safety</h4>
@@ -654,6 +654,51 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             <div>* <code>?:</code>: Elvis-Operator, da kann auch <code>return</code> stehen</div>
             <div>* <code>!!</code>: Der Daten Typ <strong>String?</strong> wird zu <strong>String</strong> geändert, bei
               <code>null</code> wird eine <code>NullPointerException</code> geworfen</div>
+          </aside>
+        </section>
+        <section data-auto-animate>
+          <h4>Safe Casts</h4>
+          <div><small style="vertical-align: bottom">Datei: SafeCast.kt</small></div>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="3|4|7">
+            package de.rahn.kotlin.lang
+
+            fun safeCast(value: Any?) {
+              val i: Int? = value as? Int
+              println("Int = $i")
+
+              val s: String? = value as? String
+              println("String = $s")
+            }
+
+            fun main() = safeCast("aa")
+          </code></pre>
+          <pre class="fragment"><code data-trim>
+            Int = null
+            String = aa
+          </code></pre>
+        </section>
+        <section data-auto-animate>
+          <h4>Safe Casts</h4>
+          <div><small style="vertical-align: bottom">Datei: SafeCast.kt</small></div>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="4,11|7,11">
+            package de.rahn.kotlin.lang
+
+            fun safeCast(value: Any?) {
+              val i: Int = value as? Int ?: -1
+              println("Int = $i")
+
+              val s: String = value as? String ?: return
+              println("String = $s")
+            }
+
+            fun main() = safeCast(true)
+          </code></pre>
+          <pre class="fragment"><code data-trim>
+            Int = -1
+          </code></pre>
+          <aside class="notes">
+            <div>* Jetzt mit Elvis-Operator</div>
+            <div>* Die Variablen sind jetzt wieder Null-safe</div>
           </aside>
         </section>
         <section id="basics-strings">
@@ -2060,10 +2105,10 @@ WHERE path = "C:\windows\temp"</pre>
           </ul>
         </section>
       </section>
-      <section data-pos="classes-7">
+      <section data-pos="classes-8">
         <section id="classes">
           <h2>Klassen</h2>
-          <p>Objektorientierte Programmierung Teil I</p>
+          <p>Objektorientierte Programmierung</p>
           <aside class="notes">
             <div>Details: Grundlagen Klassen (Definition, primäre und sekundäre Konstruktoren, Initializer-blocks,
               Setter, Getter, Modifiers, inline, berechnete und lateinit Properties, Annotationen), Member Funktion
@@ -2115,6 +2160,23 @@ WHERE path = "C:\windows\temp"</pre>
         </section>
         <section id="classes-basics-constructor-primary" data-auto-animate>
           <p data-id="text">&hellip; mit einem primären Konstruktor</p>
+          <div><small style="vertical-align: bottom">Datei: Person.kt</small></div>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="3-4,7">
+            package de.rahn.kotlin.lang.classes
+
+            class Person public constructor(name: String) {
+            }
+
+            fun person() {
+              val person = Person("Müller")
+              println(person)
+            }
+
+            fun main() = person()
+          </code></pre>
+        </section>
+        <section data-auto-animate>
+          <p data-id="text">&hellip; ohne Modifier</p>
           <div><small style="vertical-align: bottom">Datei: Person.kt</small></div>
           <pre data-id="code"><code class="hljs" data-trim data-line-numbers="3-4,7">
             package de.rahn.kotlin.lang.classes
@@ -3071,25 +3133,10 @@ Function person: Müller (20)</pre>
           </aside>
         </section>
       </section>
-      <section data-pos="objects-8">
-        <section id="objects">
-          <h2>Objekte</h2>
-          <p>Objektorientierte Programmierung Teil II</p>
-          <aside class="notes">
-            <div>Details: Grundlagen Objekte (Definition)</div>
-          </aside>
-        </section>
-        <section id="objects-basics">
-          <h3>Grundlagen Objekte</h3>
-        </section>
-        <section>
-          <h3 style="color: #6a1520"><em>Baustelle &hellip;!</em></h3>
-        </section>
-      </section>
       <section data-pos="classes-9">
         <section>
-          <h2>Rest</h2>
-          <p>Objektorientierte Programmierung Teil III</p>
+          <h2>Vererbung und Interfaces</h2>
+          <p>Objektorientierte Programmierung</p>
           <aside class="notes">
             <div>Details: Vererbung, Interfaces</div>
           </aside>
@@ -3099,6 +3146,7 @@ Function person: Müller (20)</pre>
         </section>
         <section data-auto-animate>
           <p data-id="title">Die Klasse Hund soll ein Säugetier sein</p>
+          <div data-id="files"><small style="vertical-align: bottom">Datei: Hund.kt, Saeugetier.kt</small></div>
           <pre data-id="code"><code class="hljs" data-trim data-line-numbers="3-6,8">
             package de.rahn.kotlin.lang.classes
 
@@ -3115,6 +3163,7 @@ Function person: Müller (20)</pre>
         </section>
         <section data-auto-animate>
           <p data-id="title">Die Klasse Hund soll ein Säugetier sein</p>
+          <div data-id="files"><small style="vertical-align: bottom">Datei: Hund.kt, Saeugetier.kt</small></div>
           <pre data-id="code"><code class="hljs" data-trim data-line-numbers="3">
             package de.rahn.kotlin.lang.classes
 
@@ -3131,6 +3180,7 @@ Function person: Müller (20)</pre>
         </section>
         <section data-auto-animate>
           <p data-id="title">Die Klasse Hund ist ein Säugetier</p>
+          <div data-id="files"><small style="vertical-align: bottom">Datei: Hund.kt, Saeugetier.kt</small></div>
           <pre data-id="code"><code class="hljs" data-trim data-line-numbers="8">
             package de.rahn.kotlin.lang.classes
 
@@ -3149,6 +3199,7 @@ Function person: Müller (20)</pre>
         </section>
         <section data-auto-animate>
           <p data-id="title">Ein Säugetier ist ein Wirbeltier bzw. Chordatier</p>
+          <div data-id="files"><small style="vertical-align: bottom">Datei: Hund.kt, Saeugetier.kt, Wirbeltier.kt, Chordatier.kt</small></div>
           <pre data-id="code"><code class="hljs" data-trim data-line-numbers="8-9,14-15|3,8-9">
             package de.rahn.kotlin.lang.classes
 
@@ -3173,7 +3224,8 @@ Function person: Müller (20)</pre>
           </code></pre>
         </section>
         <section data-auto-animate>
-          <p data-id="title">Abstrakte Member Funktion und Überschreiben</p>
+          <p data-id="title">Überschreiben und abstrakte Member Funktion</p>
+          <div data-id="files"><small style="vertical-align: bottom">Datei: Hund.kt, Saeugetier.kt, Wirbeltier.kt, Chordatier.kt</small></div>
           <pre data-id="code"><code class="hljs" data-trim data-line-numbers="7-9,11|19-21|31-33">
             package de.rahn.kotlin.lang.classes
 
@@ -3220,7 +3272,8 @@ Function person: Müller (20)</pre>
           <h3>Interfaces</h3>
         </section>
         <section>
-          <p>Definition</p>
+          <h4>Definition</h4>
+          <div><small style="vertical-align: bottom">Datei: Essen.kt, Sterben.kt</small></div>
           <pre><code class="hljs" data-trim data-line-numbers="3-5|7-11">
             package de.rahn.kotlin.lang.classes
 
@@ -3236,7 +3289,7 @@ Function person: Müller (20)</pre>
           </code></pre>
         </section>
         <section>
-          <p>Implementierung</p>
+          <h4>Implementierung</h4>
           <pre><code class="hljs" data-trim data-line-numbers="3-4,10|14-16|20-22">
             package de.rahn.kotlin.lang.classes
 
@@ -3269,6 +3322,7 @@ Function person: Müller (20)</pre>
         </section>
         <section>
           <p>Vererbung von Interfaces und<br>Auflösen von Override Konflikten</p>
+          <div><small style="vertical-align: bottom">Datei: Essen.kt, Sterben.kt, Info.kt</small></div>
           <pre><code class="hljs" data-trim data-line-numbers="3-5|7,10-12|15,20-22|30-34|46-49|57-60">
             package de.rahn.kotlin.lang.classes
 
@@ -3351,6 +3405,7 @@ Function person: Müller (20)</pre>
         </section>
         <section>
           <p>Die Infos für die Klasse Hund ausgeben</p>
+          <div><small style="vertical-align: bottom">Datei: Tier.kt</small></div>
           <pre><code class="hljs" data-trim data-line-numbers="4,7-9">
             package de.rahn.kotlin.lang.classes
 
@@ -3376,19 +3431,358 @@ Function person: Müller (20)</pre>
 </pre>
           </div>
         </section>
+      </section>
+      <section data-pos="objects-10">
+        <section id="objects">
+          <h2>Objekte</h2>
+          <p>Objektorientierte Programmierung</p>
+          <aside class="notes">
+            <div>Details: Grundlagen Objekte (Ad-hoc), Singleton, Companion Object</div>
+          </aside>
+        </section>
+        <section id="objects-basics">
+          <h3>Grundlagen Objekte</h3>
+        </section>
+        <section id="objects-basics-adhoc" data-auto-animate>
+          <h4>Wir brauchen gerade nur ein Objekt</h4>
+          <div><small style="vertical-align: bottom">Datei: ObjectsAdHoc.kt</small></div>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="4-7|9">
+            package de.rahn.kotlin.lang
+
+            fun objectAdHoc1(): Any {
+              val i = object {
+                val name = "Rahn"
+                val firstName = "Frank"
+              }
+
+              println("${i.firstName} ${i.name}")
+
+              return i
+            }
+
+            fun objectAdHoc() {
+              val a = objectAdHoc1()
+              println(a)
+            }
+
+            fun main() = objectAdHoc()
+          </code></pre>
+        </section>
+        <section data-auto-animate>
+          <h4>Wir brauchen gerade nur ein Objekt</h4>
+          <div><small style="vertical-align: bottom">Datei: ObjectsAdHoc.kt</small></div>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="4,8-11,14|3,16|20-21">
+            package de.rahn.kotlin.lang
+
+            fun objectAdHoc1(): Any {
+              val i = object {
+                val name = "Rahn"
+                val firstName = "Frank"
+
+                fun print() {
+                  println("$firstName $name")
+                }
+              }
+
+              println("${i.firstName} ${i.name}")
+              i.print()
+
+              return i
+            }
+
+            fun objectAdHoc() {
+              val a = objectAdHoc1()
+              println(a)
+            }
+
+            fun main() = objectAdHoc()
+          </code></pre>
+          <aside class="notes">
+            <div>* Member Funktionen gehen auch</div>
+            <div>* Aber ein Ad-hoc Objekt kann als Returnwert nur den Type <code>Any</code> annehmen, damit wird es
+              außerhalb seines Kontextes (Funktion, Klasse) wertlos</div>
+          </aside>
+        </section>
+        <section id="objects-basics-adhoc-class">
+          <h4>In einer Klasse viel sinnvoller</h4>
+          <div><small style="vertical-align: bottom">Datei: Person5.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="4-6|5|4-6,9|14,16">
+            package de.rahn.kotlin.lang.classes
+
+            class Person5(val name: String) {
+              private fun internPerson() = object {
+                val name = this@Person5.name
+              }
+
+              fun name(): String {
+                return internPerson().name
+              }
+            }
+
+            fun person5() {
+              val p = Person5("Frank Rahn")
+
+              println("Person=${p.name()}")
+            }
+
+            fun main() = person5()
+          </code></pre>
+          <aside class="notes">
+            <div>* Rückgabe eines Objekt ohne Klasse im Kontext einer Klasse</div>
+            <div>* <code>this@Person5</code> verweist auf den Receiver von <code>Person5</code><br>
+              Ohne diese Angabe wird der Receiver des Objektes verwendet</div>
+            <div>* Wäre die Member Funktion <code>public</code>, so würde ein <code>Any</code> zurückgegeben</div>
+          </aside>
+        </section>
+        <section id="objects-basics-interface-class">
+          <h4>Objekte von Interfaces oder Klassen</h4>
+          <div><small style="vertical-align: bottom">Datei: ObjectsInterface.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="3-5|8|8-12|16,17">
+            package de.rahn.kotlin.lang
+
+            interface Named {
+              fun name(): String
+            }
+
+            fun newNamed(name: String): Named {
+              return object : Named {
+                override fun name(): String {
+                  return name
+                }
+              }
+            }
+
+            fun objectsInterface() {
+              val named = newNamed("Frank Rahn")
+              println(named.name())
+            }
+
+            fun main() = objectsInterface()
+          </code></pre>
+          <aside class="notes">
+            <div>* Das Objekt besitzt nach wie vor keine Klasse</div>
+            <div>* Das Objekt implementiert aber das Interface oder Klasse</div>
+          </aside>
+        </section>
+        <section id="objects-basics-singleton">
+          <h4>Singleton</h4>
+          <div><small style="vertical-align: bottom">Datei: ObjectsSingleton.kt</small></div>
+          <pre><code class="hljs" data-trim data-line-numbers="3,10|3-10|13,14|15|16">
+            package de.rahn.kotlin.lang
+
+            object ConfigurationSingleton {
+              private val start = System.currentTimeMillis()
+              val logLevel = "debug"
+
+              fun duration(): Long {
+                return System.currentTimeMillis() - start
+              }
+            }
+
+            fun objectsSingleton() {
+              println(ConfigurationSingleton.duration())
+              println(ConfigurationSingleton.logLevel)
+              Thread.sleep(1000)
+              println(ConfigurationSingleton.duration())
+            }
+
+            fun main() = objectsSingleton()
+          </code></pre>
+          <aside class="notes">
+            <div>* Das Singleton wird erst bei der ersten Benutzung instanziiert und ist thread-safe</div>
+            <div>* Die Abrufe von <code>duration()</code> liefern 0 und 1001</div>
+          </aside>
+        </section>
+        <section id="objects-basics-companion-object">
+          <h3>Companion Object</h3>
+          <aside class="notes">
+            <div>Begleitobjekt</div>
+          </aside>
+        </section>
+        <section data-auto-animate>
+          <h4>Companion Object</h4>
+          <div><small style="vertical-align: bottom">Datei: ObjectsCompanionObject.kt</small></div>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="3-5,8">
+            package de.rahn.kotlin.lang
+
+            class ObjectsCompanionObject {
+              companion object {}
+            }
+
+            fun objectsCompanionObject() {
+              println(ObjectsCompanionObject.Companion)
+            }
+
+            fun main() = objectsCompanionObject()
+          </code></pre>
+          <aside class="notes">
+            <div>* Ein Objekt innerhalb einer Klasse</div>
+            <div>* Der default Name des Objektes ist <code>Companion</code></div>
+            <div>* Ist ein Ersatz für <code>static</code></div>
+          </aside>
+        </section>
+        <section data-auto-animate>
+          <h4>Companion Object</h4>
+          <div><small style="vertical-align: bottom">Datei: ObjectsCompanionObject.kt</small></div>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="3-5,8-9">
+            package de.rahn.kotlin.lang
+
+            class ObjectsCompanionObject {
+              companion object {}
+            }
+
+            fun objectsCompanionObject() {
+              println(ObjectsCompanionObject)
+              println(ObjectsCompanionObject.Companion)
+            }
+
+            fun main() = objectsCompanionObject()
+          </code></pre>
+          <aside class="notes">
+            <div>* Beide <code>println</code> bekommen das Begleitobjekt übergeben</div>
+            <div>* In Zeile 8 wird keine Instanz erzeugt - fehlende Klammer</div>
+          </aside>
+        </section>
+        <section data-auto-animate>
+          <h4>Companion Object</h4>
+          <div><small style="vertical-align: bottom">Datei: ObjectsCompanionObject.kt</small></div>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="4,9">
+            package de.rahn.kotlin.lang
+
+            class ObjectsCompanionObject {
+              companion object Factory {}
+            }
+
+            fun objectsCompanionObject() {
+              println(ObjectsCompanionObject)
+              println(ObjectsCompanionObject.Factory)
+            }
+
+            fun main() = objectsCompanionObject()
+          </code></pre>
+          <aside class="notes">
+            <div>Das Begleitobjekt bekommt einen Namen</div>
+          </aside>
+        </section>
+        <section data-auto-animate>
+          <h4>Companion Object</h4>
+          <div><small style="vertical-align: bottom">Datei: ObjectsCompanionObject.kt</small></div>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="4-6,13">
+            package de.rahn.kotlin.lang
+
+            class ObjectsCompanionObject {
+              companion object Factory {
+                fun create(): ObjectsCompanionObject = ObjectsCompanionObject()
+              }
+            }
+
+            fun objectsCompanionObject() {
+              println(ObjectsCompanionObject)
+              println(ObjectsCompanionObject.Factory)
+
+              val instance = ObjectsCompanionObject.Factory.create()
+              println(instance)
+            }
+
+            fun main() = objectsCompanionObject()
+          </code></pre>
+          <aside class="notes">
+            <div>Statt Methoden können auch Properties definiert werden => Halt ein Objekt</div>
+          </aside>
+        </section>
+        <section data-auto-animate>
+          <h4>Companion Object</h4>
+          <div><small style="vertical-align: bottom">Datei: ObjectsCompanionObject.kt</small></div>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="4-6,13">
+            package de.rahn.kotlin.lang
+
+            class ObjectsCompanionObject {
+              companion object Factory {
+                fun create(): ObjectsCompanionObject = ObjectsCompanionObject()
+              }
+            }
+
+            fun objectsCompanionObject() {
+              println(ObjectsCompanionObject)
+              println(ObjectsCompanionObject.Factory)
+
+              val instance = ObjectsCompanionObject.create()
+              println(instance)
+            }
+
+            fun main() = objectsCompanionObject()
+          </code></pre>
+        </section>
+        <section data-auto-animate>
+          <h4>Companion Object</h4>
+          <div><small style="vertical-align: bottom">Datei: ObjectsCompanionObject.kt</small></div>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="3-5|3-5,8-10|3-5,8-10,14">
+            package de.rahn.kotlin.lang
+
+            interface Factory&lt;T&gt; {
+              fun create(): T
+            }
+
+            class ObjectsCompanionObject {
+              companion object : Factory&lt;ObjectsCompanionObject&gt; {
+                override fun create(): ObjectsCompanionObject = ObjectsCompanionObject()
+              }
+            }
+
+            fun objectsCompanionObject() {
+              val obj: Factory&lt;ObjectsCompanionObject&gt; = ObjectsCompanionObject
+              println(obj)
+            }
+
+            fun main() = objectsCompanionObject()
+          </code></pre>
+        </section>
+        <section data-auto-animate>
+          <h4>Companion Object</h4>
+          <div><small style="vertical-align: bottom">Datei: ObjectsCompanionObject.kt</small></div>
+          <pre data-id="code"><code class="hljs" data-trim data-line-numbers="12-14|21">
+            package de.rahn.kotlin.lang
+
+            interface Factory&lt;T&gt; {
+              fun create(): T
+            }
+
+            class ObjectsCompanionObject {
+              companion object : Factory&lt;ObjectsCompanionObject&gt; {
+                override fun create(): ObjectsCompanionObject = ObjectsCompanionObject()
+              }
+
+              object Constants {
+                val defaultInstanz = create()
+              }
+            }
+
+            fun objectsCompanionObject() {
+              val obj: Factory&lt;ObjectsCompanionObject&gt; = ObjectsCompanionObject
+              println(obj)
+
+              println(ObjectsCompanionObject.Constants.defaultInstanz)
+            }
+
+            fun main() = objectsCompanionObject()
+          </code></pre>
+          <aside class="notes">
+            <div>Es können weitere benannte Objekte in der Klasse definiert werden</div>
+          </aside>
+        </section>
+      </section>
+      <section data-pos="baustelle">
         <section>
-          <h3 style="color: #6a1520"><em>Baustelle &hellip;!</em></h3>
+          <h2 style="color: #6a1520"><em>Baustelle &hellip;!</em></h2>
+        </section>
+        <section>
+          <h3>Klassen</h3>
           <ul>
             <li>Aliasnamen für Typen <strong>typealias</strong></li>
             <li>Varianten für innere Klassen</li>
             <li>Delegation</li>
             <li>Umgang mit <strong>lazy</strong></li>
             <li>Inline Getter und Setter</li>
-          </ul>
-        </section>
-        <section>
-          <h3 style="color: #6a1520"><em>Baustelle &hellip;!</em></h3>
-          <ul>
             <li>Enums und when</li>
             <li>Basistypen oder einfache Typen</li>
             <li>Strings und reguläre Ausdrücke</li>
@@ -3397,11 +3791,6 @@ Function person: Müller (20)</pre>
             <li>Iterationen</li>
             <li>Exceptionhandling</li>
           </ul>
-        </section>
-      </section>
-      <section data-pos="baustelle">
-        <section>
-          <h2 style="color: #6a1520"><em>Baustelle &hellip;!</em></h2>
         </section>
         <section>
           <h3>Weitere Konzepte</h3>
