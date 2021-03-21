@@ -89,7 +89,7 @@ section.has-light-background, section.has-light-background h1, section.has-light
 #footer > a:hover,
 #footer > span > a:hover,
 #footer > .sep {
-  color: #aaaaaa; }
+  color: #adadad; }
 
 #footer > a,
 #footer > span {
@@ -114,7 +114,7 @@ section.has-light-background, section.has-light-background h1, section.has-light
   --heading-font-weight: 600;
   --heading1-text-shadow: none;
   --heading1-size: 2.5em;
-  --heading2-size: 1.6em;
+  --heading2-size: 1.4em;
   --heading3-size: 1.3em;
   --heading4-size: 1em;
   --code-font: monospace;
@@ -171,7 +171,7 @@ section.has-light-background, section.has-light-background h1, section.has-light
   font-size: 2.5em; }
 
 .reveal h2 {
-  font-size: 1.6em; }
+  font-size: 1.4em; }
 
 .reveal h3 {
   font-size: 1.3em; }
