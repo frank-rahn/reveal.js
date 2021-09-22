@@ -1081,10 +1081,43 @@ $</pre>
           <p><a href="https://openjdk.java.net/projects/jdk/17" target="_blank" rel="external">https://openjdk.java.net/projects/jdk/17</a></p>
         </section>
         <section id="java-17-changes">
-          <h3>Mögliche Änderungen</h3>
+          <h3>Die wichtigsten Änderungen</h3>
           <ul>
             <li>Erweiterung der PRNG (<code>RandomGenerator</code>)</li>
+            <li>Entfernt RMI Activation</li>
+            <li>Sealed Classes</li>
+            <li>...</li>
           </ul>
+        </section>
+        <section id="java-17-sealed-class">
+          <h4>Sealed Classes</h4>
+          <pre><code class="hljs" data-trim data-line-numbers="3|3,4|8|12,13|17">
+            package java17;
+
+            public abstract sealed class Abbildung
+              permits Kreis, Rechteck {
+              // ...
+            }
+
+            public final class Kreis extends Abbildung {
+              // ...
+            }
+
+            public sealed class Rechteck extends Abbildung
+              permits Quadrat {
+              // ...
+            }
+
+            public non-sealed class Quadrat extends Rechteck {
+              // ...
+            }
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Die Klasse <code>Abbildung</code> kann auch ein Interface sein</li>
+              <li>Sealed Classes werden bei Switches berücksichtigt</li>
+            </ul>
+          </aside>
         </section>
       </section>
       <section data-pos="last-slide">
