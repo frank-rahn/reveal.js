@@ -971,7 +971,7 @@ $</pre>
         </section>
         <section id="java-15-textblocks">
           <h3>Text Blocks</h3>
-          <pre><code class="hljs" data-trim data-line-numbers="5-11|13-17">
+          <pre><code class="hljs" data-trim data-line-numbers="5-11|15-17">
             package java15;
 
             public class TextBlocks {
@@ -979,18 +979,27 @@ $</pre>
               private String html = """
                                     &lt;html&gt;
                                       &lt;body&gt;
-                                        &lt;p&gt;Hello world!&lt;/p&gt;
+                                        &lt;p&gt;Hello "world"!&lt;/p&gt;
                                       &lt;/body&gt;
                                     &lt;/html&gt;
                                     """;
 
               private String sql = """
                                    SELECT *
-                                   FROM PERSON p
-                                   WHERE p.CITY = 'Köln'
-                                   """;
+                                     FROM PERSON p \
+                                     WHERE p.CITY = '%s'  \s
+                                   """.formatted("Köln");
             }
           </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Ich kann <strong>"</strong> und <strong>'</strong> im Textblock verwenden</li>
+              <li>Das erste Hochkomma des schließenden """ schneidet die Leerzeichen ab</li>
+              <li>Ich kann nicht auf Variablen zugreifen</li>
+              <li>Backslash verhindert New Line</li>
+              <li>Backslash s entfernt Blanks nicht</li>
+            </ul>
+          </aside>
         </section>
       </section>
       <section data-pos="java-16-10">
