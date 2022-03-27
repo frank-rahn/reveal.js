@@ -1138,7 +1138,7 @@ $</pre>
       </section>
       <section data-pos="java-18-12">
         <section id="java-18">
-          <h2>Java 18 <small style="color: darkred;">preview</small></h2>
+          <h2>Java 18</h2>
           <aside class="notes">
             Details: Changelog von Java 18
           </aside>
@@ -1150,12 +1150,61 @@ $</pre>
           <p><a href="https://openjdk.java.net/projects/jdk/18" target="_blank" rel="external">https://openjdk.java.net/projects/jdk/18</a></p>
         </section>
         <section id="java-18-changes">
-          <h3>Mögliche Änderungen</h3>
+          <h3>Die wichtigsten Änderungen</h3>
           <ul>
-            <li>UTF-8 ist default</li>
+            <li>UTF-8 ist Standardzeichensatz</li>
+            <li>Simple Web Server</li>
             <li>Code Snippets in der JavaDoc API Dokumentation</li>
             <li>...</li>
           </ul>
+          <aside class="notes">
+            <ul>
+              <li>Minimaler Webserver für Testing und Debugging</li>
+            </ul>
+          </aside>
+        </section>
+        <section id="java-18-jwebserver">
+          <h4>Simple Web Server</h4>
+          <pre><code class="hljs" data-trim>
+            $ jwebserver -b 127.0.0.2 -p 8080 -d /tmp -o verbose
+            Serving /tmp and subdirectories on 127.0.0.2 port 8080
+            URL http://127.0.0.2:8080/
+          </code></pre>
+          <pre><code class="hljs" data-trim>
+            var server = SimpleFileServer.createFileServer(
+              new InetSocketAddress(8080), Path.of("tmp"), OutputLevel.Verbose);
+            server.start();
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Der Simple Web Server kann stellt einen Datei-Browser für das Verzeichnis <code>/tmp</code> bereit</li>
+              <li>Er kann nur HTTP/1.1</li>
+              <li>Nur die Methoden <code>GET</code> und <code>HEAD</code> sind implementiert</li>
+            </ul>
+          </aside>
+        </section>
+        <section id="java-18-javadoc">
+          <h4>Code Snippets in JavaDoc</h4>
+          <pre><code class="hljs" data-trim data-line-numbers="6-8|10,14-16">
+            package java18;
+
+            /**
+             * ...
+             *
+             * {@snippet :
+             * System.out.println("Hello World!");
+             * }
+             *
+             * {@snippet file="java18/HelloWorld.java" region="output"}
+             */
+            public class HelloWorld {
+              public static void main(String[] args){
+                // @start region="output"
+                System.out.println("Hello World!");
+                // @end
+              }
+            }
+          </code></pre>
         </section>
       </section>
       <section data-pos="java-19-13">
