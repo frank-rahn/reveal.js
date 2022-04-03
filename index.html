@@ -1034,9 +1034,9 @@ $</pre>
             <li>...</li>
           </ul>
         </section>
-        <section id="java-16-records">
+        <section id="java-16-records-1">
           <h4>Records</h4>
-          <pre><code class="hljs" data-trim data-line-numbers="5|8|10,11|12|13,14">
+          <pre><code class="hljs" data-trim data-line-numbers="5|5,8,9|5,11,12|13|14,15">
             package java16;
 
             public class Records {
@@ -1045,39 +1045,81 @@ $</pre>
 
               public static void main(String[] args) {
                 Data data = new Data("Test", 5711);
+                Data data2 = new Data("Test", 5711);
 
                 System.out.println(data.a());
                 System.out.println(data.b());
                 System.out.println(data.toString());
                 System.out.println(data.hashCode());
-                System.out.println(data.equals(data));
+                System.out.println(data.equals(data2));
               }
             }
           </code></pre>
           <aside class="notes">
             <ul>
-              <li>Records sind immutable</li>
+              <li>Records sind immutable (unveränderbar, DDD Value Object)</li>
+              <li>Reduziert Boiler-Plate-Code</li>
+              <li>Einfache Implementierung</li>
+              <li><strong>Nicht</strong> kompatibel zur <em>JavaBeans API Specifications</em></li>
+              <li>Algebraische Datentyp (Produkttyp &#10754;)</li>
+            </ul>
+          </aside>
+        </section>
+        <section id="java-16-records-2">
+          <h4>Records</h4>
+          <pre><code class="hljs" data-trim data-line-numbers="3|19">
+            package java16;
+
+            public record NamedTuple&lt;T&gt;(String name, T... values) {}
+
+            public class Records {
+
+              public record Data(String a, Integer b) {}
+
+              public static void main(String[] args) {
+                Data data = new Data("Test", 5711);
+                Data data2 = new Data("Test", 5711);
+
+                System.out.println(data.a());
+                System.out.println(data.b());
+                System.out.println(data.toString());
+                System.out.println(data.hashCode());
+                System.out.println(data.equals(data2));
+
+                var tuple = new NamedTuple<>("Geld", 0.5, 3.14);
+                System.out.println(tuple);
+              }
+            }
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Letztes Argument kann ein parametrisierter Vararg-Typ sein</li>
+              <li><code>values</code> ist ein <code>Double[]</code></li>
             </ul>
           </aside>
         </section>
         <section id="java-16-pattern-matching">
           <h4>Pattern matching für <code>instanceof</code></h4>
-          <pre><code class="hljs" data-trim data-line-numbers="6,7">
+          <pre><code class="hljs" data-trim data-line-numbers="6,7|10">
             package java16;
 
             public class PatternMatching {
 
               public void process(Object obj) {
-                if(obj instanceof String s && s.isBlank()) {
-                  System.out.println("obj is Blank String:" + s);
+                if (obj instanceof String s) {
+                  System.out.println("obj is String:" + s);
                 }
+
+                return obj instanceof String s && s.isBlank();
               }
 
             }
           </code></pre>
           <aside class="notes">
             <ul>
-              <li>Ermöglicht Wegfall von Castings</li>
+              <li>Ermöglicht Wegfall von Type Castings</li>
+              <li>Type Pattern für instanceof</li>
+              <li>Type Pattern mit <strong>Guard Pattern</strong></li>
             </ul>
           </aside>
         </section>
