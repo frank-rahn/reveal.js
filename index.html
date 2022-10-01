@@ -1321,7 +1321,7 @@ $</pre>
       </section>
       <section data-pos="java-19-13">
         <section id="java-19">
-          <h2>Java 19 <small style="color: darkred;">preview</small></h2>
+          <h2>Java 19</h2>
           <aside class="notes">
             Details: Changelog von Java 19
           </aside>
@@ -1333,10 +1333,42 @@ $</pre>
           <p><a href="https://openjdk.java.net/projects/jdk/19" target="_blank" rel="external">https://openjdk.java.net/projects/jdk/19</a></p>
         </section>
         <section id="java-19-changes">
-          <h3>Mögliche Änderungen</h3>
+          <h3>Die wichtigsten Änderungen</h3>
           <ul>
-            <li>...</li>
+            <li>System.out / System.err verwenden das Standard-Encoding des Betriebssystem</li>
+            <li>Preallocated HashMap / HashSet</li>
+            <li>&hellip;</li>
           </ul>
+          <aside class="notes">
+            <ul>
+              <li>Für Entwickler nicht interessantes ...</li>
+            </ul>
+          </aside>
+        </section>
+        <section id="java-19-out-err">
+          <h4>System.out / System.err</h4>
+          <p>Mit den folgenden VM-Optionen kann die Ausgabe wieder auf UTF-8 umgestellt werden:</p>
+          <pre><code class="hljs" data-trim>
+            -Dstdout.encoding=utf8 -Dstderr.encoding=utf8
+          </code></pre>
+          <p>Es kann auch eine Umgebungsvariable definiert werden:</p>
+          <pre><code class="hljs" data-trim>
+            _JAVA_OPTIONS="-Dstdout.encoding=utf8 -Dstderr.encoding=utf8"
+          </code></pre>
+        </section>
+        <section id="java-19-preallocated">
+          <h3>Preallocated HashMap / HashSet</h3>
+          <p>
+            Bei den HashMap's kann die Anzahl der Elemente dieser Collections angegeben werden:
+          </p>
+          <pre><code class="hljs" data-trim>
+            val map = new HashMap&lt;String, String&gt;(4711);
+          </code></pre>
+          <p>
+            Allerdings muss beachtet werden, das die Collection mit Default-Load-Factor von 0,75 initialisiert wird.
+            D.&nbsp;H. die Collection wird tatsächlich mit<br>0,75 · 4711 = 3533 Elemente<br>initialisiert. Wird diese
+            Größe überschritten, wird die Collection verdoppelt und ein Rehash durchgeführt.
+          </p>
         </section>
       </section>
       <section data-pos="java-20-14">
