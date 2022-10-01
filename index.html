@@ -1077,14 +1077,14 @@ $</pre>
         </section>
         <section id="java-16-records-2">
           <h4>Records</h4>
-          <pre><code class="hljs" data-trim data-line-numbers="3|19">
+          <pre><code class="hljs" data-trim data-line-numbers="7|19">
             package java16;
-
-            public record NamedTuple&lt;T&gt;(String name, T... values) {}
 
             public class Records {
 
               public record Data(String a, Integer b) {}
+
+              public record NamedTuple&lt;T&gt;(String name, T... values) {}
 
               public static void main(String[] args) {
                 Data data = new Data("Test", 5711);
@@ -1105,6 +1105,62 @@ $</pre>
             <ul>
               <li>Letztes Argument kann ein parametrisierter Vararg-Typ sein</li>
               <li><code>values</code> ist ein <code>Double[]</code></li>
+            </ul>
+          </aside>
+        </section>
+        <section id="java-16-records-3">
+          <h4>Records</h4>
+          <pre><code class="hljs" data-trim data-line-numbers="9|10-12|14-18|20-22|38-41">
+            package java16;
+
+            public class Records {
+
+              public record Data(String a, Integer b) {}
+
+              public record NamedTuple&lt;T&gt;(String name, T... values) {}
+
+              public record Range(int low, int high) {
+                public Range() {
+                  this(Integer.MIN_VALUE, Integer.MAX_VALUE);
+                }
+
+                public Range {
+                  if (low > high) {
+                    throw  new IllegalArgumentException("low greater high");
+                  }
+                }
+
+                public int length() {
+                  return high - low;
+                }
+              }
+
+              public static void main(String[] args) {
+                Data data = new Data("Test", 5711);
+                Data data2 = new Data("Test", 5711);
+
+                System.out.println(data.a());
+                System.out.println(data.b());
+                System.out.println(data.toString());
+                System.out.println(data.hashCode());
+                System.out.println(data.equals(data2));
+
+                var tuple = new NamedTuple<>("Geld", 0.5, 3.14);
+                System.out.println(tuple);
+
+                var range = new Range();
+                System.out.println(range);
+                System.out.println(range.length());
+                new Range(2, 1);
+              }
+            }
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Der <strong>kanonischen Konstruktor</strong> wird generiert</li>
+              <li>Es können <strong>zusätzliche Konstruktoren</strong> definiert werden, die aber alle den kanonischen Konstruktor aufrufen müssen </li>
+              <li>Der <strong>kompakte Konstruktor</strong> wird nach dem kanonischen Konstruktor aufgerufen und kann zusätzliche Dinge tun</li>
+              <li>Es können auch Methoden geschrieben werden</li>
             </ul>
           </aside>
         </section>
