@@ -326,7 +326,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
           <p><a href="https://openjdk.java.net/projects/jdk9" target="_blank" rel="external">https://openjdk.java.net/projects/jdk9</a></p>
         </section>
         <section id="java-9-changes">
-          <h3>Die wichtigsten Änderungen</h3>
+          <h3>Die wichtigsten Änderungen 1/2</h3>
           <ul>
             <li>PKCS12</li>
             <li>Modulsystem (Jigsaw)</li>
@@ -334,9 +334,15 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             <li>Convenience Factory Methods for Collections</li>
             <li>Erweiterung Optional</li>
             <li>Private Methoden in Interfaces</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Die wichtigsten Änderungen 2/2</h3>
+          <ul>
             <li>Process API</li>
             <li>Flow API</li>
             <li>Stream API</li>
+            <li>Platform Logging API and Service</li>
             <li>...</li>
           </ul>
         </section>
@@ -581,6 +587,38 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             <p>iterate: Startwert, Abbruchbedingung, Hochzählen</p>
             <p>ofNullable: kann einen leeren Stream produzieren</p>
           </aside>
+        </section>
+        <section id="java-9-logging">
+          <h3>Platform Logging API and Service</h3>
+          <pre><code class="hljs" data-trim data-line-numbers="1,3,6-7,11|10-12|14">
+            import static java.lang.System.Logger.Level.INFO;
+
+            import java.lang.System.Logger;
+
+            public class SystemLogger {
+              private static final Logger LOGGER =
+                  System.getLogger(SystemLogger.class.getName());
+
+              public static void main(String[] args) {
+                if (LOGGER.isLoggable(INFO)) {
+                  LOGGER.log(INFO, "Info in {0}", "If-Abfrage");
+                }
+
+                LOGGER.log(INFO, () -> "Info in %s".formatted("Lamba"));
+              }
+            }
+          </code></pre>
+          <aside class="notes">
+            <p>Der Logger Level muss bei jedem Aufruf angegeben werden</p>
+          </aside>
+        </section>
+        <section>
+          <h3>Platform Logging API and Service</h3>
+          <p>Ausgabe:</p>
+          <pre>Okt. 02, 2022 2:44:29 PM java9.SystemLogger main
+INFORMATION: Info in If-Abfrage
+Okt. 02, 2022 2:44:29 PM java9.SystemLogger main
+INFORMATION: Info in Lamba</pre>
         </section>
       </section>
       <section data-pos="java-10-4">
