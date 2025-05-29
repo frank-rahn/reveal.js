@@ -1089,7 +1089,7 @@ $</pre>
           </ul>
         </section>
         <section id="java-16-records">
-          <h4>Records</h4>
+          <h3>Records</h3>
           <pre><code class="hljs" data-trim data-line-numbers="5|5,8,9|5,11,12|13|14,15">
             package java16;
 
@@ -1120,7 +1120,7 @@ $</pre>
           </aside>
         </section>
         <section>
-          <h4>Records</h4>
+          <h3>Records</h3>
           <pre><code class="hljs" data-trim data-line-numbers="7|19">
             package java16;
 
@@ -1153,7 +1153,7 @@ $</pre>
           </aside>
         </section>
         <section>
-          <h4>Records</h4>
+          <h3>Records</h3>
           <pre><code class="hljs" data-trim data-line-numbers="9|10-12|14-18|20-22|38-41">
             package java16;
 
@@ -1209,7 +1209,7 @@ $</pre>
           </aside>
         </section>
         <section id="java-16-pattern-matching">
-          <h4>Pattern matching für <code>instanceof</code></h4>
+          <h3>Pattern matching für <code>instanceof</code></h3>
           <pre><code class="hljs" data-trim data-line-numbers="6,7|10">
             package java16;
 
@@ -1258,7 +1258,7 @@ $</pre>
           </ul>
         </section>
         <section id="java-17-sealed-class">
-          <h4>Sealed Classes</h4>
+          <h3>Sealed Classes</h3>
           <pre><code class="hljs" data-trim data-line-numbers="3|3,4|8|12,13|17">
             package java17;
 
@@ -1320,7 +1320,7 @@ $</pre>
           </aside>
         </section>
         <section id="java-18-jwebserver">
-          <h4>Simple Web Server</h4>
+          <h3>Simple Web Server</h3>
           <pre><code class="hljs" data-trim>
             $ jwebserver -b 127.0.0.2 -p 8080 -d /tmp -o verbose
             Serving /tmp and subdirectories on 127.0.0.2 port 8080
@@ -1341,7 +1341,7 @@ $</pre>
           </aside>
         </section>
         <section id="java-18-javadoc">
-          <h4>Code Snippets in Javadoc</h4>
+          <h3>Code Snippets in Javadoc</h3>
           <pre><code class="hljs" data-trim data-line-numbers="6-8|10,14-16">
             package java18;
 
@@ -1380,8 +1380,9 @@ $</pre>
         <section id="java-19-changes">
           <h3>Die wichtigsten Änderungen</h3>
           <ul>
-            <li>System.out / System.err verwenden das Standard-Encoding des Betriebssystems</li>
-            <li>Preallocated HashMap / HashSet</li>
+            <li><code>System.out</code> / <code>System.err</code> verwenden<br>das Standard-Encoding des
+              Betriebssystems</li>
+            <li>Preallocated <code>HashMap</code> / <code>HashSet</code></li>
             <li>&hellip;</li>
           </ul>
           <aside class="notes">
@@ -1391,21 +1392,19 @@ $</pre>
           </aside>
         </section>
         <section id="java-19-out-err">
-          <h4>System.out / System.err</h4>
-          <p>Mit den folgenden VM-Optionen kann die Ausgabe wieder auf UTF-8 umgestellt werden:</p>
+          <h3>System.out / System.err</h3>
+          <p>Mit den folgenden VM-Optionen kann die<br>Ausgabe wieder auf UTF-8 umgestellt werden:</p>
           <pre><code class="hljs" data-trim>
             -Dstdout.encoding=utf8 -Dstderr.encoding=utf8
           </code></pre>
-          <p>Es kann auch eine Umgebungsvariable definiert werden:</p>
+          <p>Es kann auch eine Umgebungsvariable<br>definiert werden:</p>
           <pre><code class="hljs" data-trim>
             _JAVA_OPTIONS="-Dstdout.encoding=utf8 -Dstderr.encoding=utf8"
           </code></pre>
         </section>
         <section id="java-19-preallocated">
           <h3>Preallocated HashMap / HashSet</h3>
-          <p>
-            Bei den HashMap's kann die Anzahl der Elemente dieser Collections angegeben werden:
-          </p>
+          <p>Bei den HashMap's kann die Anzahl der Elemente<br>einer Collection angegeben werden:</p>
           <pre><code class="hljs" data-trim>
             val map = new HashMap&lt;String, String&gt;(4711);
           </code></pre>
@@ -1470,7 +1469,7 @@ $</pre>
           </aside>
         </section>
         <section id="java-21-sequenced-collections" data-auto-animate>
-          <h4>Sequenced Collections</h4>
+          <h3>Sequenced Collections</h3>
           <pre><code data-id="java-21-scs" class="hljs" data-trim data-line-numbers="9-12|15-18|20-21,23-24">
             package java21;
 
@@ -1509,7 +1508,7 @@ $</pre>
           </aside>
         </section>
         <section data-auto-animate>
-          <h4>Sequenced Collections</h4>
+          <h3>Sequenced Collections</h3>
           <pre><code data-id="java-21-scs" class="hljs" data-trim data-line-numbers="20-21,23">
             package java21;
 
@@ -1544,7 +1543,7 @@ $</pre>
           </aside>
         </section>
         <section id="java-21-pattern-matching-for-switch">
-          <h4>Pattern Matching for switch</h4>
+          <h3>Pattern Matching for switch</h3>
           <pre><code class="hljs" data-trim data-line-numbers="5|7-10,17-20|6,16|11,21">
             public class PatternMatching {
               private final String pi = String.valueOf(Math.PI);
@@ -1583,7 +1582,7 @@ $</pre>
           </aside>
         </section>
         <section>
-          <h4>Pattern Matching for switch</h4>
+          <h3>Pattern Matching for switch</h3>
           <pre><code class="hljs" data-trim data-line-numbers="3,5,14|6,15-16|7-8,17-18|9,19">
             public class PatternMatching {
 
@@ -1620,7 +1619,7 @@ $</pre>
           </aside>
         </section>
         <section>
-          <h4>Pattern Matching for switch</h4>
+          <h3>Pattern Matching for switch</h3>
           <pre><code class="hljs" data-trim data-line-numbers="3,6,11,13">
             public class PatternMatching {
 
@@ -1649,7 +1648,7 @@ $</pre>
           </aside>
         </section>
         <section id="java-21-record-patterns">
-          <h4>Record Patterns</h4>
+          <h3>Record Patterns</h3>
           <p>Dekonstruierung von Records für Mustervergleiche</p>
           <pre><code class="hljs" data-trim data-line-numbers="2,4|7-9|13,23|14,22|15,24|16,25-26|12,21">
             public class RecordPatterns {
@@ -1693,7 +1692,7 @@ $</pre>
           </aside>
         </section>
         <section id="java-21-type-patterns">
-          <h4>Type Patterns</h4>
+          <h3>Type Patterns</h3>
           <pre><code class="hljs" data-trim data-line-numbers="1-2|3,5|7|9-10,16-17|11,18|19">
             public sealed interface TypePatterns
                 permits TypePatterns.Enum, TypePatterns.Clazz {
@@ -1719,7 +1718,7 @@ $</pre>
           </code></pre>
         </section>
         <section>
-          <h4>Type Patterns</h4>
+          <h3>Type Patterns</h3>
           <pre><code class="hljs" data-trim>
             Exception in thread "main" java.lang.NullPointerException
               at java.base/java.util.Objects.requireNonNull(Objects.java:233)
@@ -1729,7 +1728,7 @@ $</pre>
           </code></pre>
         </section>
         <section id="java-21-virtual-threads">
-          <h4>Virtual Threads</h4>
+          <h3>Virtual Threads</h3>
           <pre><code class="hljs" data-trim data-line-numbers="3-9|11-19|22-23|25|27-29|31-33">
             public class VirtualThreads {
 
@@ -1778,7 +1777,7 @@ $</pre>
           </aside>
         </section>
         <section>
-          <h4>Virtual Threads</h4>
+          <h3>Virtual Threads</h3>
           <pre><code class="hljs" data-trim data-line-numbers>
             Thread Started: 1696360867033 VirtualThread[#32]
                               /runnable@ForkJoinPool-1-worker-1
@@ -1830,7 +1829,7 @@ $</pre>
           </aside>
         </section>
         <section id="java-22-unnamed-variables" data-auto-animate>
-          <h4>Unnamed Variables</h4>
+          <h3>Unnamed Variables</h3>
           <pre><code class="hljs" data-trim data-line-numbers="7|11|16|22">
             public class UnnamedVariablesPatterns {
               static void unnamedVariables() {
@@ -1861,7 +1860,7 @@ $</pre>
           <aside class="notes">Die Variablen werden nicht benötigt.</aside>
         </section>
         <section id="java-22-unnamed-pattern" data-auto-animate>
-          <h4>Unnamed Patterns</h4>
+          <h3>Unnamed Patterns</h3>
           <pre><code class="hljs" data-trim data-line-numbers="2,7-9|2,3,12-14">
             public class UnnamedVariablesPatterns {
               record Point(int x, int y) {}
@@ -1882,7 +1881,7 @@ $</pre>
           </code></pre>
         </section>
         <section id="java-22-foreign-function-memory-api" data-auto-animate>
-          <h4>Foreign Function & Memory API</h4>
+          <h3>Foreign Function & Memory API</h3>
           <p>In Java die Fremdfunktion <code>printf</code><br>aus der C-Standardbibliothek aufrufen</p>
           <pre><code class="hljs">int printf(const char * format, ...);</code></pre>
           <pre><code class="hljs" data-trim data-line-numbers="3|5|7|9-10|12-13|15,19|16|17">
@@ -1922,7 +1921,7 @@ $</pre>
           </aside>
         </section>
         <section>
-          <h4>Foreign Function & Memory API</h4>
+          <h3>Foreign Function & Memory API</h3>
           <pre>$ java --enable-native-access=ALL-UNNAMED<br>ForeignFunctionMemoryAPI.java
 12
 Hello World!</pre>
@@ -1930,7 +1929,7 @@ Hello World!</pre>
             <br>überholt.</p>
         </section>
         <section id="java-22-source-code-programs">
-          <h4>Launch Multi-File Source-Code Programs</h4>
+          <h3>Launch Multi-File Source-Code Programs</h3>
           <p>Ausführen von Sourcecode Dateien (in <!--suppress HtmlUnknownAnchorTarget --><a
               href="#/java-11-runsource" title="Rücksprung nach Java 11">Java 11</a> eingeführt). Die Datei kann
             jetzt aus mehreren Dateien bestehen. Bisher musste das gesamte Java-Programm in einer Sourcecode Datei
@@ -1941,7 +1940,7 @@ $ java HelloWorld.java
 Hello World (Multi)</pre>
         </section>
         <section>
-          <h4>Launch Multi-File Source-Code Programs</h4>
+          <h3>Launch Multi-File Source-Code Programs</h3>
           <pre><code class="hljs" data-trim>
             public class HelloWorld {
               public static void main(String[] args) {
@@ -1957,6 +1956,115 @@ Hello World (Multi)</pre>
               }
             }
           </code></pre>
+        </section>
+      </section>
+      <section data-pos="java-23-17">
+        <section id="java-23">
+          <h2>Java 23</h2>
+          <aside class="notes">
+            Details: Changelog von Java 23
+          </aside>
+        </section>
+        <section id="java-23-info">
+          <h3>Informationen</h3>
+          <p>Release im September 2024</p>
+          <p>Support Ende im März 2025</p>
+          <p><a href="https://openjdk.org/projects/jdk/23/" target="_blank" rel="external">https://openjdk.org/projects/jdk/23</a></p>
+        </section>
+        <section id="java-23-changes">
+          <h3>Die wichtigsten Änderungen</h3>
+          <ul>
+            <li>Markdown in Java-Doc-Kommentaren</li>
+            <li>Der unsichere Speicherzugriff in<br><code>sun.misc.Unsafe</code><br>wird in einer zukünftigen Version
+                entfernt</li>
+          </ul>
+          <aside class="notes">
+            Der Zugriff durch <code>Unsafe</code> wurde durch VarHandle-API (Java 9) und Foreign Function & Memory-API
+            (<!--suppress HtmlUnknownAnchorTarget --><a href="#/java-11-runsource"
+              title="Rücksprung nach Java 22">Java 22</a>) ersetzt.
+          </aside>
+        </section>
+        <section id="java-23-javadoc">
+          <h3>Markdown in Java-Doc-Kommentaren</h3>
+          <pre><code class="hljs" data-trim data-line-numbers="1-2">
+            /// Die Klasse Markdown zeigt die Nutzung von Markdown
+            /// in Javadoc.
+            ///
+            /// CSS-Syntax:
+            /// ```css
+            /// p {color: red}
+            /// ```
+            ///
+            /// @author Frank Rahn
+            /// @since 25.09.2024
+            /// @version 1.0
+            public class Markdown {
+          </code></pre>
+          <div><!--suppress RequiredAttributes -->
+            <img data-src="images/javadoc-class-markdown.png" style="border: 1px solid;"
+                alt="Ausschnitt von JavaDoc für die Klasseninformationen">
+          </div>
+        </section>
+        <section>
+          <h3>Markdown in Java-Doc-Kommentaren</h3>
+          <pre><code class="hljs" data-trim data-line-numbers="4-7">
+            /// Die Klasse Markdown zeigt die Nutzung von Markdown
+            /// in Javadoc.
+            ///
+            /// CSS-Syntax:
+            /// ```css
+            /// p {color: red}
+            /// ```
+            ///
+            /// @author Frank Rahn
+            /// @since 25.09.2024
+            /// @version 1.0
+            public class Markdown {
+          </code></pre>
+          <div><!--suppress RequiredAttributes -->
+            <img data-src="images/javadoc-class-css-syntax.png" style="border: 1px solid;"
+                alt="Ausschnitt von JavaDoc für CSS-Syntax">
+          </div>
+        </section>
+        <section>
+          <h3>Markdown in Java-Doc-Kommentaren</h3>
+          <pre><code class="hljs" data-trim data-line-numbers="9-11">
+            /// Die Klasse Markdown zeigt die Nutzung von Markdown
+            /// in Javadoc.
+            ///
+            /// CSS-Syntax:
+            /// ```css
+            /// p {color: red}
+            /// ```
+            ///
+            /// @author Frank Rahn
+            /// @since 25.09.2024
+            /// @version 1.0
+            public class Markdown {
+          </code></pre>
+          <div><!--suppress RequiredAttributes -->
+            <img data-src="images/javadoc-class-attribute.png" style="border: 1px solid;"
+                alt="Ausschnitt von JavaDoc für die Attribute">
+          </div>
+        </section>
+        <section>
+          <h3>Markdown in Java-Doc-Kommentaren</h3>
+          <pre><code class="hljs" data-trim data-line-numbers="2-6">
+            public class Markdown {
+              /// Diese Methode zeigt die Nutzung von Markdown an
+              /// einer Methode.
+              /// @param argument Ein `int`
+              /// @return das übergebene Argument als [java.lang.Integer]
+              ///   oder `null`, falls `argument` kleiner 0 ist
+              public Integer process(int argument) {
+                return argument < 0 ? null : argument;
+              }
+            }
+          </code></pre>
+          <div><!--suppress RequiredAttributes -->
+            <img data-src="images/javadoc-class-methode.png" style="border: 1px solid;"
+                alt="Ausschnitt von JavaDoc für die Methode">
+          </div>
         </section>
       </section>
       <section data-pos="last-slide">
