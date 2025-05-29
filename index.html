@@ -33,7 +33,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
   <meta property="article:publisher" content="https://www.facebook.com/frank.rahn">
   <meta property="article:author" content="https://www.facebook.com/frank.rahn">
   <meta property="article:published_time" content="2020-08-30T12:00:00+00:00">
-  <meta property="article:modified_time" content="2023-10-04T12:00:00+00:00">
+  <meta property="article:modified_time" content="2024-03-04T12:00:00+00:00">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:creator" content="@frank_rahn">
   <meta name="twitter:site" content="@frank_rahn">
@@ -50,7 +50,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
 </head>
 <body vocab="https://schema.org/" typeof="PresentationDigitalDocument">
   <header id="header" role="banner" vocab="https://schema.org/" typeof="WPHeader">
-    <img src="images/logo.png" alt="Frank W. Rahn" height="50" width="109">
+    <!--suppress CheckImageSize --><img src="images/logo.png" alt="Frank W. Rahn" height="50" width="109">
   </header>
   <div class="reveal">
     <div class="slides">
@@ -107,7 +107,9 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
           <div style="display: inline-table; text-align: left; border-collapse:collapse; font-size: 0.6em;">
             <div style="display: table-row;">
               <div style="display: table-cell; padding: 5px; vertical-align: middle;">Frank Rahn</div>
-              <div style="display: table-cell; padding: 5px;"><img data-src="images/rahn-sb.jpg" height="80" width="80" style="border: 0;" alt="Frank Rahn"></div>
+              <div style="display: table-cell; padding: 5px;"><!--suppress RequiredAttributes -->
+                <img data-src="images/rahn-sb.jpg" height="80" width="80" style="border: 0;" alt="Frank Rahn">
+              </div>
             </div>
             <div style="display: table-row;">
               <div style="display: table-cell; padding: 5px;">Homepage</div>
@@ -1050,7 +1052,10 @@ $</pre>
           </code></pre>
           <aside class="notes">
             <ul>
-              <li>Ich kann <strong>"</strong> und <strong>'</strong> im Textblock verwenden</li>
+              <!--suppress GrazieInspection -->
+              <li>Ich kann <!--suppress GrazieInspection --><strong>"</strong> und <strong>'</strong> im Textblock
+                verwenden</li>
+              <!--suppress GrazieInspection -->
               <li>Das erste Hochkomma des schließenden """ schneidet die Leerzeichen ab</li>
               <li>Ich kann nicht auf Variablen zugreifen</li>
               <li>Backslash verhindert New Line</li>
@@ -1336,7 +1341,7 @@ $</pre>
           </aside>
         </section>
         <section id="java-18-javadoc">
-          <h4>Code Snippets in JavaDoc</h4>
+          <h4>Code Snippets in Javadoc</h4>
           <pre><code class="hljs" data-trim data-line-numbers="6-8|10,14-16">
             package java18;
 
@@ -1573,7 +1578,7 @@ $</pre>
             <ul>
               <li><code>switch</code> kann jetzt etwas zurückgeben (<code>String</code>)</li>
               <li>Mustervergleiche für <code>switch</code></li>
-              <li>Sonder Rolle <code>null</code> und <code>default</code></li>
+              <li>Sonderrolle <code>null</code> und <code>default</code></li>
             </ul>
           </aside>
         </section>
@@ -1796,7 +1801,7 @@ $</pre>
       </section>
       <section data-pos="java-22-16">
         <section id="java-22">
-          <h2>Java 22 <small style="color: darkred;">preview</small></h2>
+          <h2>Java 22</h2>
           <aside class="notes">
             Details: Changelog von Java 22
           </aside>
@@ -1804,14 +1809,154 @@ $</pre>
         <section id="java-22-info">
           <h3>Informationen</h3>
           <p>Release im März 2024</p>
-          <p>Support Ende im ??</p>
+          <p>Support Ende im September 2024</p>
           <p><a href="https://openjdk.org/projects/jdk/22/" target="_blank" rel="external">https://openjdk.org/projects/jdk/22</a></p>
         </section>
         <section id="java-22-changes">
-          <h3>Mögliche Änderungen</h3>
+          <h3>Die wichtigsten Änderungen</h3>
           <ul>
+            <li>Unnamed Variables & Patterns</li>
+            <li>Foreign Function & Memory API (FFM API)</li>
+            <li>Launch Multi-File Source-Code Programs</li>
             <li>...</li>
           </ul>
+          <aside class="notes">
+            <ul>
+              <li>Nutzung von <code>_</code></li>
+              <li>Fremdfunktionen aus C-Libraries aufrufen - ohne das JNI zu verwenden<br>
+              Anlegen, Lesen und Schreiben von Speicherbereichen</li>
+              <li>Erweiterung Java 11 der Ausführung von Sourcecode Dateien</li>
+            </ul>
+          </aside>
+        </section>
+        <section id="java-22-unnamed-variables" data-auto-animate>
+          <h4>Unnamed Variables</h4>
+          <pre><code class="hljs" data-trim data-line-numbers="7|11|16|22">
+            public class UnnamedVariablesPatterns {
+              static void unnamedVariables() {
+                try {
+                  System.out.print("do sleeping");
+                  Thread.sleep(1000);
+                  System.out.println("... done");
+                } catch (InterruptedException _) {}
+
+                var optional = Optional.of("Yes");
+                System.out.println(
+                    optional.map(_ -> "Optional: No")
+                );
+
+                var names = List.of("Frank", "Walter", "Martin", "Gerd");
+                System.out.print("Processing for: ");
+                for (var _ : names) {
+                  System.out.print('.');
+                }
+                System.out.println(" done");
+
+                System.out.print("Processing forEach: ");
+                names.forEach(_ -> System.out.print('.'));
+                System.out.println(" done");
+              }
+            }
+          </code></pre>
+          <aside class="notes">Die Variablen werden nicht benötigt.</aside>
+        </section>
+        <section id="java-22-unnamed-pattern" data-auto-animate>
+          <h4>Unnamed Patterns</h4>
+          <pre><code class="hljs" data-trim data-line-numbers="2,7-9|2,3,12-14">
+            public class UnnamedVariablesPatterns {
+              record Point(int x, int y) {}
+              record Square(Point p1, int s) {}
+
+              static void unnamedPattern() {
+                Object p = new Point(1, 2);
+                if (p instanceof Point(int x, _)) {
+                  System.out.println("x=" + x);
+                }
+
+                p = new Square(new Point(1, 2), 3);
+                if (p instanceof Square(_, int s)) {
+                  System.out.println("s=" + s);
+                }
+              }
+            }
+          </code></pre>
+        </section>
+        <section id="java-22-foreign-function-memory-api" data-auto-animate>
+          <h4>Foreign Function & Memory API</h4>
+          <p>In Java die Fremdfunktion <code>printf</code><br>aus der C-Standardbibliothek aufrufen</p>
+          <pre><code class="hljs">int printf(const char * format, ...);</code></pre>
+          <pre><code class="hljs" data-trim data-line-numbers="3|5|7|9-10|12-13|15,19|16|17">
+            public class ForeignFunctionMemoryAPI {
+              static void process() throws Throwable {
+                var linker = Linker.nativeLinker();
+
+                var stdlib = linker.defaultLookup();
+
+                var printfAddress = stdlib.find("printf").orElseThrow();
+
+                var printfDescriptor = FunctionDescriptor.of(
+                    ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+
+                var printfHandle = linker.downcallHandle(
+                    printfAddress, printfDescriptor);
+
+                try (var heap = Arena.ofConfined()) {
+                    var cString = heap.allocateFrom("Hello World!");
+                    var ret = printfHandle.invoke(cString);
+                    System.out.println(ret);
+                }
+              }
+            }
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Zeile 3: Holen eines Linker – das zentrale Element für den Zugriff auf Fremdfunktionen</li>
+              <li>Zeile 5: Holen eines Handles für häufig verwendeten Bibliotheken</li>
+              <li>Zeile 7: Holen der Adresse der Fremdfunktion <code>printf</code> aus der C-Standardbibliothek</li>
+              <li>Zeile 9: Definition des Rückgabewerts und der Eingabeparameter der Fremdfunktion</li>
+              <li>Zeile 12: Holen eines Handles für die Fremdfunktion</li>
+              <li>Zeile 15: Holen eines beschränkten Speicherbereichs (muss geschlossen werden)</li>
+              <li>Zeile 16: Konvertiert den Java-String in einen C-String und speichert ihn im Heap</li>
+              <li>Zeile 17: Aufrufen der Fremdfunktion</li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <h4>Foreign Function & Memory API</h4>
+          <pre>$ java --enable-native-access=ALL-UNNAMED<br>ForeignFunctionMemoryAPI.java
+12
+Hello World!</pre>
+          <p>Da hat die <code>println</code>-Ausgabe von Java<br>die <code>printf</code>-Ausgabe der C-Standardbibliothek
+            <br>überholt.</p>
+        </section>
+        <section id="java-22-source-code-programs">
+          <h4>Launch Multi-File Source-Code Programs</h4>
+          <p>Ausführen von Sourcecode Dateien (in <!--suppress HtmlUnknownAnchorTarget --><a
+              href="#/java-11-runsource" title="Rücksprung nach Java 11">Java 11</a> eingeführt). Die Datei kann
+            jetzt aus mehreren Dateien bestehen. Bisher musste das gesamte Java-Programm in einer Sourcecode Datei
+            implementiert sein</p>
+          <pre>$ ls
+HelloWorld.java  Helper.java
+$ java HelloWorld.java
+Hello World (Multi)</pre>
+        </section>
+        <section>
+          <h4>Launch Multi-File Source-Code Programs</h4>
+          <pre><code class="hljs" data-trim>
+            public class HelloWorld {
+              public static void main(String[] args) {
+                new Helper().run();
+              }
+            }
+          </code></pre>
+          <pre><code class="hljs" data-trim>
+            public class Helper implements Runnable{
+              @Override
+              public void run() {
+                System.out.println("Hello World (Multi)");
+              }
+            }
+          </code></pre>
         </section>
       </section>
       <section data-pos="last-slide">
@@ -1824,6 +1969,7 @@ $</pre>
         <section id="license">
           <h3>Lizenzen</h3>
           <p><a href="https://creativecommons.org/licenses/by-nd/4.0/deed.de" rel="license external" target="_blank"><img src="" data-src="https://licensebuttons.net/l/by-nd/4.0/88x31.png" height="31" width="88" style="vertical-align: middle; border: 0;" alt="Creative Commons Lizenzvertrag"></a> (CC BY-ND 4.0)</p>
+          <!--suppress GrazieInspection -->
           <p style="text-align: left;">Dieses Werk ist unter der Creative-Commons-Lizenz vom Typ Namensnennung - Keine Bearbeitungen 4.0 International lizenziert.</p>
           <p style="text-align: left;">Um eine Kopie dieser Lizenz einzusehen, besuchen Sie <a href="https://creativecommons.org/licenses/by-nd/4.0/deed.de" rel="license external" target="_blank">https://creativecommons.org/licenses/by-nd/4.0/deed.de</a> oder schreiben Sie einen Brief an Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.</p>
         </section>
@@ -1864,6 +2010,7 @@ $</pre>
   <script src="plugin/markdown/markdown.js?ver=4.1.0"></script>
   <script src="plugin/highlight/highlight.js?ver=4.1.0"></script>
   <script src="plugin/zoom/zoom.js?ver=4.1.0"></script>
+  <!--suppress JSUnresolvedReference -->
   <script>
       // More info about initialization & config:
       // - https://revealjs.com/initialization/
