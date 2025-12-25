@@ -187,7 +187,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             <li>Stream API</li>
             <li>Bulk Operations auf Collections</li>
             <li>Date-Time API</li>
-            <li>...</li>
+            <li>&hellip;</li>
           </ul>
         </section>
         <section id="java-8-lambda">
@@ -344,8 +344,9 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             <li>Process API</li>
             <li>Flow API</li>
             <li>Stream API</li>
+            <li>Variable Handles</li>
             <li>Platform Logging API and Service</li>
-            <li>...</li>
+            <li>&hellip;</li>
           </ul>
         </section>
         <section id="java-9-module">
@@ -590,6 +591,38 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
             <p>ofNullable: kann einen leeren Stream produzieren</p>
           </aside>
         </section>
+        <section id="java-9-varhandle">
+          <h3>Variable Handles</h3>
+          <pre><code class="hljs" data-trim data-line-numbers="2|1-2,7-11|5,8,13-15|18-21">
+            public class VariableHandles {
+              private int testVariable = 4711;
+
+              public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException {
+                VariableHandles variableHandles = new VariableHandles();
+
+                // Hole ein Handle für das private Attribut dieser Klasse
+                VarHandle varHandleForTestVariable =
+                    MethodHandles
+                        .privateLookupIn(VariableHandles.class, MethodHandles.lookup())
+                        .findVarHandle(VariableHandles.class, "testVariable", int.class);
+
+                // Lesender Zugriff
+                Object testVariableValue =
+                    varHandleForTestVariable.get(variableHandles);
+                System.out.println(testVariableValue);
+
+                // Schreibender Zugriff
+                varHandleForTestVariable.set(variableHandles, 15);
+                testVariableValue =
+                    varHandleForTestVariable.get(variableHandles);
+                System.out.println(testVariableValue);
+              }
+            }
+          </code></pre>
+          <aside class="notes">
+            <p>Diese API bietet Zugriff auf Attribute einer Klasse</p>
+          </aside>
+        </section>
         <section id="java-9-logging">
           <h3>Platform Logging API and Service</h3>
           <pre><code class="hljs" data-trim data-line-numbers="1,3,6-7,11|10-12|14">
@@ -643,7 +676,7 @@ INFORMATION: Info in Lambda</pre>
             <li>Application Class-Data Sharing</li>
             <li>Local-Variable Type Inference</li>
             <li>Erweiterung Optional</li>
-            <li>...</li>
+            <li>&hellip;</li>
           </ul>
           <aside class="notes">
             Docker Container werden erkannt und RAM bzw. CPU automatisch zugewiesen
@@ -708,7 +741,7 @@ INFORMATION: Info in Lambda</pre>
             <li>Local-Variable Syntax für Lambda Parameters</li>
             <li>Shebang Dateien</li>
             <li>Sourcecode Dateien ausführen</li>
-            <li>...</li>
+            <li>&hellip;</li>
           </ul>
         </section>
         <section id="java-11-remove">
@@ -915,11 +948,11 @@ $</pre>
           <h3>Die wichtigsten Änderungen</h3>
           <ul>
             <li>Unicode 11 (Japanese New Era)</li>
-            <li>...</li>
+            <li>&hellip;</li>
           </ul>
           <aside class="notes">
             <ul>
-              <li>Für Entwickler nicht interessantes ...</li>
+              <li>Für Entwickler nicht interessantes &hellip;</li>
             </ul>
           </aside>
         </section>
@@ -942,11 +975,11 @@ $</pre>
           <ul>
             <li>Application Class Data Sharing</li>
             <li>Unicode 12.1</li>
-            <li>...</li>
+            <li>&hellip;</li>
           </ul>
           <aside class="notes">
             <ul>
-              <li>Für Entwickler nicht interessantes ...</li>
+              <li>Für Entwickler nicht interessantes &hellip;</li>
             </ul>
           </aside>
         </section>
@@ -969,7 +1002,7 @@ $</pre>
           <ul>
             <li>Mehr Informationen bei NullPointerException</li>
             <li>Switch Expressions</li>
-            <li>...</li>
+            <li>&hellip;</li>
           </ul>
         </section>
         <section id="java-14-switch">
@@ -1025,7 +1058,7 @@ $</pre>
             <li>Edwards-Curve-Algorithmus für digitale<br>Signaturen (EdDSA)</li>
             <li>Entfernen der Nashorn-JavaScript-Engine</li>
             <li>Text Blocks</li>
-            <li>...</li>
+            <li>&hellip;</li>
           </ul>
         </section>
         <section id="java-15-textblocks">
@@ -1085,7 +1118,7 @@ $</pre>
             <li>Pattern matching für <code>instanceof</code></li>
             <li>OpenJDK wurde nach <a href="https://github.com/openjdk/jdk" target="_blank" rel="external" title="Das OpenJDK bei github">GitHub</a> umgezogen</li>
             <li>Alpine Linux wird unterstützt</li>
-            <li>...</li>
+            <li>&hellip;</li>
           </ul>
         </section>
         <section id="java-16-records">
@@ -1254,7 +1287,7 @@ $</pre>
             <li>Erweiterung der PRNG (<code>RandomGenerator</code>)</li>
             <li>Entfernt RMI Activation</li>
             <li>Sealed Classes</li>
-            <li>...</li>
+            <li>&hellip;</li>
           </ul>
         </section>
         <section id="java-17-sealed-class">
@@ -1311,7 +1344,7 @@ $</pre>
             <li>UTF-8 ist Standardzeichensatz</li>
             <li>Simple Web Server</li>
             <li>Code Snippets in der JavaDoc API Dokumentation</li>
-            <li>...</li>
+            <li>&hellip;</li>
           </ul>
           <aside class="notes">
             <ul>
@@ -1387,7 +1420,7 @@ $</pre>
           </ul>
           <aside class="notes">
             <ul>
-              <li>Für Entwickler nicht interessantes ...</li>
+              <li>Für Entwickler nicht interessantes &hellip;</li>
             </ul>
           </aside>
         </section>
@@ -1817,7 +1850,7 @@ $</pre>
             <li>Unnamed Variables & Patterns</li>
             <li>Foreign Function & Memory API (FFM API)</li>
             <li>Launch Multi-File Source-Code Programs</li>
-            <li>...</li>
+            <li>&hellip;</li>
           </ul>
           <aside class="notes">
             <ul>
