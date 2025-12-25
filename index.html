@@ -33,7 +33,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
   <meta property="article:publisher" content="https://www.facebook.com/frank.rahn">
   <meta property="article:author" content="https://www.facebook.com/frank.rahn">
   <meta property="article:published_time" content="2020-08-30T12:00:00+00:00">
-  <meta property="article:modified_time" content="2024-03-04T12:00:00+00:00">
+  <meta property="article:modified_time" content="2025-12-26T12:00:00+00:00">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:creator" content="@frank_rahn">
   <meta name="twitter:site" content="@frank_rahn">
@@ -1085,9 +1085,7 @@ $</pre>
           </code></pre>
           <aside class="notes">
             <ul>
-              <!--suppress GrazieInspection -->
-              <li>Ich kann <!--suppress GrazieInspection --><strong>"</strong> und <strong>'</strong> im Textblock
-                verwenden</li>
+              <li>Ich kann <strong>"</strong> und <strong>'</strong> im Textblock verwenden</li>
               <!--suppress GrazieInspection -->
               <li>Das erste Hochkomma des schließenden """ schneidet die Leerzeichen ab</li>
               <li>Ich kann nicht auf Variablen zugreifen</li>
@@ -2012,9 +2010,11 @@ Hello World (Multi)</pre>
                 entfernt</li>
           </ul>
           <aside class="notes">
-            Der Zugriff durch <code>Unsafe</code> wurde durch VarHandle-API (Java 9) und Foreign Function & Memory-API
-            (<!--suppress HtmlUnknownAnchorTarget --><a href="#/java-11-runsource"
-              title="Rücksprung nach Java 22">Java 22</a>) ersetzt.
+            Der Zugriff durch <code>Unsafe</code> wurde durch VarHandle-API
+            (<!--suppress HtmlUnknownAnchorTarget --><a href="#/java-9-varhandle" title="Rücksprung nach Java 9">Java 9</a>)
+            und Foreign Function & Memory-API
+            (<!--suppress HtmlUnknownAnchorTarget --><a href="#/java-22-foreign-function-memory-api" title="Rücksprung nach Java 22">Java 22</a>)
+            ersetzt.
           </aside>
         </section>
         <section id="java-23-javadoc">
@@ -2098,6 +2098,400 @@ Hello World (Multi)</pre>
             <img data-src="images/javadoc-class-methode.png" style="border: 1px solid;"
                 alt="Ausschnitt von JavaDoc für die Methode">
           </div>
+        </section>
+      </section>
+      <section data-pos="java-24-18">
+        <section id="java-24">
+          <h2>Java 24</h2>
+          <aside class="notes">
+            Details: Changelog von Java 24
+          </aside>
+        </section>
+        <section id="java-24-info">
+          <h3>Informationen</h3>
+          <p>Release im März 2025</p>
+          <p>Support Ende im September 2025</p>
+          <p><a href="https://openjdk.org/projects/jdk/24/" target="_blank" rel="external">https://openjdk.org/projects/jdk/24</a></p>
+        </section>
+        <section id="java-24-changes">
+          <h3>Die wichtigsten Änderungen</h3>
+          <ul>
+            <li>Stream Gatherers API</li>
+            <li>Post-Quanten-Kryptografie: ML-KEM &amp; ML-DSA</li>
+            <li>Class-File API</li>
+            <li>AOT-Cache mit Application Class Data Sharing</li>
+            <li>&hellip;</li>
+          </ul>
+          <aside class="notes">
+            Der AOT-Cache (GraalVM) ermöglicht eine bis zu 42 % reduzierte Startzeit
+          </aside>
+        </section>
+        <section id="java-24-pqk-ml-kem">
+          <h3>Post-Quanten-Kryptographie: ML-KEM</h3>
+          <p>Quanten-sichere Schlüsselkapselungsverfahrens <a
+              href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf">FIPS-203</a></p>
+          <pre><code class="hljs" data-trim data-line-numbers="2|7-9|15-18|20-25|27-31|38-40|42-48">
+            public class MlKem {
+              public static final String MESSAGE = "Die geheime Nachricht.";
+
+            &hellip;
+
+            static KeyPair stepFirst() throws GeneralSecurityException {
+              var keyPairGenerator = KeyPairGenerator.getInstance("ML-KEM");
+              keyPairGenerator.initialize(NamedParameterSpec.ML_KEM_768); // Default
+              return keyPairGenerator.generateKeyPair();
+            }
+
+            static Request stepSecond(PublicKey receiverPublicKey) throws GeneralSecurityException {
+              var message = MESSAGE.getBytes(StandardCharsets.UTF_8);
+
+              var kem = KEM.getInstance("ML-KEM");
+              var encapsulator = kem.newEncapsulator(receiverPublicKey);
+              var encapsulated = encapsulator.encapsulate();
+              var sessionKey = encapsulated.key();
+
+              var aesKeySpec = new SecretKeySpec(sessionKey.getEncoded(), "AES");
+              var iv = createInitializationVector();
+              var gcmSpec = new GCMParameterSpec(128, iv);
+              var cipher = Cipher.getInstance("AES/GCM/NoPadding");
+              cipher.init(Cipher.ENCRYPT_MODE, aesKeySpec, gcmSpec);
+              var encryptedMessage = cipher.doFinal(message);
+
+              var data =
+                  ByteBuffer.allocate(iv.length + encryptedMessage.length)
+                      .put(iv)
+                      .put(encryptedMessage)
+                      .array();
+
+              return new Request(encapsulated.encapsulation(), data);
+            }
+
+            static String stepThird(PrivateKey receiverPrivateKey, Request request)
+                throws GeneralSecurityException {
+              var kem = KEM.getInstance("ML-KEM");
+              var decapsulator = kem.newDecapsulator(receiverPrivateKey);
+              var sessionKey = decapsulator.decapsulate(request.keyEncapsulationMessage);
+
+              var aesKeySpec = new SecretKeySpec(sessionKey.getEncoded(), "AES");
+              var gcmSpec = new GCMParameterSpec(128, request.encryptedMessage, 0, IV_LENGTH);
+              var cipher = Cipher.getInstance("AES/GCM/NoPadding");
+              cipher.init(Cipher.DECRYPT_MODE, aesKeySpec, gcmSpec);
+              var message =
+                  cipher.doFinal(
+                      request.encryptedMessage, IV_LENGTH, request.encryptedMessage.length - IV_LENGTH);
+
+              return new String(message, StandardCharsets.UTF_8);
+            }
+
+            static void process() throws GeneralSecurityException {
+              var receiverKeyPair = stepFirst();
+
+              var request = stepSecond(receiverKeyPair.getPublic());
+
+              var message = stepThird(receiverKeyPair.getPrivate(), request);
+              System.out.printf("Received: '%s'%n", message);
+            }
+          </code></pre>
+          <aside class="notes">
+            <ol>
+              <li>Die Nachricht</li>
+              <li>Der Empf&auml;nger erzeugt ein &ouml;ffentliches und privates Schl&uuml;sselpaar</li>
+              <li>Der Sender verschl&uuml;sselt eine Nachricht mit dem &ouml;ffentlichen Schl&uuml;ssel des
+                Empf&auml;ngers
+                <ul>
+                  <li>Erzeuge den sessionKey</li>
+                  <li>Erzeuge einen AES-256-Schl&uuml;ssel abgeleitet aus dem sessionKey</li>
+                  <li>Den Initialization Vector der encryptedMessage hinzuf&uuml;gen</li>
+                </ul>
+              </li>
+              <li>Der Empf&auml;nger entschl&uuml;sselt die Nachricht mit dem &ouml;ffentlichen Schl&uuml;ssel des
+                Senders
+                <ul>
+                  <li>Erzeuge den sessionKey</li>
+                  <li>Erzeuge AES-256-Schl&uuml;ssel abgeleitet aus dem sessionKey</li>
+                </ul>
+              </li>
+            </ol>
+          </aside>
+        </section>
+        <section id="java-24-pqk-ml-dsa">
+          <h3>Post-Quanten-Kryptographie: ML-DSA</h3>
+          <p>Quanten-sichere digitale Signaturen <a
+              href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.204.pdf">FIPS-204</a></p>
+          <pre><code class="hljs" data-trim data-line-numbers="2|5-7|13-16|23-26">
+            public class MlDsa {
+              public static final String MESSAGE = "Die Nachricht.";
+
+              static KeyPair stepFirst() throws GeneralSecurityException {
+                var keyPairGenerator = KeyPairGenerator.getInstance("ML-DSA");
+                keyPairGenerator.initialize(NamedParameterSpec.ML_DSA_65); // Default
+                return keyPairGenerator.generateKeyPair();
+              }
+
+              static byte[] stepSecond(PrivateKey senderPrivateKey) throws GeneralSecurityException {
+                var message = MESSAGE.getBytes(StandardCharsets.UTF_8);
+
+                var signature = Signature.getInstance("ML-DSA");
+                signature.initSign(senderPrivateKey);
+                signature.update(message);
+                return signature.sign();
+              }
+
+              static Boolean stepThird(PublicKey senderPublicKey, byte[] signatureData)
+                  throws GeneralSecurityException {
+                var message = MESSAGE.getBytes(StandardCharsets.UTF_8);
+
+                var signature = Signature.getInstance("ML-DSA");
+                signature.initVerify(senderPublicKey);
+                signature.update(message);
+                return signature.verify(signatureData);
+              }
+
+              static void process() throws GeneralSecurityException {
+                var senderkeyPair = stepFirst();
+
+                var signatureData = stepSecond(senderkeyPair.getPrivate());
+
+                var verified = stepThird(senderkeyPair.getPublic(), signatureData);
+                System.out.printf("Valid: %s%n", verified);
+              }
+            }
+          </code></pre>
+          <aside class="notes">
+            <ol>
+              <li>Die Nachricht</li>
+              <li>Der Sender erzeugt ein &ouml;ffentliches und privates Schl&uuml;sselpaar</li>
+              <li>Der Sender signiert eine Nachricht mit seinem privaten Schl&uuml;ssel</li>
+              <li>Der Empf&auml;nger &uuml;berpr&uuml;ft die Signatur mit dem &ouml;ffentlichen Schl&uuml;ssel des
+                Senders</li>
+            </ol>
+          </aside>
+        </section>
+        <section id="java-24-class-file-api">
+          <h3>Class-File API</h3>
+          <p>Diese offizielle API ermöglicht es, Bytecode</p>
+          <ul>
+            <li><strong><em>zu lesen</em></strong>,</li>
+            <li><strong><em>zu generieren</em></strong> oder</li>
+            <li><strong><em>zu transformieren</em></strong>.</li>
+          </ul>
+          <p>Es ersetzt Bibliotheken, wie <a href="https://asm.ow2.io/">ASM</a>, <a href="https://bytebuddy.net/">Byte
+            Buddy</a>, <a href="https://github.com/cglib/cglib">cglib</a>, <a href="https://www.javassist.org/">
+            Javassist</a>, <a href="https://www.eclemma.org/jacoco/">JaCoCo</a>, <a href="https://site.mockito.org/">
+            Mockito</a>,&hellip;</p>
+        </section>
+        <section>
+          <h3>Class-File API</h3>
+          <pre><code class="hljs" data-trim data-line-numbers="2-3|4,7|9-14|13">
+            public class ClassFileAPI {
+              public final static String COMPILER_OUTPUT_WITH_PACKAGE
+                  = "target/classes/java24/";
+              private static ClassDesc classDesc;
+
+              static void process() throws Exception {
+                classDesc = ClassDesc.of("java24", "User");
+
+                ClassFile.of().buildTo(
+                    Path.of(COMPILER_OUTPUT_WITH_PACKAGE
+                        + classDesc.displayName() + ".class"),
+                    classDesc,
+                    ClassFileAPI::createUserClass
+                );
+                &hellip;
+          </code></pre>
+          <aside class="notes">
+            <ol>
+              <li>Compiler-Output-Verzeichnis</li>
+              <li>Beschreibung der neuen Klasse <code>User</code></li>
+              <li>Erzeugung eines <code>ClassBuilder</code></li>
+              <li>Erzeugung der Klasse</li>
+            </ol>
+          </aside>
+        </section>
+        <section>
+          <h3>Class-File API</h3>
+          <pre><code class="hljs" data-trim data-line-numbers="2|4|5|6-10|11-15|16-18|19-28">
+            &hellip;
+              private static void createUserClass(ClassBuilder classBuilder) {
+                classBuilder
+                    .withFlags(ACC_PUBLIC)
+                    .withField("name", CD_String, ACC_FINAL | ACC_PRIVATE)
+                    .withMethodBody( // Create Constructor
+                        INIT_NAME,   // &lt;init&gt;
+                        MethodTypeDesc.of(CD_void, CD_String),
+                        ACC_PUBLIC,
+                        ClassFileAPI::createConstructor)
+                    .withMethodBody( // Override toString()
+                        "toString",
+                        MethodTypeDesc.of(CD_String),
+                        ACC_PUBLIC,
+                        ClassFileAPI::overrideToString)
+                    .with(
+                        SourceFileAttribute.of(
+                          classDesc.displayName() + ".java"))
+                    .with(
+                        RuntimeVisibleAnnotationsAttribute.of(
+                            Annotation.of(
+                                ClassDesc.of(
+                                    "javax.annotation.processing",
+                                    "Generated"),
+                                AnnotationElement.of(
+                                    "value",
+                                    AnnotationValue.ofString(
+                                        "ClassFileAPI")))));
+              }
+            &hellip;
+          </code></pre>
+          <aside class="notes">
+            <ol>
+              <li><code>public class User</code></li>
+              <li><code>private final String name</code></li>
+              <li><code>public User(String name)</code></li>
+              <li><code>public String toString()</code></li>
+              <li>
+                Definition Attribute der Klasse (<small>JVMS @jvms 4.7</small>)
+                <ul>
+                  <li>Namen des Source-File (<small>JVMS @jvms 4.7.10</small>)</li>
+                  <li>Annotation <code>@Generated</code> (<small>JVMS @jvms 4.7.16</small>) mit Hinweis auf Jacoco</li>
+                </ul>
+              </li>
+            </ol>
+          </aside>
+        </section>
+        <section>
+          <h3>Class-File API</h3>
+          <p>Die Erzeugung des Konstrukors und <code>toString()</code></p>
+          <pre><code class="hljs" data-trim data-line-numbers="2-8|12-15">
+              private static void createConstructor(CodeBuilder codeBuilder) {
+                codeBuilder
+                    .aload(0) // load this onto stack
+                    .invokespecial(CD_Object, INIT_NAME, MethodTypeDesc.of(CD_void)) // call super constructor
+                    .aload(0) // load this onto stack
+                    .aload(1) // load name onto stack
+                    .putfield(classDesc, "name", CD_String) // Set this.name to the last value on the stack
+                    .return_(); // Return nothing
+              }
+
+              private static void overrideToString(CodeBuilder codeBuilder) {
+                codeBuilder
+                    .aload(0) // load this onto stack
+                    .getfield(classDesc, "name", CD_String) // Push this.name onto stack
+                    .areturn(); // Return the value on the stack
+              }
+          </code></pre>
+          <aside class="notes">
+            Die Beschreibungen siehe in den Kommentaren &hellip;
+          </aside>
+        </section>
+        <section>
+          <h3>Class-File API</h3>
+          <p>Im Ausgabeverzeichnis (<code>target/classes</code>)<br>des Compilers wurde die Klasse <code>User</code>
+            erzeugt.<br>Dort wird der folgende Befehl ausgeführt,</p>
+          <pre>$ javap -v -c java24/User.class</pre>
+          <p>um den Bytecode der Klasse <code>User</code><br>in pseudo Assembler anzuzeigen.</p>
+        </section>
+        <section>
+          <h3>Class-File API</h3>
+          <pre><code class="hljs" data-trim>
+            Classfile &hellip;/java24/User.class
+              Last modified &hellip; size &hellip; bytes
+              SHA-256 checksum &hellip;
+              Compiled from "User.java"
+            public class java24.User
+              minor version: 0
+              major version: 68
+              flags: (0x0001) ACC_PUBLIC
+              this_class: #2           // java24/User
+              super_class: #8          // java/lang/Object
+              interfaces: 0, fields: 1, methods: 2, attributes: 2
+            Constant pool:
+              &hellip;
+            {
+              public java24.User(java.lang.String);
+                descriptor: (Ljava/lang/String;)V
+                Code:
+                  0: aload_0
+                  1: invokespecial #11 // Method java/lang/Object."&lt;init&gt;":()V
+                  4: aload_0
+                  5: aload_1
+                  6: putfield      #13 // Field name:Ljava/lang/String;
+                  9: return
+
+              public java.lang.String toString();
+                descriptor: ()Ljava/lang/String;
+                Code:
+                  0: aload_0
+                  1: getfield      #13 // Field name:Ljava/lang/String;
+                  4: areturn
+            }
+            SourceFile: "User.java"
+            RuntimeVisibleAnnotations:
+              0: #20(#21=s#22)
+                javax.annotation.processing.Generated(
+                  value="ClassFileAPI"
+                )
+          </code></pre>
+        </section>
+      </section>
+      <section data-pos="java-25-19">
+        <section id="java-25">
+          <h2>Java 25 <small style="color: darkred;">preview</small></h2>
+          <aside class="notes">
+            Details: Changelog von Java 25
+          </aside>
+        </section>
+        <section id="java-25-info">
+          <h3>Informationen</h3>
+          <p>Release im September 2025</p>
+          <p>Ist eine LTS-Version</p>
+          <p>Support Ende im September 2030</p>
+          <p><a href="https://openjdk.org/projects/jdk/25/" target="_blank" rel="external">https://openjdk.org/projects/jdk/25</a></p>
+        </section>
+        <section id="java-25-changes">
+          <h3>Mögliche Änderungen</h3>
+          <ul>
+            <li>&hellip;</li>
+          </ul>
+        </section>
+      </section>
+      <section data-pos="java-26-20">
+        <section id="java-26">
+          <h2>Java 26 <small style="color: darkred;">preview</small></h2>
+          <aside class="notes">
+            Details: Changelog von Java 26
+          </aside>
+        </section>
+        <section id="java-26-info">
+          <h3>Informationen</h3>
+          <p>Release im März 2026</p>
+          <p>Support Ende im September 2026</p>
+          <p><a href="https://openjdk.org/projects/jdk/26/" target="_blank" rel="external">https://openjdk.org/projects/jdk/26</a></p>
+        </section>
+        <section id="java-26-changes">
+          <h3>Mögliche Änderungen</h3>
+          <ul>
+            <li>&hellip;</li>
+          </ul>
+        </section>
+      </section>
+      <section data-pos="java-27-21">
+        <section id="java-27">
+          <h2>Java 27 <small style="color: darkred;">preview</small></h2>
+          <aside class="notes">
+            Details: Changelog von Java 27
+          </aside>
+        </section>
+        <section id="java-27-info">
+          <h3>Informationen</h3>
+          <p>Release im September 2026</p>
+          <p>Support Ende im März 2027</p>
+          <p><a href="https://openjdk.org/projects/jdk/27/" target="_blank" rel="external">https://openjdk.org/projects/jdk/27</a></p>
+        </section>
+        <section id="java-27-changes">
+          <h3>Mögliche Änderungen</h3>
+          <ul>
+            <li>&hellip;</li>
+          </ul>
         </section>
       </section>
       <section data-pos="last-slide">
