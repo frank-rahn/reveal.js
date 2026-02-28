@@ -33,7 +33,7 @@ Variablen: Präsentation, Beschreibung, Abstrakt, URL
   <meta property="article:publisher" content="https://www.facebook.com/frank.rahn">
   <meta property="article:author" content="https://www.facebook.com/frank.rahn">
   <meta property="article:published_time" content="2020-08-30T12:00:00+00:00">
-  <meta property="article:modified_time" content="2025-12-26T12:00:00+00:00">
+  <meta property="article:modified_time" content="2026-02-28T12:00:00+00:00">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:creator" content="@frank_rahn">
   <meta name="twitter:site" content="@frank_rahn">
@@ -2118,17 +2118,106 @@ Hello World (Multi)</pre>
           <ul>
             <li>Stream Gatherers API</li>
             <li>Post-Quanten-Kryptografie: ML-KEM &amp; ML-DSA</li>
+            <li>Letzte Warnung: <code>sun.misc.Unsafe</code></li>
             <li>Class-File API</li>
-            <li>AOT-Cache mit Application Class Data Sharing</li>
-            <li>&hellip;</li>
+            <!--li>AOT-Cache mit Application Class Data Sharing</li-->
           </ul>
           <aside class="notes">
             Der AOT-Cache (GraalVM) ermöglicht eine bis zu 42 % reduzierte Startzeit
           </aside>
         </section>
+        <section id="java-24-stream-gatherers-api">
+          <h3>Stream Gatherers API</h3>
+          <p>Gatherers ermöglichen<br>komplexe und zutandsbehaftete<br>Operationen</p>
+        </section>
+        <section id="java-24-stream-gatherers-api-scan">
+          <h4><code>scan()</code></h4>
+          <p>Eine inkrementelle Akkumulation</p>
+          <pre><code class="hljs" data-trim data-line-numbers="3">
+            System.out.println(
+              Stream.of(100.0, 70.0, -50.0, 30.0, 75.0, 200.0, 15.0)
+                .gather(Gatherers.scan(() -> 0.1, Double::sum))
+                .toList());
+          </code></pre>
+          <pre><code class="hljs" data-trim>
+            [100.1, 170.1, 120.1, 150.1, 225.1, 425.1, 440.1]
+          </code></pre>
+        </section>
+        <section id="java-24-stream-gatherers-api-fold">
+          <h4><code>fold()</code></h4>
+          <p>Eine geordnete, reduktionsähnliche Operation</p>
+          <pre><code class="hljs" data-trim data-line-numbers="3">
+            System.out.println(
+              Stream.of(1, 2, 7)
+                .gather(Gatherers.fold(() -> 1, (x, y) -> x * y))
+                .toList());
+          </code></pre>
+          <pre><code class="hljs" data-trim>
+            [14]
+          </code></pre>
+        </section>
+        <section id="java-24-stream-gatherers-api-window-fixed">
+          <h4><code>windowFixed()</code></h4>
+          <p>Eine Gruppierung mit fester Größe</p>
+          <pre><code class="hljs" data-trim data-line-numbers="3">
+            System.out.println(
+              Stream.of(1, 2, 3, 4, 5, 6, 7)
+                .gather(Gatherers.windowFixed(3))
+                .toList());
+          </code></pre>
+          <pre><code class="hljs" data-trim>
+            [[1, 2, 3], [4, 5, 6], [7]]
+          </code></pre>
+        </section>
+        <section id="java-24-stream-gatherers-api-window-sliding">
+          <h4><code>windowSliding()</code></h4>
+          <p>Eine verschobene Gruppierung mit fester Größe</p>
+          <pre><code class="hljs" data-trim data-line-numbers="3">
+            System.out.println(
+              Stream.of("1", "2", "3", "4", "5", "6", "7")
+                .gather(Gatherers.windowSliding(3))
+                .toList());
+          </code></pre>
+          <pre><code class="hljs" data-trim>
+            [[1, 2, 3], [2, 3, 4], [3, 4, 5], [4, 5, 6], [5, 6, 7]]
+          </code></pre>
+        </section>
+        <section id="java-24-stream-gatherers-api-map-concurrent">
+          <h4><code>mapConcurrent()</code></h4>
+          <p>In fünf Threads parallel<br>die Eingabezahlen quadrieren</p>
+          <pre><code class="hljs" data-trim data-line-numbers="3">
+            System.out.println(
+              Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+                .gather(Gatherers.mapConcurrent(5, x -> x * x))
+                .toList());
+          </code></pre>
+          <pre><code class="hljs" data-trim>
+            [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+          </code></pre>
+        </section>
+        <section id="java-24-stream-gatherers-api-kombinieren">
+          <h4>Kombination von Operationen</h4>
+          <pre><code class="hljs" data-trim data-line-numbers="3-4,9-10">
+            System.out.println(
+              Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13)
+                .gather(Gatherers.windowFixed(3))
+                .gather(Gatherers.windowFixed(3))
+                .toList());
+
+            System.out.println(
+              Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13)
+                .gather(Gatherers.windowFixed(3))
+                .andThen((Gatherers.windowFixed(3))
+                .toList());
+          </code></pre>
+          <div>Die beiden Kombinationen liefern:</div>
+          <pre><code class="hljs" data-trim>
+            [[[1, 2, 3], [4, 5, 6]], [[7, 8, 9], [10, 11, 12]], [[13]]]
+          </code></pre>
+        </section>
         <section id="java-24-pqk-ml-kem">
-          <h3>Post-Quanten-Kryptographie: ML-KEM</h3>
-          <p>Quanten-sichere Schlüsselkapselungsverfahrens <a
+          <h3>Post-Quanten-Kryptographie:<br>ML-KEM</h3>
+          <p>Quanten-sichere Schlüsselkapselungsverfahrens<br><a
               href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf">FIPS-203</a></p>
           <pre><code class="hljs" data-trim data-line-numbers="2|7-9|15-18|20-25|27-31|38-40|42-48">
             public class MlKem {
@@ -2215,7 +2304,7 @@ Hello World (Multi)</pre>
           </aside>
         </section>
         <section id="java-24-pqk-ml-dsa">
-          <h3>Post-Quanten-Kryptographie: ML-DSA</h3>
+          <h3>Post-Quanten-Kryptographie:<br>ML-DSA</h3>
           <p>Quanten-sichere digitale Signaturen <a
               href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.204.pdf">FIPS-204</a></p>
           <pre><code class="hljs" data-trim data-line-numbers="2|5-7|13-16|23-26">
@@ -2266,6 +2355,17 @@ Hello World (Multi)</pre>
                 Senders</li>
             </ol>
           </aside>
+        </section>
+        <section id="java-24-unsafe">
+          <h3>Letzte Warnung: <code>sun.misc.Unsafe</code></h3>
+          <p>In diesem JDK erfolgt die letzte Warnung bei der Nutzung von <code>sun.misc.Unsafe</code>.</p>
+          <p>Diese Klasse wird durch die folgenden APIs ersetzt:</p>
+          <ul>
+            <li>VarHandle API aus <!--suppress HtmlUnknownAnchorTarget -->
+              <a href="#/java-9-varhandle">JDK 9</a></li>
+            <li>Foreign Function & Memory API aus <!--suppress HtmlUnknownAnchorTarget -->
+              <a href="#/java-22-foreign-function-memory-api">JDK 22</a></li>
+          </ul>
         </section>
         <section id="java-24-class-file-api">
           <h3>Class-File API</h3>
